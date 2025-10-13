@@ -1016,8 +1016,10 @@ ul.info li {
   right: 0px;
   top: 0px;
   z-index: 11;
+  transform: scale(1);
   overflow: hidden;
   margin-right: 24px;
+  transition: 0.5s;
 }
 .menu-btn:before {
   content: "";
@@ -1035,6 +1037,9 @@ ul.info li {
 }
 .menu-btn.active:before {
   background: url(../img/menu2.svg) no-repeat center center;
+}
+.menu-btn:hover {
+  transform: scale(1.04);
 }
 
 body.no-scroll {
@@ -1095,7 +1100,6 @@ body.no-scroll {
   line-height: 58px;
   width: max-content;
   display: block;
-  border-bottom: 1px solid transparent;
   outline: none !important;
 }
 .menu__main li:after {
@@ -1115,7 +1119,6 @@ body.no-scroll {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-  border-bottom: 1px solid rgb(227, 6, 19);
 }
 .menu__list {
   margin-top: auto;

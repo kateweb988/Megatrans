@@ -678,37 +678,55 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener("DOMContentLoaded", function() {
   const footerItems = document.querySelectorAll(".footer__item");
 
-  footerItems.forEach(item => {
-    const title = item.querySelector("p");
-    const list = item.querySelector("ul");
+  function initFooterAccordion() {
+    if (window.innerWidth <= 768) {
+      // Мобильный режим
+      footerItems.forEach(item => {
+        const title = item.querySelector("p");
+        const list = item.querySelector("ul");
 
-    // Скрываем все списки по умолчанию (если нужно)
-    list.style.maxHeight = "0";
-    list.style.overflow = "hidden";
-    list.style.transition = "max-height 0.3s ease";
+        if (!title || !list) return;
 
-    // Добавляем класс для управления состоянием
-    item.classList.remove("open");
-
-    title.addEventListener("click", () => {
-      const isOpen = item.classList.contains("open");
-
-      // Закрываем все остальные, если нужно одиночное раскрытие
-      // footerItems.forEach(i => {
-      //   i.classList.remove("open");
-      //   i.querySelector("ul").style.maxHeight = "0";
-      // });
-
-      if (isOpen) {
-        item.classList.remove("open");
         list.style.maxHeight = "0";
-      } else {
-        item.classList.add("open");
-        list.style.maxHeight = list.scrollHeight + "px";
-      }
-    });
-  });
+        list.style.overflow = "hidden";
+        list.style.transition = "max-height 0.3s ease";
+        item.classList.remove("open");
+
+        // Убираем возможные дубли слушателей
+        title.onclick = () => {
+          const isOpen = item.classList.contains("open");
+          if (isOpen) {
+            item.classList.remove("open");
+            list.style.maxHeight = "0";
+          } else {
+            item.classList.add("open");
+            list.style.maxHeight = list.scrollHeight + "px";
+          }
+        };
+      });
+    } else {
+      // Десктоп: показываем всё и отключаем аккордеон
+      footerItems.forEach(item => {
+        const list = item.querySelector("ul");
+        const title = item.querySelector("p");
+        if (!list || !title) return;
+
+        list.style.maxHeight = "none";
+        list.style.overflow = "visible";
+        item.classList.remove("open");
+
+        title.onclick = null; // отключаем клик
+      });
+    }
+  }
+
+  // Инициализация при загрузке
+  initFooterAccordion();
+
+  // Переинициализация при изменении размера окна
+  window.addEventListener("resize", initFooterAccordion);
 });
+
 document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.querySelector('.menu-btn');
   const menu = document.querySelector('.menu');
