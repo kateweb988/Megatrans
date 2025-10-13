@@ -1,0 +1,1564 @@
+input::-webkit-input-placeholder 
+   color: rgba(125, 125, 137, 1) !important
+input::-moz-placeholder
+   color: rgba(125, 125, 137, 1) !important
+input:-ms-input-placeholder 
+   color: rgba(125, 125, 137, 1) !important
+input:-moz-placeholder 
+   color: rgba(125, 125, 137, 1) !important
+.box-modal__close 
+   z-index: 10
+   cursor: pointer
+   position: absolute
+   top: 20px
+   right: 20px
+   cursor: pointer
+   fill: white
+   z-index: 20
+   transition: 0.5s
+   display: flex
+   align-items: center
+   justify-content: center
+   width: 30px
+   height: 30px
+   &:hover 
+      transition: 0.5s
+      transform: rotate(90deg)
+.box-modal 
+   position: relative
+.popup-call__box 
+   position: absolute
+   top: -25rem
+   left: 50%
+   height: auto
+   margin-left: -282px
+   overflow: hidden
+   height: max-content
+   transition: 0.5s all
+   height: auto
+   width: 564px
+   padding: 52px
+   box-sizing: border-box
+   border: 1px solid rgb(255, 255, 255)
+   border-radius: 8px
+   background: rgb(255, 255, 255)
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after, .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after
+   display: none
+.custom-checkbox 
+   position: absolute
+   z-index: -1
+   opacity: 0
+.custom-checkbox+label 
+   display: flex
+   align-items: center
+   user-select: none
+   font-weight: 400
+   font-size: 16px
+   line-height: 130%
+   color: #494949
+   cursor: pointer
+   &:hover
+      &:before 
+         border: 1px solid $red
+.custom-checkbox+label::before
+   content: ''
+   display: inline-block
+   flex-shrink: 0
+   display: flex
+   flex-grow: 0
+   background-repeat: no-repeat
+   background-position: center center
+   background-size: 8px
+   background: #FFFFFF
+   flex: 1 0 auto
+   transition: 0.2s
+   width: 20px
+   height: 20px
+   border-radius: 5px
+   border: 1px solid #e9e9e9
+   background-color: #ffffff
+   max-width: 20px
+   margin-right: 11px
+.custom-checkbox:checked+label::before 
+   background: url(/img/check2.png) no-repeat center center
+   background-size: 8px
+.swiper-pagination
+   display: flex
+   justify-content: center
+   bottom: 19px
+   position: absolute
+   z-index: 2
+.swiper-pagination-bullet
+   width: 52px
+   height: 2px
+   background-color: #ffffff
+   opacity: 0.2
+.swiper-pagination-bullet-active
+   background-color: $red !important
+   opacity: 1
+.tabs__pane 
+   display: none
+.tabs__pane_show 
+   display: block
+.tabs__btn_active
+   color: #20252d !important
+   position: relative
+.swiper-button-next, .swiper-button-prev
+   z-index: 9
+.swiper-button-disabled
+   opacity: 0
+   pointer-events: none
+.bread 
+   display: flex
+   align-items: center
+   justify-content: flex-start
+   margin-bottom: 28px
+   flex-wrap: wrap
+   a 
+      color: rgba(32, 32, 32, 0.5)
+      font-size: 14px
+      font-weight: 500
+      line-height: 18px
+      &:after 
+         content: "/"
+         display: inline-block
+         color: rgba(32, 32, 32, 0.5) !important
+         font-size: 14px
+         font-weight: 500
+         line-height: 18px
+         margin: 0 10px
+      &:last-child
+         color: rgb(32, 32, 32)
+         &:after 
+            display: none
+      &:hover 
+         color: $red
+.mob 
+   display: none
+/* SELECT */
+.selectCF
+   margin: 0
+   padding: 0
+   display: inline-block
+   position: relative
+   color: black
+   display: flex
+   align-items: center
+   justify-content: center
+   transition: 0.5s
+   width: max-content
+   height: auto
+   background: transparent
+.selectCF li
+   list-style: none
+   cursor: pointer
+   perspective: 900px
+   -webkit-perspective: 900px
+   text-align: left
+   width: 100%
+   height: 100%
+   max-height: 100%
+   box-sizing: border-box
+.selectCF > li
+   position: relative
+   border: none
+.selectCF span
+   display: flex
+   height: auto
+   line-height: 100%
+   color: #888888
+   z-index: 1
+   align-items: center
+.selectCF .arrowCF
+   transition: .3s
+   -webkit-transition: .3s
+   width: 7px
+   height: 5px
+   text-align: center
+   vertical-align: top
+   background: url(/img/down-arrow.png) no-repeat !important
+   position: absolute
+   right: -16px
+   top: 8px
+.selectCF .titleCF
+   font-size: 16px
+   font-weight: 400
+   text-overflow: ellipsis
+   color: #000000 !important
+   white-space: nowrap
+   width: max-content !important
+   height: max-content !important
+   box-sizing: border-box
+   background: transparent !important
+.selectCF .searchCF
+   position: absolute
+   top: 3px
+   right: 0
+   z-index: -1
+@keyframes searchActive 
+   from
+      transform: rotateY(180deg) 
+   to
+      transform: rotateY(0deg)
+@-moz-keyframes searchActive 
+   from
+      transform: rotateY(180deg) 
+   to
+      transform: rotateY(0deg)
+@-webkit-keyframes searchActive 
+   from
+      -webkit-transform: rotateY(180deg) 
+   to
+      -webkit-transform: rotateY(0deg)
+.searchActive .searchCF
+   z-index: 1
+   animation: searchActive 0.3s alternate 1
+   -moz-animation: searchActive 0.3s alternate 1
+   -webkit-animation: searchActive 0.3s alternate 1
+.searchActive .titleCF
+   opacity: 0
+.selectCF .searchCF input
+   border: none !important
+   padding: 0
+   margin: 0
+   width: auto
+   height: auto
+   background: transparent
+.selectCF .searchCF input:active, .selectCF .searchCF input:focus
+   box-shadow: none !important
+   border: none !important
+   outline: none !important
+.selectCF li ul
+   display: none
+   position: absolute
+   top: 100%
+   left: 1px
+   width: 100%
+   background: grey
+   max-height: 255px
+   overflow-y: auto
+   transition: .2s
+   -webkit-transition: .2s
+   z-index: 2
+   box-sizing: border-box
+   padding-bottom: 10px
+   border-top: none
+.selectCF li ul li
+   padding: 9px 0 9px 10px
+   transition: .2s
+   -webkit-transition: .2s
+   overflow: hidden
+   text-overflow: ellipsis
+   white-space: nowrap
+   border-top: none
+   box-sizing: border-box
+   height: 40px
+   font-weight: 500
+   font-size: 16px
+   line-height: 22px
+   color: #FAFAFF
+   &:last-child
+      border-radius: 0px 0px 5px 5px
+      padding-bottom: 10px
+   &:hover 
+      color: $red
+.onCF .arrowCF
+   transform: rotate(180deg)
+   -webkit-transform: rotate(180deg)
+@-moz-keyframes effect1 
+   from
+      transform: translateY(15px)
+      opacity: 0
+   to
+      transform: translateY(0px)
+      opacity: s1
+@-webkit-keyframes effect1 
+   from
+      -webkit-transform: translateY(15px) 
+      opacity: 0
+   to
+      -webkit-transform: translateY(0px)
+      opacity: 1
+.onCF li ul
+   display: block
+   position: absolute
+   -moz-animation: effect1 0.3s alternate 1
+   -webkit-animation: effect1 0.3s alternate 1
+   left: -6.55px
+   top: 22px
+   border-radius: 0 0 4px 4px
+   width: 100%
+   min-width: max-content
+   padding-right: 10px
+ul.info li, #event-change
+   color: #FFF
+ul.info
+   padding: 0
+   display: none
+ul.info li
+   display: inline-block
+   border-radius: 5px
+   padding: 0 5px
+.accordeon, .accordeon2
+   padding: 5px 0 30px
+   border-bottom: 1px solid #ececec
+   margin-bottom: 26px
+   width: 100%
+.accordeon__item 
+   width: 100%
+   list-style-type: none
+.accordeon__item:first-child .accordeon__button
+   margin-top: 0
+.accordeon__button, .accordeon__button2
+   width: 100%
+   text-align: left
+   border: none
+   cursor: pointer
+   position: relative
+   transition: all 0.5s ease
+   font-size: 17px
+   font-weight: 700
+   color: #282828
+   display: flex
+   justify-content: space-between
+.accordeon__button:hover, .accordeon__button2:hover
+   color: $red
+.accordeon__button:after, .accordeon__button2:after
+   content: ""
+   position: absolute
+   right: 0px
+   background: url(img/down-arrow.png) no-repeat !important
+   width: 7px
+   left: inherit
+   height: 5px
+   top: 8px
+   bottom: inherit
+   transition: all 0.5s ease
+.accordeon__button.active:after, .accordeon__button2.active:after
+   content: ""
+   position: absolute
+   right: 0px
+   background: url(img/down-arrow.png) no-repeat !important
+   width: 7px
+   left: inherit
+   height: 5px
+   bottom: 30%
+   transition: all 0.5s ease
+   transform: rotate(180deg)
+   -webkit-transform: rotate(180deg)
+.accordeon__panel, .accordeon__panel2
+   max-height: 0
+   overflow: hidden
+   margin-left: 0
+   transition: all 0.5s ease
+.panel__text, .panel__text2
+   list-style-type: none
+   padding-top: 0px
+   max-width: 688px
+   margin-top: 30px
+.panel__info
+   font-weight: 300
+   font-size: 16px
+   line-height: 140%
+   margin-bottom: 20px
+   &:last-child
+      margin-bottom: 0
+.pag 
+   display: none
+   width: max-content
+   justify-content: center
+   margin: 25px auto 0 
+   position: relative
+   bottom: 0 !important
+   top: 0 !important
+   left: 0 !important
+   right: 0 !important
+   .swiper-pagination-bullet
+      width: 11px
+      height: 11px
+      background: rgb(230, 230, 230)
+      opacity: 1
+      margin-right: 10px !important
+      &:last-child
+         margin-right: 0 !important
+.menu-btn, .menu
+   display: block
+.menu-btn 
+   width: 113px
+   height: 48px
+   border-radius: 8px
+   background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+   position: relative
+   display: flex
+   align-items: center
+   justify-content: center
+   right: 0px
+   top: 0px
+   z-index: 11
+   overflow: hidden
+   margin-right: 24px
+   &:before 
+      content: ""
+      display: flex
+      width: 24px
+      height: 24px
+      background: url(/img/menu1.svg) no-repeat center center
+      margin-right: 12px
+   p 
+      color: rgba(255, 255, 255, 1)
+      font-size: 16px
+      font-weight: 700
+      line-height: 19px
+   &.active
+      &:before
+         background: url(/img/menu2.svg) no-repeat center center
+body.no-scroll 
+   overflow: hidden
+.menu 
+   position: fixed
+   top: 81px
+   left: 50%
+   margin-left: -672px
+   width: 100%
+   max-width: 1348px
+   height: 91.5vh
+   background: white
+   transform: translateX(-300%)
+   transition: transform 0.5s
+   z-index: 10
+   overflow: hidden
+   display: flex
+   justify-content: space-betweens
+   &__back 
+      display: none
+   &.active 
+      transform: translateX(0%)
+   &__left 
+      padding: 24px
+      width: 49.95%
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      height: 100%
+   &__right 
+      width: 50%
+      border-left: 1px solid rgba(234, 234, 234, 1)
+      padding: 24px
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      height: 100%
+   &__main 
+      width: 100%
+      li 
+         margin-bottom: 10px
+         position: relative
+         cursor: pointer
+         a 
+            color: rgba(0, 0, 0, 1)
+            font-size: 48px
+            font-weight: 700
+            line-height: 58px
+            width: max-content
+            display: block
+            border-bottom: 1px solid transparent
+            outline: none !important
+         &:after 
+            content: ""
+            display: block
+            width: 19px
+            height: 13px
+            background: url(/img/tt.svg) no-repeat center center  
+            position: absolute
+            right: 27px
+            top: 50% 
+            margin-top: -9px
+         &:hover, &.active
+            a
+               background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 45%)
+               -webkit-background-clip: text
+               -webkit-text-fill-color: transparent
+               background-clip: text
+               text-fill-color: transparent
+               border-bottom: 1px solid $red
+   &__list 
+      margin-top: auto
+      li 
+         margin-bottom: 10px
+         &:last-child
+            margin-bottom: 0
+         a 
+            color: rgba(11, 24, 39, 1)
+            font-size: 16px
+            font-weight: 400
+            line-height: 19px
+            &:hover 
+               color: $red
+   &__area 
+      ul 
+         display: none
+         opacity: 0
+         visibility: hidden
+         transition: opacity 0.3s ease
+         li 
+            margin-bottom: 10px
+            &:last-child
+               margin-bottom: 0
+            a 
+               color: rgba(11, 24, 39, 1)
+               font-size: 16px
+               font-weight: 400
+               line-height: 19px
+               &:hover 
+                  color: $red
+         &.visible 
+            display: block
+            opacity: 1
+            visibility: visible
+   &__info 
+      display: flex
+      margin-top: auto
+      width: 100%
+      justify-content: space-between
+      align-items: center
+      .footer__tel
+         color: rgba(0, 0, 0, 1)
+         &:hover 
+            color: $red
+      .footer__mail
+         margin-bottom: 0
+         color: rgba(0, 0, 0, 1)
+         &:hover 
+            color: $red
+   &__socials 
+      a 
+         &:first-child
+            margin-right: 10px
+         &:hover 
+            transform: scale(1.04)
+.nav 
+   padding: 16px 0
+   border-bottom: 1px solid rgba(234, 234, 234, 1)
+   &__logo 
+      display: flex
+      align-items: center
+      justify-content: center
+      padding-left: 24px
+      position: relative
+      img
+         object-fit: contain 
+         width: 100%
+      &:before 
+         content: ""
+         display: block
+         background: rgba(234, 234, 234, 1)
+         position: absolute
+         left: 0
+         top: -19px
+         height: 80px
+         width: 1px
+   &__left 
+      align-items: center
+   &__right
+      align-items: center
+   &__box 
+      align-items: center
+      justify-content: space-between
+   &__enter 
+      width: 187px
+      height: 48px
+      border-radius: 8px
+      background: rgba(240, 240, 240, 1)
+      color: rgba(26, 26, 26, 1)
+      font-size: 16px
+      font-weight: 400
+      line-height: 19px
+      margin-left: 16px
+      img 
+         margin-right: 17px
+         margin-left: 0 !important
+      &:hover 
+         color: rgba(26, 26, 26, 1)
+   &__item 
+      padding: 0 24px
+      position: relative
+      p 
+         margin-right: 65px
+         color: rgba(125, 125, 137, 1)
+         font-size: 14px
+         font-weight: 400
+         line-height: 17px
+      &:before 
+         content: ""
+         display: block
+         background: rgba(234, 234, 234, 1)
+         position: absolute
+         left: -1px
+         top: -31px
+         height: 80px
+         width: 1px
+      &_2 
+         padding-left: 33px
+         &:after 
+            content: ""
+            display: block
+            background: rgba(234, 234, 234, 1)
+            position: absolute
+            right: 0
+            top: -31px
+            height: 80px
+            width: 1px
+         a 
+            margin-left: 0 !important
+   &__el 
+      display: flex
+      align-items: center
+      a 
+         margin-left: 17px
+         color: rgba(11, 24, 39, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+         display: flex
+         align-items: center
+         &:hover 
+            color: $red
+         img 
+            margin-right: 17px
+      span 
+         margin-left: 17px
+         color: rgba(11, 24, 39, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+.arrow 
+   display: flex
+   align-items: center
+   justify-content: center
+   cursor: pointer
+   transition: 0.3s
+   width: 56px
+   height: 56px
+   box-sizing: border-box
+   border-right: 1px solid rgba(234, 234, 234, 1)
+   border-radius: 8px 0px 0px 8px
+   background: rgba(255, 255, 255, 1)
+   border-right: 1px solid rgba(234, 234, 234, 1)
+   &:nth-child(2)
+      border-radius: 0px 9px 9px 0px
+      border-left: 1px solid rgba(234, 234, 234, 1)
+      border-right: none
+   &:hover 
+      transform: scale(1.04)
+.header 
+   margin-bottom: 120px
+   &__wrap 
+      display: flex
+      justify-content: space-between
+      margin-top: 12px
+   &__content 
+      position: relative
+      padding: 24px
+      border-radius: 8px
+      background: rgba(240, 240, 240, 1)
+      width: 100%
+      max-width: 66.2%
+      position: relative
+      .swiper1 
+         overflow: hidden
+         h1 
+            margin-bottom: 16px
+         p 
+            width: 100%
+            max-width: 733px 
+            color: rgba(11, 24, 39, 1)
+            font-size: 16px
+            font-weight: 400
+            line-height: 19px
+            margin-bottom: 32px
+   &__nav 
+      position: absolute
+      bottom: 24px
+      right: 24px
+      display: flex
+      align-items: center
+      z-index: 4
+   &__pic 
+      display: block
+      margin-bottom: 35px
+   &__info 
+      width: 100%
+      max-width: 33%
+      padding: 24px
+      border-radius: 8px
+      overflow: hidden
+      background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+      .tabs__nav
+         justify-content: space-between
+         margin-bottom: 24px
+         a 
+            text-align: center
+            width: 50%
+            div 
+               transition: 0.5s 
+               width: 60px
+               height: 60px
+               border-radius: 8px
+               background: rgba(255, 255, 255, 0.25)
+               display: flex
+               align-items: center
+               justify-content: center
+               margin: 0 auto 12px
+               .svg 
+                  path 
+                     stroke: white
+            p 
+               transition: 0.5s 
+               text-align: center
+               opacity: 0.6
+               color: rgba(255, 255, 255, 1)
+               font-size: 16px
+               font-weight: 400
+               line-height: 19px
+         .tabs__btn_active
+            div 
+               background: white
+               .svg 
+                  path 
+                     stroke: $red
+            p 
+               opacity: 1
+               font-weight: 700
+.form 
+   width: 100%
+   padding: 12px
+   border-radius: 8px
+   box-sizing: border-box
+   background: rgba(255, 255, 255, 1)
+   button 
+      border: none 
+      width: 100%
+      justify-content: space-between
+      padding: 0 22px 0 16px
+   input 
+      margin-bottom: 8px
+      width: 100%
+      height: 56px
+      padding-left: 16px
+      font-size: 16px
+      font-weight: 400
+      line-height: 19px
+      color: #000
+      border-radius: 8px
+      background: rgba(245, 245, 245, 1)
+   &__flex 
+      display: flex
+      justify-content: space-between
+      input 
+         width: 49%
+   &__info 
+      display: flex
+      justify-content: space-between
+      align-items: center
+      margin-bottom: 12px
+      small 
+         color: rgba(125, 125, 137, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+      p 
+         display: flex
+         align-items: center
+         color: rgba(26, 26, 26, 1)
+         font-size: 32px
+         font-weight: 700
+         line-height: 38px
+         transition: 0.5s
+         position: relative
+         top: -5px
+         .svg 
+            margin-left: 14px
+            &:hover 
+               path 
+                  fill: $red
+   &__switch 
+      display: flex
+      align-items: center
+      margin: 14px 0 19px
+      p 
+         margin-left: 12px
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+.switch 
+   position: relative
+   display: inline-block
+   width: 32px
+   height: 18px
+.switch input 
+   opacity: 0
+   width: 0
+   height: 0
+.slider
+   position: absolute
+   cursor: pointer
+   top: 0
+   left: 0
+   right: 0
+   bottom: 0
+   background-color: rgba(223, 223, 223, 1)
+   transition: 0.4s
+   border-radius: 16px
+.slider::before 
+   position: absolute
+   content: ""
+   height: 14px
+   width: 14px
+   left: 2px
+   bottom: 2px
+   background-color: white
+   transition: 0.4s
+   border-radius: 50%
+input:checked + .slider 
+   background-color: $red
+input:checked + .slider::before 
+   transform: translateX(14px)
+label.error 
+   display: none !important
+.wrap 
+   padding-top: 24px
+   border-top: 1px solid rgba(234, 234, 234, 1)
+.main 
+   padding-bottom: 120px
+   .tabs__nav
+      justify-content: space-between
+      margin-bottom: 48px
+      a 
+         display: flex
+         justify-content: space-between
+         align-items: center
+         padding: 0 12px 0 24px
+         width: 323.5px
+         height: 80px
+         box-sizing: border-box
+         border: 1px solid  rgba(234, 234, 234, 1)
+         border-radius: 8px
+         position: relative
+         overflow: hidden
+         &:before
+            width: 99.5%
+            height: 97.8%
+            content: ""
+            position: absolute
+            top: -0.5px
+            left: -0.5px
+            right: 0
+            bottom: -0.5px
+            z-index: 0
+            border-radius: 8px
+            padding: 1px
+            background: linear-gradient(90deg, rgba(29,50,123,1), rgba(225,8,24,1))
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
+            -webkit-mask-composite: destination-out
+            mask-composite: exclude
+            pointer-events: none
+            opacity: 0
+            transition: 0.3s
+         p 
+            transition: 0.5s 
+            color: rgba(26, 26, 26, 1)
+            font-size: 16px
+            font-weight: 700
+            line-height: 19px
+         div 
+            transition: 0.5s 
+            width: 56px
+            height: 56px
+            border-radius: 8px
+            background: rgba(240, 240, 240, 1)
+            display: flex
+            align-items: center
+            justify-content: center
+            .svg 
+               path 
+                  fill: $red
+      .tabs__btn_active
+         border: none
+         div 
+            background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+            .svg 
+               path 
+                  fill: white
+         &:before 
+            opacity: 1
+         &:nth-child(2)
+            &:before 
+               left: -0.30px
+         &:nth-child(4)
+            &:before 
+               left: -0.30px
+   &__row 
+      flex-wrap: wrap 
+      gap: 8px
+      justify-content: space-between
+   &__item 
+      width: 49.5%
+      height: 300px
+      padding: 24px
+      border-radius: 8px
+      background: rgba(240, 240, 240, 1)
+      position: relative
+      transition: 0.5s
+      &:hover
+         transform: scale(1.02)
+         .main__content 
+            a 
+               transform: scale(1.04)
+               div 
+                  img
+                     transform: rotate(360deg)
+   &__pic
+      position: absolute
+      bottom: 0
+      right: 0
+   &__content 
+      height: 100%
+      display: flex
+      flex-direction: column 
+      align-items: flex-start
+      h3 
+         margin-top: 0
+         margin-bottom: 5px
+         color: rgba(26, 26, 26, 1)
+         font-size: 24px
+         font-weight: 700
+         line-height: 29px
+      p 
+         width: 100%
+         max-width: 320px 
+         color:  rgba(26, 26, 26, 1)
+         font-size: 14px
+         font-weight: 400
+         line-height: 17px
+      a 
+         display: flex
+         align-items: center
+         margin-top: auto
+         div 
+            display: flex
+            align-items: center
+            justify-content: center
+            flex: 1 0 auto 
+            max-width: 48px
+            width: 48px
+            transition: 0.5s
+            height: 48px
+            border-radius: 8px
+            background: rgba(255, 255, 255, 1)
+            img 
+               transform: rotate(0deg)
+               transition: 0.5s
+         p 
+            margin-left: 24px
+            color: rgba(26, 26, 26, 1)
+            font-size: 16px
+            font-weight: 700
+            line-height: 19px
+         &:hover 
+            transform: scale(1.04)
+            div 
+               img
+                  transform: rotate(360deg)
+.news 
+   padding-bottom: 117px
+   .top
+      max-width: 1039px
+   &__bottom 
+      align-items: center
+      justify-content: space-between
+      width: 100%
+      margin-top: auto
+      img 
+         transition: 0.5s
+      p 
+         background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 45%)
+         -webkit-background-clip: text
+         -webkit-text-fill-color: transparent
+         background-clip: text
+         text-fill-color: transparent
+         font-size: 48px
+         font-weight: 700
+         line-height: 58px
+         sup 
+            font-size: 14px
+            font-weight: 700
+            line-height: 17px
+            background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 90%)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            background-clip: text
+            text-fill-color: transparent
+            left: 0px
+            display: inline-block
+            top: -12px
+      div 
+         display: flex
+         align-items: center
+         justify-content: center
+         flex: 1 0 auto 
+         max-width: 48px
+         width: 48px
+         transition: 0.5s
+         height: 48px
+         border-radius: 8px
+         background: rgba(255, 255, 255, 1)
+         img 
+            transform: rotate(0deg)
+            transition: 0.5s
+   &__top 
+      align-items: flex-start
+      justify-content: space-between
+      p 
+         color: rgba(26, 26, 26, 1)
+         font-size: 18px
+         font-weight: 700
+         line-height: 22px
+      img 
+         transition: 0.5s 
+         opacity: 0
+         animation: spin 4s linear infinite
+      @keyframes spin
+         from 
+            transform: rotate(0deg)
+         to 
+            transform: rotate(360deg)
+   .swiper2 
+      overflow: hidden
+      margin-bottom: 48px
+      padding: 0 5px
+      .swiper-slide
+         overflow: visible
+         a 
+            display: flex
+            flex-direction: column 
+            width: 100%
+            height: 100%
+            height: 375px
+            align-items: flex-start
+            padding: 24px
+            border-radius: 8px
+            background: rgba(240, 240, 240, 1) 
+            position: relative
+            &:after
+               width: 100%
+               height: 99.5%
+               content: ""
+               position: absolute
+               overflow: hidden
+               top: -0.3px
+               left: -1.05px
+               right: 0
+               bottom: -0.5px
+               z-index: 0
+               border-radius: 8px
+               padding: 1px
+               background: linear-gradient(90deg, rgba(29,50,123,1), rgba(225,8,24,1))
+               -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
+               -webkit-mask-composite: destination-out
+               mask-composite: exclude
+               pointer-events: none
+               opacity: 0
+               transition: 0.3s
+            &:before 
+               content: ""
+               background: url(/img/news1.svg) no-repeat center center  
+               width: 100%
+               height: 100%
+               position: absolute
+               top: 0
+               left: 0
+               z-index: 0
+               transition: 0.5s
+            div 
+               position: relative
+               z-index: 2
+            &:hover 
+               &:after 
+                  opacity: 1
+               &:before
+                  background: url(/img/news2.svg) no-repeat center center  
+               .news__top 
+                  img 
+                     opacity: 1
+               .news__bottom
+                  div 
+                     transform: scale(1.1)
+                     img 
+                        transform: rotate(360deg)
+   .link 
+      position: relative
+      left: 113px
+.area
+   padding-bottom: 120px
+   &__link 
+      display: flex
+      margin-bottom: 13px
+      align-items: center
+      img 
+         display: none
+      p 
+         color: rgba(26, 26, 26, 1)
+         font-size: 32px
+         font-weight: 700
+         line-height: 38px
+      &:last-child
+         margin-bottom: 0
+      &.active
+         p 
+            background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(227, 6, 19, 1) 100%)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            background-clip: text
+            text-fill-color: transparent
+      &:hover 
+         p
+            background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(227, 6, 19, 1) 100%)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            background-clip: text
+            text-fill-color: transparent
+   .sub 
+      margin-bottom: 133px
+   &__box 
+      justify-content: space-between
+      align-items: flex-start
+      display: flex
+   &__images 
+      width: 655px
+      height: 550px
+      img 
+         display: none
+         width: 100%
+         height: 100%
+         object-fit: cover 
+         border-radius: 8px
+         &.active 
+            display: block
+   &__wrapper 
+      display: flex
+   &__scale 
+      margin-right: 32px
+      margin-top: 14px
+      margin-left: 3px
+      width: 2px
+      background: rgb(223, 223, 223)
+      position: relative
+      height: auto
+      max-height: 359px
+      position: relative
+      &:after 
+         content: ''
+         position: absolute
+         left: 0
+         top: 0
+         width: 100%
+         height: 0
+         background: linear-gradient(to bottom, #1d327b, #e10818)
+         border-radius: 5px
+         transition: height 0.3s ease
+   .area__scale-point 
+      position: absolute
+      left: 50%
+      transform: translateX(-42%)
+      width: 8px
+      height: 8px
+      border-radius: 50%
+      transition: 0.2s
+      background: rgba(224, 224, 224, 1)
+      &.active
+         background: $red
+         background: url(/img/big-dot.svg) no-repeat center center 
+         width: 16px
+         height: 16px 
+      &:before 
+         content: ""
+         display: block
+         width: 5px
+         height: 5px 
+         background: white
+         position: absolute
+         bottom: -5px
+         left: 0
+      &:after
+         content: ""
+         display: block
+         width: 5px
+         height: 5px 
+         background: white
+         position: absolute
+         top: -5px
+         left: 0
+   .area__fill 
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 0
+      background: linear-gradient(to top, $red, $red)
+      border-radius: 2px
+      transition: height 0.1s linear
+.geo 
+   padding-bottom: 142px
+   .top 
+      max-width: 1139px
+   .wrap 
+      position: relative
+      #map 
+         position: absolute
+         top: 120px
+         left: 0
+         width: 100%
+         height: 650px
+         overflow: hidden
+         border-radius: 8px
+   &__item 
+      padding: 12px 24px
+      cursor: pointer
+      border-bottom: 1px solid rgba(234, 234, 234, 1)
+      position: relative
+      &:after 
+         content: ""
+         display: block
+         width: 19px
+         height: 13px
+         background: url(/img/geo.svg) no-repeat center center  
+         position: absolute
+         right: 27px
+         top: 50% 
+         margin-top: -9px
+      &:last-child
+         margin-bottom: 20px
+         border-bottom: none
+   &__block 
+      min-height: 602px
+      width: 410px
+      height: auto
+      position: relative
+      z-index: 2
+      margin-top: 67px
+      margin-left: 24px
+      border-radius: 8px
+      background: rgba(255, 255, 255, 1)
+      form 
+         position: relative
+         border-bottom: 1px solid rgba(234, 234, 234, 1)
+         padding: 21px 24px 11px
+         button 
+            border: none 
+            background: transparent
+            position: absolute
+            left: 20px
+            top: 20px
+            transition: 0.5s 
+            &:hover 
+               .svg 
+                  path 
+                     stroke: black
+         input 
+            padding-left: 31px
+            width: 100%
+            padding-bottom: 10px
+            color: rgba(125, 125, 137, 1)
+            font-size: 14px
+            font-weight: 400
+            line-height: 17px
+            border: none 
+            border-bottom: 1px solid transparent
+            &:focus 
+               border-bottom: 1px solid $red
+   &__title 
+      color: rgba(26, 26, 26, 1)
+      font-size: 18px
+      font-weight: 700
+      line-height: 22px
+      margin-bottom: 8px
+   &__info 
+      display: flex
+      align-items: center
+      margin-bottom: 10px
+      position: relative
+      &:last-child
+         margin-bottom: 0
+      img 
+         margin-right: 12px
+      p, a 
+         color: rgba(26, 26, 26, 1)
+         font-size: 14px
+         font-weight: 400
+         line-height: 17px
+      a:hover 
+         color: $red
+   &__items 
+      max-height: 544px 
+      overflow-y: auto
+   .geo__details 
+      display: none
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      background: #fff
+      padding: 0px
+      z-index: 10
+   .geo__details.active 
+      display: block
+   .geo__items.hidden 
+      display: none
+   .geo__block 
+      position: relative
+   &__back 
+      padding: 20px 28px
+      width: auto
+      height: auto
+      background: transparent 
+      display: flex
+      align-items: center
+      color: rgba(125, 125, 137, 1)
+      font-size: 14px
+      font-weight: 400
+      line-height: 17px
+      border: none
+      transition: 0.5s
+      .svg 
+         margin-right: 16px
+      &:hover 
+         color: $red 
+         .svg 
+            path 
+               stroke: $red
+   .geo__details-content
+      padding: 24px
+      border-top: 1px solid  rgba(234, 234, 234, 1)
+      h3 
+         margin-top: 0
+         margin-bottom: 24px
+         color: rgba(26, 26, 26, 1)
+         font-size: 24px
+         font-weight: 700
+         line-height: 29px
+   &__el 
+      display: flex
+      align-items: center
+      margin-bottom: 8px
+      &:last-child
+         margin-bottom: 0
+      p, a 
+         margin-left: 16px
+         color: rgba(26, 26, 26, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+      a:hover 
+         color: $red
+   &__area 
+      margin-bottom: 24px
+   &__slider 
+      width: 100%
+      box-sizing: border-box
+      border: 1px solid rgba(240, 240, 240, 1)
+      border-radius: 8px
+      background: rgba(245, 245, 245, 1)
+   &__top 
+      display: flex
+      align-items: center
+      justify-content: space-between
+      padding: 12px
+      p 
+         color: rgba(26, 26, 26, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+   .geo__slider, .swiper4
+      overflow: hidden
+      width: 100%
+      border-top: 1px solid rgba(223, 223, 223, 1)
+      .swiper-slide 
+         max-width: 52px
+         padding: 8px
+         text-align: center
+         background: transparent
+         transition: 0.5s
+         border-right: 1px solid rgba(223, 223, 223, 1)
+         .time 
+            display: flex
+            flex-direction: column 
+            align-items: center
+            justify-content: center
+            height: 28px
+         p 
+            margin-bottom: 2px
+            background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 73%)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            background-clip: text
+            text-fill-color: transparent
+            font-size: 14px
+            font-weight: 700
+            line-height: 17px
+         small 
+            display: block
+            color: rgba(125, 125, 137, 1)
+            font-size: 11px
+            font-weight: 400
+            line-height: 14px
+            margin-bottom: 8px
+         span 
+            display: block
+            text-align: center
+            color: var(--black, rgba(26, 26, 26, 1))
+            font-size: 12px
+            font-weight: 400
+            line-height: 14px
+         &:hover 
+            background: white
+   .arrows 
+      align-items: center
+      justify-content: space-between
+      margin-top: 10px
+      padding-left: 10px
+      padding-right: 10px
+      position: relative
+      z-index: 5
+      div 
+         display: flex
+         cursor: pointer
+         align-items: center
+         transition: 0.5s
+         p 
+            color: rgba(26, 26, 26, 1)
+            font-size: 14px
+            font-weight: 400
+            line-height: 17px
+            transition: 0.5s
+         &:first-child
+            p 
+               margin-left: 17px
+         &:nth-child(2)
+            p 
+               margin-right: 17px
+         &:hover 
+            p 
+               color: $red
+            .svg 
+               path 
+                  stroke: $red
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration 
+  display: none
+.footer 
+   padding-top: 24px
+   background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+   &__box 
+      justify-content: space-between
+      align-items: flex-start
+      display: flex
+   &__links 
+      margin-bottom: 40px
+      a 
+         &:first-child
+            margin-right: 10px
+         &:hover 
+            transform: scale(1.04)
+   &__info 
+      span 
+         display: block
+         opacity: 0.7
+         color: rgba(255, 255, 255, 1)
+         font-size: 14px
+         font-weight: 400
+         line-height: 17px
+         margin-bottom: 16px
+   &__tel 
+      margin-bottom: 4px
+      color: rgba(255, 255, 255, 1)
+      font-size: 32px
+      font-weight: 700
+      line-height: 38px
+      display: block
+      width: max-content
+   &__mail 
+      margin-bottom: 40px
+      color: rgba(255, 255, 255, 1)
+      font-size: 16px
+      font-weight: 400
+      line-height: 19px
+      display: block
+      width: max-content
+   &__btn 
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 219px
+      height: 48px
+      border-radius: 8px
+      background: rgba(255, 255, 255, 1)
+      p
+         color: rgba(26, 26, 26, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+      img 
+         margin-right: 15px
+      &:hover 
+         transform: scale(1.04)
+         p 
+            color: rgba(26, 26, 26, 1)
+   &__content 
+      display: flex
+      margin-right: 75px
+   &__area 
+      margin-left: 80px
+   &__item 
+      margin-bottom: 32px
+      p 
+         margin-bottom: 16px
+         opacity: 0.7
+         color: rgba(255, 255, 255, 1)
+         font-size: 14px
+         font-weight: 400
+         line-height: 17px
+      ul 
+         li 
+            margin-bottom: 14px
+            a 
+               color: rgba(255, 255, 255, 1)
+               font-size: 16px
+               font-weight: 400
+               line-height: 19px
+            &:last-child
+               margin-bottom: 0
+            &:hover 
+               a 
+                  opacity: 0.7
+      &:last-child
+         margin-bottom: 0
+   &__bottom 
+      margin-top: 48px
+      padding: 24px 0
+      padding-right: 153px
+      align-items: center
+      justify-content: space-between
+      border-top: 1px solid rgba(255, 255, 255, 0.15)
+      span, a, p 
+         color: rgba(255, 255, 255, 0.7)
+         font-size: 14px
+         font-weight: 400
+         line-height: 17px
+      p 
+         a 
+            color: white 
+            opacity: 1
+      a:hover 
+         opacity: 0.7

@@ -1,0 +1,201 @@
+body
+   font-family: 'Inter Tight', sans-serif
+   background: #ffff
+   font-weight: 400
+   font-size: 16px
+   line-height: 120%
+   color: $black
+a
+   text-decoration: none
+   box-sizing: border-box
+   transition: 0.5s !important
+   &:hover 
+      color: $red
+.red
+   color: $red
+.container
+   padding: 0 15px
+   max-width: 1348px
+   margin: 0 auto
+   @media ( max-width: 1199px )
+      max-width: 960px
+   @media (max-width: 991px)
+      max-width: 720px
+   @media (max-width: 767px)
+      max-width: 540px
+.d-flex, .q
+   display: flex
+.body-wrap
+   overflow: hidden
+   position: relative
+   display: flex
+   flex-direction: column
+   min-height: 100vh
+.underline
+   position: relative
+   display: inline-block
+   text-decoration: none
+   padding-bottom: 4px
+   transition: color 0.3s ease
+   &:after 
+      content: ""
+      position: absolute
+      left: 0
+      bottom: 0
+      height: 2px
+      width: 0%
+      background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(227, 6, 19, 1) 100%)
+      transition: width 0.3s ease
+   &:hover 
+      &:after 
+         width: 100%
+footer
+   margin-top: auto
+.top
+   display: flex
+   align-items: flex-start
+   justify-content: space-between
+   margin-bottom: 48px
+   max-width: 1067px
+   width: 100%
+.sub 
+   display: flex
+   align-items: center
+   p 
+      margin-left: 17px
+      color: rgba(26, 26, 26, 1)
+      font-size: 18px
+      font-weight: 400
+      line-height: 22px
+h1
+   font-size: 48px
+   font-weight: 700
+   line-height: 111%
+   margin: 0
+   span 
+      background: linear-gradient(90deg, $vio, $red)
+      -webkit-background-clip: text
+      -webkit-text-fill-color: transparent
+h2 
+   margin: 0
+   font-size: 48px
+   font-weight: 700
+   line-height: 106%
+   span 
+      background: linear-gradient(90deg, $vio, $red)
+      -webkit-background-clip: text
+      -webkit-text-fill-color: transparent
+ul 
+   margin: 0
+   padding: 0
+   list-style-type: none
+p
+   margin: 0
+.svg, rect, line, circle
+   transition: 0.5s ease
+a
+   transition: color 0.5s ease
+   box-sizing: border-box
+li
+   a
+      transition: color 0.5s ease
+button
+   cursor: pointer
+   box-sizing: border-box
+textarea
+   transition: border 0.5s
+   box-sizing: border-box
+   &:focus
+      transition: border 0.5s
+      outline: none
+      border: 1px solid $red
+input
+   transition: 0.5s
+   box-sizing: border-box
+   border: 1px solid #fff
+   &:disabled
+      pointer-events: none
+      opacity: 0.5
+   &:focus 
+      border: 1px solid $red 
+      transition: 0.5s
+   &:focus-visible
+      outline: initial
+path
+   transition: fill 0.5s, stroke 0.5s
+div 
+   box-sizing: border-box
+.icon 
+   transition: fill 0.5s, stroke 0.5s
+html * 
+   scrollbar-width: thin
+   scrollbar-color: blue $red
+.geo__items, .main .tabs__nav
+   scrollbar-width: thin
+   scrollbar-color: transparent transparent
+*::-webkit-scrollbar,
+html *::-webkit-scrollbar 
+   height: 7px
+   width: 7px
+*::-webkit-scrollbar-track,
+html *::-webkit-scrollbar-track 
+   background: #E7E7E7
+   border-radius: 3px
+*::-webkit-scrollbar-thumb,
+html *::-webkit-scrollbar-thumb 
+   background-color: $red
+   border-radius: 6px
+.btn 
+   display: flex
+   align-items: center
+   justify-content: center
+   transition: 0.3s
+   box-sizing: border-box
+   width: 178px
+   height: 56px
+   border-radius: 8px
+   background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+   color: rgba(255, 255, 255, 1)
+   font-size: 18px
+   font-weight: 700
+   line-height: 22px
+   img 
+      margin-left: 30px
+   &:hover 
+      transform: scale(1.04)
+      color: rgba(255, 255, 255, 1)
+      div 
+         transform: scale(1.04)
+.btn:hover div 
+   transform: rotate(360deg)
+.link
+   display: flex
+   align-items: center
+   margin: 0 auto
+   transition: 0.3s
+   width: max-content
+   p 
+      margin-left: 24px
+      color: rgba(26, 26, 26, 1)
+      font-size: 16px
+      font-weight: 700
+      line-height: 19px
+   div 
+      display: flex
+      align-items: center
+      justify-content: center
+      flex: 1 0 auto 
+      max-width: 48px
+      width: 48px
+      transition: 0.5s
+      height: 48px
+      border-radius: 8px
+      background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+      img 
+         transform: rotate(0deg)
+         transition: 0.5s
+   &:hover 
+      transform: scale(1.04)
+      div 
+         img 
+            transform: rotate(360deg)
