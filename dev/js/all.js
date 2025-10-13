@@ -460,7 +460,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } 
       // Активная точка — с картинкой
       else if (i === activeIndex) {
-        point.style.background = 'url(/img/big-dot.svg) no-repeat center center';
+        point.style.background = 'url(../img/big-dot.svg) no-repeat center center';
         point.style.width = '16px';
         point.style.height = '16px';
       } 
