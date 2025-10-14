@@ -415,7 +415,7 @@ ul.info li
       &:before
          background: url(/img/menu2.svg) no-repeat center center
    &:hover 
-      transform: scale(1.04)
+      transform: scale(0.93)
 body.no-scroll 
    overflow: hidden
 .menu 
@@ -537,7 +537,7 @@ body.no-scroll
          &:first-child
             margin-right: 10px
          &:hover 
-            transform: scale(1.04)
+            transform: scale(0.93)
 .nav 
    padding: 16px 0
    border-bottom: 1px solid rgba(234, 234, 234, 1)
@@ -651,7 +651,7 @@ body.no-scroll
       border-left: 1px solid rgba(234, 234, 234, 1)
       border-right: none
    &:hover 
-      transform: scale(1.04)
+      transform: scale(0.93)
 .header 
    margin-bottom: 120px
    &__wrap 
@@ -693,7 +693,7 @@ body.no-scroll
       max-width: 33%
       padding: 24px
       border-radius: 8px
-      overflow: hidden
+      // overflow: hidden
       background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
       .tabs__nav
          justify-content: space-between
@@ -737,13 +737,55 @@ body.no-scroll
    border-radius: 8px
    box-sizing: border-box
    background: rgba(255, 255, 255, 1)
+   .selectCF .searchCF
+      display: none !important
+   .form__group
+      position: relative
+      margin-bottom: 8px
+      .selectCF
+         width: 100%
+         .titleCF
+            width: 100% !important
+            box-sizing: border-box
+            padding-left: 16px
+            height: 48px !important
+            border-radius: 8px
+            background: rgba(245, 245, 245, 1) !important
+            color: rgba(125, 125, 137, 1) !important
+            font-size: 14px
+            font-weight: 400
+            line-height: 17px
+   .form__field 
+      width: 100%
+      outline: none
+   .form__label
+      position: absolute
+      top: 50%
+      left: 16px
+      pointer-events: none
+      font-weight: 400
+      font-size: 16px
+      line-height: 140%
+      font-feature-settings: 'liga' off
+      color: #7D7D89
+      transform: translateY(-50%)
+      transition: 0.2s ease all
+   .form__field:focus + .form__label,
+   .form__field:not(:placeholder-shown) + .form__label
+      top: 3px
+      left: 10px
+      font-size: 12px
+      color: #1D327B
+      background: rgba(245, 245, 245, 1)
+      padding: 0 4px
    button 
       border: none 
       width: 100%
       justify-content: space-between
       padding: 0 22px 0 16px
    input 
-      margin-bottom: 8px
+      padding-top: 5px
+      margin-bottom: 0px
       width: 100%
       height: 56px
       padding-left: 16px
@@ -755,9 +797,21 @@ body.no-scroll
       background: rgba(245, 245, 245, 1)
    &__flex 
       display: flex
+      flex-wrap: wrap
       justify-content: space-between
-      input 
+      .form__group 
          width: 49%
+         &:nth-child(n+3)
+            display: none
+      &.active 
+         .form__group 
+            &:nth-child(n+3)
+               display: block
+               width: 31.8%
+            &:nth-child(1)
+               width: 100%
+            &:nth-child(2)
+               display: none
    &__info 
       display: flex
       justify-content: space-between
@@ -792,6 +846,30 @@ body.no-scroll
          font-size: 16px
          font-weight: 400
          line-height: 19px
+.form2 
+   display: flex
+   align-items: center
+   justify-content: space-between
+   &__flex 
+      justify-content: space-between
+      width: 100%
+      display: flex
+   .form__group
+      margin-bottom: 0
+      width: 100%
+   button
+      margin-left: 8px
+      width: 56px
+      height: 56px
+      flex: 1 0 auto 
+      max-width: 56px
+      justify-content: center
+      background: transparent
+      padding: 0 !important
+      img 
+         margin-left: 0 !important
+         width: 100%
+         height: 100%
 .switch 
    position: relative
    display: inline-block
@@ -822,7 +900,7 @@ body.no-scroll
    transition: 0.4s
    border-radius: 50%
 input:checked + .slider 
-   background-color: $red
+   background-color: rgba(29, 50, 123, 1)
 input:checked + .slider::before 
    transform: translateX(14px)
 label.error 
@@ -843,37 +921,36 @@ label.error
          width: 323.5px
          height: 80px
          box-sizing: border-box
-         border: 1px solid  rgba(234, 234, 234, 1)
+         border: 1px solid rgba(234, 234, 234, 1)
          border-radius: 8px
          position: relative
          overflow: hidden
+         transition: border-color 0.3s
          &:before
-            width: 99.5%
-            height: 97.8%
             content: ""
             position: absolute
-            top: -0.5px
-            left: -0.5px
-            right: 0
-            bottom: -0.5px
-            z-index: 0
+            top: -1px
+            left: -1px
+            width: calc(100% + 2px)
+            height: calc(100% + 2px)
             border-radius: 8px
-            padding: 1px
-            background: linear-gradient(90deg, rgba(29,50,123,1), rgba(225,8,24,1))
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
-            -webkit-mask-composite: destination-out
-            mask-composite: exclude
-            pointer-events: none
+            background: url(/img/ram.svg) no-repeat center center
             opacity: 0
-            transition: 0.3s
+            z-index: 2
+            pointer-events: none
+            transition: opacity 0.3s
          p 
-            transition: 0.5s 
+            transition: 0.3s 
             color: rgba(26, 26, 26, 1)
             font-size: 16px
             font-weight: 700
             line-height: 19px
+            position: relative
+            z-index: 3
          div 
-            transition: 0.5s 
+            transition: 0.3s 
+            position: relative
+            z-index: 3
             width: 56px
             height: 56px
             border-radius: 8px
@@ -884,6 +961,10 @@ label.error
             .svg 
                path 
                   fill: $red
+         &:hover 
+            border: none
+            &:before 
+               opacity: 1
       .tabs__btn_active
          border: none
          div 
@@ -893,12 +974,6 @@ label.error
                   fill: white
          &:before 
             opacity: 1
-         &:nth-child(2)
-            &:before 
-               left: -0.30px
-         &:nth-child(4)
-            &:before 
-               left: -0.30px
    &__row 
       flex-wrap: wrap 
       gap: 8px
@@ -912,10 +987,10 @@ label.error
       position: relative
       transition: 0.5s
       &:hover
-         transform: scale(1.02)
+         transform: scale(0.93)
          .main__content 
             a 
-               transform: scale(1.04)
+               transform: scale(0.93)
                div 
                   img
                      transform: rotate(360deg)
@@ -967,7 +1042,7 @@ label.error
             font-weight: 700
             line-height: 19px
          &:hover 
-            transform: scale(1.04)
+            transform: scale(0.93)
             div 
                img
                   transform: rotate(360deg)
@@ -1048,6 +1123,7 @@ label.error
             height: 375px
             align-items: flex-start
             padding: 24px
+            transform: scale(1)
             border-radius: 8px
             background: rgba(240, 240, 240, 1) 
             position: relative
@@ -1085,18 +1161,20 @@ label.error
                position: relative
                z-index: 2
             &:hover 
-               &:after 
-                  opacity: 1
-               &:before
-                  background: url(/img/news2.svg) no-repeat center center  
-               .news__top 
-                  img 
-                     opacity: 1
+               transform: scale(0.93)
                .news__bottom
                   div 
-                     transform: scale(1.1)
+                     transform: scale(0.93)
                      img 
                         transform: rotate(360deg)
+      .swiper-slide_card
+         .news__top img
+            opacity: 1
+         a
+            &:after 
+               opacity: 1
+            &:before 
+               background: url(/img/news2.svg) no-repeat center center  
    .link 
       position: relative
       left: 113px
@@ -1130,7 +1208,7 @@ label.error
             background-clip: text
             text-fill-color: transparent
    .sub 
-      margin-bottom: 133px
+      margin-bottom: 105px
    &__box 
       justify-content: space-between
       align-items: flex-start
@@ -1228,6 +1306,7 @@ label.error
       cursor: pointer
       border-bottom: 1px solid rgba(234, 234, 234, 1)
       position: relative
+      transition: 0.5s
       &:after 
          content: ""
          display: block
@@ -1241,6 +1320,8 @@ label.error
       &:last-child
          margin-bottom: 20px
          border-bottom: none
+      &:hover 
+         background: rgba(245, 245, 245, 1)
    &__block 
       min-height: 602px
       width: 410px
@@ -1275,9 +1356,6 @@ label.error
             font-weight: 400
             line-height: 17px
             border: none 
-            border-bottom: 1px solid transparent
-            &:focus 
-               border-bottom: 1px solid $red
    &__title 
       color: rgba(26, 26, 26, 1)
       font-size: 18px
@@ -1375,6 +1453,7 @@ label.error
       align-items: center
       justify-content: space-between
       padding: 12px
+      border-bottom: 1px solid rgba(223, 223, 223, 1)
       p 
          color: rgba(26, 26, 26, 1)
          font-size: 16px
@@ -1421,7 +1500,7 @@ label.error
             font-size: 12px
             font-weight: 400
             line-height: 14px
-         &:hover 
+         &.present 
             background: white
    .arrows 
       align-items: center
@@ -1472,7 +1551,7 @@ input[type="search"]::-webkit-search-results-decoration
          &:first-child
             margin-right: 10px
          &:hover 
-            transform: scale(1.04)
+            transform: scale(0.93)
    &__info 
       span 
          display: block
@@ -1514,7 +1593,7 @@ input[type="search"]::-webkit-search-results-decoration
       img 
          margin-right: 15px
       &:hover 
-         transform: scale(1.04)
+         transform: scale(0.93)
          p 
             color: rgba(26, 26, 26, 1)
    &__content 
@@ -1564,3 +1643,72 @@ input[type="search"]::-webkit-search-results-decoration
             opacity: 1
       a:hover 
          opacity: 0.7
+   .pad 
+      position: relative
+      left: -66px
+.tooltip 
+   position: relative
+   display: inline-block
+   cursor: pointer
+.tooltip__text 
+   position: absolute
+   bottom: 125%
+   left: 50%
+   transform: translateX(-50%)
+   opacity: 0
+   visibility: hidden
+   transition: opacity 0.25s ease, transform 0.25s ease
+   z-index: 10
+   width: 270px
+   height: auto
+   padding: 12px 16px
+   border-radius: 8px
+   box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.1)
+   background: rgba(255, 255, 255, 1)
+   color: rgba(0, 0, 0, 1)
+   font-size: 14px
+   font-weight: 400
+   box-sizing: border-box
+   line-height: 17px
+.tooltip__text::after 
+   content: ""
+   position: absolute
+   top: 96%
+   left: 50%
+   transform: translateX(-50%)
+   width: 12px
+   height: 12px
+   background: url(/img/vec.svg) no-repeat center center
+.tooltip:hover .tooltip__text 
+   opacity: 1
+   visibility: visible
+   transform: translateX(-47%) translateY(4px)
+.form__dropdown  
+   position: absolute 
+   top: 100% 
+   left: 0 
+   width: 100% 
+   margin-top: 4px 
+   z-index: 10 
+   display: none 
+   max-height: 336px 
+   overflow-y: auto 
+   border: 1px solid rgba(234, 234, 234, 1)
+   border-radius: 8px
+   box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.1)
+   background: rgba(255, 255, 255, 1)
+.form__dropdown.active  
+   display: block 
+.form__dropdown li  
+   padding: 13px 16px 
+   cursor: pointer 
+   color: rgba(26, 26, 26, 1)
+   font-size: 14px
+   font-weight: 500
+   line-height: 20px
+   transition: background 0.2s 
+.form__dropdown li:hover  
+   background: rgba(245, 245, 245, 1) !important
+.form__group  
+   position: relative 
+ 

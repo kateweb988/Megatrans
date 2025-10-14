@@ -304,59 +304,97 @@
 								</a>
 							</div>
 							<div class="tabs__content">
+								<!-- <div class="form__group form__group_1">
+											<select class="select">
+												<option value="1">Откуда</option>
+												<option value="2">Выбор 1</option>
+												<option value="3">Выбор 2</option>
+												<option value="4">Выбор 3</option>
+											</select>
+											
+										</div>
+										<div class="form__group">
+											<select class="select">
+												<option value="1">Куда</option>
+												<option value="2">Выбор 1</option>
+												<option value="3">Выбор 2</option>
+												<option value="4">Выбор 3</option>
+												<option value="2">Выбор 1</option>
+												<option value="3">Выбор 2</option>
+												<option value="4">Выбор 3</option>
+											</select>
+
+										</div> -->
 								<div class="tabs__pane tabs__pane_show">
 									<form action="success.php" class="form js-form" id="popupResult" method="post">
-										<input type="text" placeholder="Откуда" class="form__field" required="" name="local1">
-										<input type="text" placeholder="Куда" class="form__field" required="" name="local2">
+										<div class="form__group">
+											<input type="text" class="form__field" name="local1" placeholder="" id="local1" required>
+											<label for="local1" class="form__label">Откуда</label> 
+											<ul class="form__dropdown" id="dropdown-local1"></ul>
+										</div>
+										<div class="form__group">
+											<input type="text" placeholder="" class="form__field" name="local2" id="local2" required>
+											<label for="local2" class="form__label">Куда</label> 
+											<ul class="form__dropdown" id="dropdown-local2"></ul>
+										</div>
 										<div class="form__flex">
-											<input type="number" placeholder="Вес, кг" class="form__field" required="" name="weight1">
-											<input type="number" placeholder="Объем, м3" class="form__field" required="" name="weight2">
+											<div class="form__group">
+												<input type="number" placeholder="" class="form__field" name="weight1" id="weight1" required>
+												<label for="weight1" class="form__label">Вес, кг</label>
+											</div>
+											<div class="form__group">
+												<input type="number" placeholder="" class="form__field" name="weight2" id="weight2" required>
+												<label for="weight2" class="form__label">Объем, м³</label>
+											</div>
+											<div class="form__group">
+												<input type="number" placeholder="" class="form__field" name="weight3" id="weight3" required>
+												<label for="weight3" class="form__label">Длина (м)</label>
+											</div>
+											<div class="form__group">
+												<input type="number" placeholder="" class="form__field" name="weight4" id="weight4" required>
+												<label for="weight4" class="form__label">Ширина (м)</label>
+											</div>
+											<div class="form__group">
+												<input type="number" placeholder="" class="form__field" name="weight5" id="weight5" required>
+												<label for="weight5" class="form__label">Высота (м)</label>
+											</div>
 										</div>
 										<div class="form__switch">
 											<label class="switch">
-												<input type="checkbox" id="switcher">
-												<span class="slider"></span>
+											<input type="checkbox" id="switcher">
+											<span class="slider"></span>
 											</label>
-											<p>
-											 	Точный расчет
-											</p>
+											<p>Точный расчет</p>
 										</div>
+
 										<div class="form__info q">
-											<small>
-												Стоимость:
-											</small>
+											<small>Стоимость:</small>
 											<p>
-												от 1 00 ₽ <img src="img/i.svg" alt="" class="svg">
+												от 1 00 ₽
+												 <span class="tooltip">
+													<img src="img/i.svg" alt="" class="svg">
+													<span class="tooltip__text">Стоимость и сроки являются предварительными. Цены указаны с учётом НДС.</span>
+												</span>
 											</p>
 										</div>
+
 										<button class="btn">
 											Рассчитать <img src="img/btn.svg" alt="">
 										</button>
 									</form>
 								</div>
 								<div class="tabs__pane">
-									<div class="gal__box">
-										<div class="photo__box q">
-											<a href="img/photo11.png" data-fancybox="gallery1">
-												<img src="img/photo11.png" alt="">
-												<p>
-													новые ручные ткани Красноярья2
-												</p>
-											</a>
-											<a href="img/photo22.png" data-fancybox="gallery2">
-												<img src="img/photo22.png" alt="">
-												<p>
-													новые ручные ткани Красноярья2
-												</p>
-											</a>
-											<a href="img/photo33.png" data-fancybox="gallery3">
-												<img src="img/photo33.png" alt="">
-												<p>
-													новые ручные ткани Красноярья2
-												</p>
-											</a>
+									<form action="success.php" class="form form2 js-form" id="popupResult" method="post">
+										<div class="form2__flex">
+											<div class="form__group">
+												<input type="text" placeholder="" class="form__field" name="weight22" id="weight22" required>
+												<label for="weight22" class="form__label">Номер заказа</label>
+											</div>
+											<button class="btn">
+												<img src="img/btn4.svg" alt="">
+											</button>
 										</div>
-									</div>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -754,7 +792,7 @@
 					</div>
 					<div class="swiper2">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide">
+							<div class="swiper-slide swiper-slide_card">
 								<a href="#">
 									<div class="news__top q">
 										<p class="">
@@ -976,13 +1014,20 @@
 								<div class="geo__el q"><img src="img/map2.svg" alt=""><a href="tel:84999115304">8 (499) 911-5304</a></div>
 								<div class="geo__el q"><img src="img/map2.svg" alt=""><a href="mailto:ekb@megatrans-tk.ru">ekb@megatrans-tk.ru</a></div>
 							</div>
-
 							<div class="geo__slider">
+								<div class="geo__top q">
+									<p>
+										Режим работы
+									</p>
+									<p>
+										Чт, 15:50
+									</p>
+								</div>
 								<div class="swiper-dynamic">
 									<div class="swiper-wrapper">
 									<!-- 14 дней -->
 										<div class="swiper-slide"><p>Пн</p><small>1 окт</small><div class="time"><span>09:00</span><span>19:00</span></div></div>
-										<div class="swiper-slide"><p>Вт</p><small>2 окт</small><div class="time"><span>09:00</span><span>19:00</span></div></div>
+										<div class="swiper-slide present"><p>Вт</p><small>2 окт</small><div class="time"><span>09:00</span><span>19:00</span></div></div>
 										<div class="swiper-slide"><p>Ср</p><small>3 окт</small><div class="time"><span>09:00</span><span>19:00</span></div></div>
 										<div class="swiper-slide"><p>Чт</p><small>4 окт</small><div class="time"><span>09:00</span><span>19:00</span></div></div>
 										<div class="swiper-slide"><p>Пт</p><small>5 окт</small><div class="time"><span>09:00</span><span>19:00</span></div></div>
@@ -1022,13 +1067,21 @@
 							<div class="geo__el q"><img src="img/map2.svg" alt=""><a href="mailto:msk@megatrans-tk.ru">msk@megatrans-tk.ru</a></div>
 							</div>
 							<div class="geo__slider">
+								<div class="geo__top q">
+									<p>
+										Режим работы
+									</p>
+									<p>
+										Чт, 15:50
+									</p>
+								</div>
 								<div class="swiper-dynamic">
 									<div class="swiper-wrapper">
 									<!-- 14 дней -->
 									<div class="swiper-slide"><p>Пн</p><small>1 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
 									<div class="swiper-slide"><p>Вт</p><small>2 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
 									<div class="swiper-slide"><p>Ср</p><small>3 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
-									<div class="swiper-slide"><p>Чт</p><small>4 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+									<div class="swiper-slide present"><p>Чт</p><small>4 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
 									<div class="swiper-slide"><p>Пт</p><small>5 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
 									<div class="swiper-slide"><p>Сб</p><small>6 окт</small><div class="time"><span>-</span></div></div>
 									<div class="swiper-slide"><p>Вс</p><small>7 окт</small><div class="time"><span>-</span></div></div>
@@ -1232,7 +1285,7 @@
 					<a href="#" target="_blank">
 						Политика конфиденциальности
 					</a>
-					<a href="#" target="_blank">
+					<a href="#" target="_blank" class="pad">
 						Карта сайта
 					</a>
 					<p>

@@ -2,9 +2,9 @@
 header("Content-Type: text/html; charset=utf-8");
 $name = htmlspecialchars($_POST["name"]);
 $tel = htmlspecialchars($_POST["tel"]);
-$region = htmlspecialchars($_POST["region"]);
-$category = htmlspecialchars($_POST["category"]);
-$time = htmlspecialchars($_POST["time"]);
+$weight1 = htmlspecialchars($_POST["weight1"]);
+$weight2 = htmlspecialchars($_POST["weight2"]);
+
 
 
 $refferer = getenv('HTTP_REFERER');
@@ -17,9 +17,8 @@ $message_to_myemail = "
 <br><br>
 Имя: $name<br>
 Телефон: $tel<br>
-Регион: $region<br>
-Категория годности: $category<br>
-время для звонка: $time<br>
+Вес, кг: $weight1<br>
+Объем, м3: $weight2<br>
 
 Источник (ссылка): $refferer
 ";

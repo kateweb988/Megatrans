@@ -117,10 +117,20 @@ input
       pointer-events: none
       opacity: 0.5
    &:focus 
-      border: 1px solid $red 
+      border: 1px solid #1D327B
       transition: 0.5s
    &:focus-visible
       outline: initial
+input.error 
+   border: 1px solid #E30613 !important
+input.error::-webkit-input-placeholder 
+   color: #E30613 !important
+input.error::-moz-placeholder
+   color: #E30613 !important
+input.error:-ms-input-placeholder 
+   color: #E30613 !important
+input.error:-moz-placeholder 
+   color: #E30613 !important
 path
    transition: fill 0.5s, stroke 0.5s
 div 
@@ -130,6 +140,9 @@ div
 html * 
    scrollbar-width: thin
    scrollbar-color: blue $red
+.form__dropdown
+   scrollbar-width: thin
+   scrollbar-color: rgba(29, 50, 123, 1) rgba(224, 224, 224, 1)
 .geo__items, .main .tabs__nav
    scrollbar-width: thin
    scrollbar-color: transparent transparent
@@ -162,10 +175,10 @@ html *::-webkit-scrollbar-thumb
    img 
       margin-left: 30px
    &:hover 
-      transform: scale(1.04)
+      transform: scale(0.93)
       color: rgba(255, 255, 255, 1)
       div 
-         transform: scale(1.04)
+         transform: scale(0.93)
 .btn:hover div 
    transform: rotate(360deg)
 .link
@@ -195,7 +208,7 @@ html *::-webkit-scrollbar-thumb
          transform: rotate(0deg)
          transition: 0.5s
    &:hover 
-      transform: scale(1.04)
+      transform: scale(0.93)
       div 
          img 
             transform: rotate(360deg)

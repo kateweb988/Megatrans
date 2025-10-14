@@ -271,6 +271,67 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 document.addEventListener("DOMContentLoaded", () => {
+  const switcher = document.getElementById("switcher");
+  const formFlex = document.querySelector(".form__flex");
+
+  if (switcher && formFlex) {
+    switcher.addEventListener("change", () => {
+      formFlex.classList.toggle("active", switcher.checked);
+    });
+  }
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const cities = [
+    "Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург",
+    "Казань", "Нижний Новгород", "Самара", "Ростов-на-Дону",
+    "Уфа", "Красноярск", "Владивосток", "Пермь"
+  ];
+
+  const inputs = [
+    { field: document.getElementById("local1"), dropdown: document.getElementById("dropdown-local1") },
+    { field: document.getElementById("local2"), dropdown: document.getElementById("dropdown-local2") },
+  ];
+
+  inputs.forEach(({ field, dropdown }) => {
+    // Заполнение списка городов
+    dropdown.innerHTML = cities.map(c => `<li>${c}</li>`).join("");
+
+    // Показ списка при фокусе
+    field.addEventListener("focus", () => {
+      closeAllDropdowns();
+      dropdown.classList.add("active");
+    });
+
+    // Фильтрация по вводу
+    field.addEventListener("input", () => {
+      const value = field.value.toLowerCase();
+      dropdown.innerHTML = cities
+        .filter(c => c.toLowerCase().includes(value))
+        .map(c => `<li>${c}</li>`)
+        .join("");
+    });
+
+    // Клик по элементу списка
+    dropdown.addEventListener("click", e => {
+      if (e.target.tagName === "LI") {
+        field.value = e.target.textContent;
+        dropdown.classList.remove("active");
+      }
+    });
+  });
+
+  // Закрытие всех списков при клике вне
+  document.addEventListener("click", e => {
+    if (!e.target.closest(".form__group")) {
+      closeAllDropdowns();
+    }
+  });
+
+  function closeAllDropdowns() {
+    document.querySelectorAll(".form__dropdown").forEach(d => d.classList.remove("active"));
+  }
+});
+document.addEventListener("DOMContentLoaded", () => {
   var accordeonButtons = document.getElementsByClassName("accordeon__button");
 
   //пишем событие при клике на кнопки - вызов функции toggle
@@ -460,7 +521,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } 
       // Активная точка — с картинкой
       else if (i === activeIndex) {
-        point.style.background = 'url(/img/big-dot.svg) no-repeat center center';
+        point.style.background = 'url(../img/big-dot.svg) no-repeat center center';
         point.style.width = '16px';
         point.style.height = '16px';
       } 
