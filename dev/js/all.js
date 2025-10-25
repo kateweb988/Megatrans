@@ -52,6 +52,39 @@ document.addEventListener("DOMContentLoaded", () => {
   new ItcTabs('.tabs');
 });
 document.addEventListener("DOMContentLoaded", () => {
+  const stage = document.querySelector('#stage');
+  const progressLine = document.querySelector('.stage__progress-line');
+  const dots = document.querySelectorAll('.stage__progress-dot');
+  const items = document.querySelectorAll('.stage__item');
+
+  window.addEventListener('scroll', () => {
+    const stageRect = stage.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const start = viewportHeight / 2;
+
+    // общий прогресс по блокам
+    let progress = 0;
+    items.forEach((item, index) => {
+      const itemTop = item.getBoundingClientRect().top;
+      if (itemTop < start) progress = index + 1; // количество пройденных этапов
+    });
+
+    const total = items.length;
+    const percent = (progress / total) * 100;
+
+    progressLine.style.height = `${percent}%`;
+
+    // подсветка точек
+    dots.forEach((dot, index) => {
+      if (index < progress) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
   class ItcTabs {
     constructor(target, config) {
       const defaultConfig = {};
@@ -271,15 +304,132 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 document.addEventListener("DOMContentLoaded", () => {
-  const switcher = document.getElementById("switcher");
-  const formFlex = document.querySelector(".form__flex");
+  const switchers = document.querySelectorAll(".switcher");
 
-  if (switcher && formFlex) {
-    switcher.addEventListener("change", () => {
-      formFlex.classList.toggle("active", switcher.checked);
-    });
-  }
+  switchers.forEach((switcher) => {
+    const formFlex = switcher.closest(".form").querySelector(".form__flex");
+
+    if (formFlex) {
+      switcher.addEventListener("change", () => {
+        formFlex.classList.toggle("active", switcher.checked);
+      });
+    }
+  });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  class ItcTabs {
+    constructor(target, config) {
+      const defaultConfig = {};
+      this._config = Object.assign(defaultConfig, config);
+      this._elTabs = typeof target === 'string' ? document.querySelector(target) : target;
+      this._elButtons = this._elTabs.querySelectorAll('.tabs__btn');
+      this._elPanes = this._elTabs.querySelectorAll('.tab-panel');
+      this._eventShow = new Event('tab.itc.change');
+      this._init();
+      this._events();
+      this._initSelect(); // добавлено
+    }
+
+    _init() {
+      this._elTabs.setAttribute('role', 'tablist');
+      this._elButtons.forEach((el, index) => {
+        el.dataset.index = index;
+        el.setAttribute('role', 'tab');
+        this._elPanes[index].setAttribute('role', 'tabpanel');
+      });
+    }
+
+    show(elLinkTarget) {
+      const elPaneTarget = this._elPanes[elLinkTarget.dataset.index];
+      const elLinkActive = this._elTabs.querySelector('.tabs__btn.active');
+      const elPaneShow = this._elTabs.querySelector('.tab-panel.active');
+
+      if (elLinkTarget === elLinkActive) return;
+
+      elLinkActive?.classList.remove('active');
+      elPaneShow?.classList.remove('active');
+
+      elLinkTarget.classList.add('active');
+      elPaneTarget.classList.add('active');
+
+      // синхронизация select
+      if (this._select) this._select.value = elLinkTarget.dataset.index;
+
+      this._elTabs.dispatchEvent(this._eventShow);
+    }
+
+    showByIndex(index) {
+      const elLinkTarget = this._elButtons[index];
+      if (elLinkTarget) this.show(elLinkTarget);
+    }
+
+    _events() {
+      this._elTabs.addEventListener('click', (e) => {
+        const target = e.target.closest('.tabs__btn');
+        if (target) {
+          e.preventDefault();
+          this.show(target);
+        }
+      });
+    }
+
+    // ==== новый метод ====
+    _initSelect() {
+      // контейнер для label + select
+      const wrapper = document.createElement('div');
+      wrapper.className = 'tabs__select-wrapper';
+
+      // label
+      const label = document.createElement('label');
+      label.className = 'tabs__label';
+      label.textContent = 'Выберите категорию';
+      label.setAttribute('for', 'tabs-select');
+
+      // select
+      const select = document.createElement('select');
+      select.className = 'tabs__select';
+      select.id = 'tabs-select';
+
+      this._elButtons.forEach((btn, i) => {
+        const option = document.createElement('option');
+        option.value = i;
+        option.textContent = btn.textContent.trim();
+        if (btn.classList.contains('active')) option.selected = true;
+        select.appendChild(option);
+      });
+
+      wrapper.appendChild(label);
+      wrapper.appendChild(select);
+      this._elTabs.prepend(wrapper);
+      this._select = select;
+
+      // обработчик выбора
+      select.addEventListener('change', (e) => {
+        const index = e.target.value;
+        this.showByIndex(index);
+      });
+
+      // показать/скрыть при ресайзе
+      const toggleVisibility = () => {
+        const nav = this._elTabs.querySelector('.tabs__nav');
+        if (window.innerWidth < 992) {
+          wrapper.style.display = 'block';
+          if (nav) nav.style.display = 'none';
+        } else {
+          wrapper.style.display = 'none';
+          if (nav) nav.style.display = '';
+        }
+      };
+
+      toggleVisibility();
+      window.addEventListener('resize', toggleVisibility);
+    }
+  }
+
+  // инициализация
+  new ItcTabs('.tabs');
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   const cities = [
     "Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург",
@@ -287,36 +437,44 @@ document.addEventListener("DOMContentLoaded", () => {
     "Уфа", "Красноярск", "Владивосток", "Пермь"
   ];
 
-  const inputs = [
-    { field: document.getElementById("local1"), dropdown: document.getElementById("dropdown-local1") },
-    { field: document.getElementById("local2"), dropdown: document.getElementById("dropdown-local2") },
-  ];
+  // Берём все формы
+  const forms = document.querySelectorAll(".form");
 
-  inputs.forEach(({ field, dropdown }) => {
-    // Заполнение списка городов
-    dropdown.innerHTML = cities.map(c => `<li>${c}</li>`).join("");
+  forms.forEach(form => {
+    // Находим пары инпут + дропдаун внутри формы
+    const inputs = form.querySelectorAll(".form__group");
 
-    // Показ списка при фокусе
-    field.addEventListener("focus", () => {
-      closeAllDropdowns();
-      dropdown.classList.add("active");
-    });
+    inputs.forEach(group => {
+      const field = group.querySelector("input");
+      const dropdown = group.querySelector(".form__dropdown");
 
-    // Фильтрация по вводу
-    field.addEventListener("input", () => {
-      const value = field.value.toLowerCase();
-      dropdown.innerHTML = cities
-        .filter(c => c.toLowerCase().includes(value))
-        .map(c => `<li>${c}</li>`)
-        .join("");
-    });
+      if (!field || !dropdown) return;
 
-    // Клик по элементу списка
-    dropdown.addEventListener("click", e => {
-      if (e.target.tagName === "LI") {
-        field.value = e.target.textContent;
-        dropdown.classList.remove("active");
-      }
+      // Заполняем список городов
+      dropdown.innerHTML = cities.map(c => `<li>${c}</li>`).join("");
+
+      // Показ списка при фокусе
+      field.addEventListener("focus", () => {
+        closeAllDropdowns();
+        dropdown.classList.add("active");
+      });
+
+      // Фильтрация по вводу
+      field.addEventListener("input", () => {
+        const value = field.value.toLowerCase();
+        dropdown.innerHTML = cities
+          .filter(c => c.toLowerCase().includes(value))
+          .map(c => `<li>${c}</li>`)
+          .join("");
+      });
+
+      // Выбор города
+      dropdown.addEventListener("click", e => {
+        if (e.target.tagName === "LI") {
+          field.value = e.target.textContent;
+          dropdown.classList.remove("active");
+        }
+      });
     });
   });
 
@@ -472,6 +630,23 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 2000);
       event.preventDefault();
     })
+  });
+});
+// Скролл по якорям
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.go_to').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      const targetSelector = link.getAttribute('href');
+      const targetElement = document.querySelector(targetSelector);
+      if (targetElement) {
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - 100;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
   });
 });
 document.addEventListener('DOMContentLoaded', function () {
@@ -792,8 +967,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.querySelector('.menu-btn');
   const menu = document.querySelector('.menu');
   const mainItems = document.querySelectorAll('.menu__main li');
-  const firstMain = document.querySelector('.menu__main li:first-child'); // Услуги
-  const secondMain = document.querySelector('.menu__main li:nth-child(2)'); // О компании
+  // const firstMain = document.querySelector('.menu__main li:first-child'); 
+  // const secondMain = document.querySelector('.menu__main li:nth-child(2)'); 
   const list1 = document.querySelector('.menu__list_1');
   const list2 = document.querySelector('.menu__list_2');
   const menuArea = document.querySelector('.menu__area');
