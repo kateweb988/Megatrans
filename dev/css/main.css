@@ -2948,10 +2948,17 @@ input[type=search]::-webkit-search-results-decoration {
 
 .for {
   padding: 24px 0 32px;
-  border: 1px solid rgb(234, 234, 234);
   border-radius: 8px;
   margin-bottom: 120px;
   background: rgb(255, 255, 255);
+}
+.for .wrap {
+  padding: 24px 0;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+}
+.for .sub {
+  padding-left: 24px;
 }
 
 .marquee-wrap {
@@ -5763,6 +5770,12 @@ input[type=search]::-webkit-search-results-decoration {
   }
   .van__item:after {
     display: none;
+  }
+  .for .wrap {
+    padding: 12px 0;
+  }
+  .for .sub {
+    padding-left: 12px;
   }
 }
 @media screen and (max-width: 390px) {
