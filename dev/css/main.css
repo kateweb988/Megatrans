@@ -4653,6 +4653,7 @@ input[type=search]::-webkit-search-results-decoration {
   font-weight: 400;
   line-height: 19px;
   padding-top: 17px;
+  height: 56px;
 }
 .local__per {
   position: relative;
