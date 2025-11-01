@@ -1019,39 +1019,7 @@ label.error
          position: relative
          overflow: hidden
          transition: 0.3s
-
-         // background: linear-gradient(#fff, #fff) padding-box, linear-gradient(135deg, rgba(29, 50, 123, 1), rgba(225, 8, 24, 1) 100%) border-box
-         // border: 1px solid transparent         // background: linear-gradient(#fff, #fff) padding-box, linear-gradient(135deg, rgba(29, 50, 123, 1), rgba(225, 8, 24, 1) 100%) border-box
-         // border: 1px solid transparent
          transition: all 0.3s ease
-         // &::before
-         //    content: ""
-         //    position: absolute
-         //    inset: 0
-         //    border-radius: 8px
-         //    padding: 1px
-         //    background: linear-gradient(135deg, rgba(29, 50, 123, 1), rgba(225, 8, 24, 1) 100%)
-         //    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
-         //    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
-         //    -webkit-mask-composite: xor
-         //    mask-composite: exclude
-         //    pointer-events: none
-         //    opacity: 0
-         //    transition: 0.3s
-         //    z-index: 1
-         // &:before
-         //    content: ""
-         //    position: absolute
-         //    top: -1px
-         //    left: -1px
-         //    width: calc(100% + 2px)
-         //    height: calc(100% + 2px)
-         //    border-radius: 8px
-         //    background: url(/img/ram.svg) no-repeat center center
-         //    opacity: 0
-         //    z-index: 2
-         //    pointer-events: none
-         //    transition: opacity 0.3s
          p 
             transition: 0.3s 
             color: rgba(26, 26, 26, 1)
@@ -1075,7 +1043,6 @@ label.error
                path 
                   fill: $red
          &:hover 
-            // border: none
             background: linear-gradient(#fff, #fff) padding-box, linear-gradient(135deg, rgba(29, 50, 123, 1), rgba(225, 8, 24, 1) 100%) border-box
             border-color: transparent
             &:before 
@@ -1241,22 +1208,9 @@ label.error
             padding: 24px
             transform: scale(1)
             border-radius: 8px
+            border: 1px solid rgba(240, 240, 240, 1) 
             background: rgba(240, 240, 240, 1) 
             position: relative
-            &:after
-               width: 100%
-               height: 100%
-               content: ""
-               position: absolute
-               overflow: hidden
-               top: 0px
-               left: 0px
-               z-index: 0
-               border-radius: 8px
-               background: url(/img/bl.svg) no-repeat center center  
-               pointer-events: none
-               opacity: 0
-               transition: 0.3s
             &:before 
                content: ""
                background: url(/img/news1.svg) no-repeat center center  
@@ -1281,8 +1235,8 @@ label.error
          .news__top img
             opacity: 1
          a
-            &:after 
-               opacity: 1
+            background: linear-gradient(#F0F0F0, #F0F0F0) padding-box, linear-gradient(135deg, rgba(29, 50, 123, 1), rgba(225, 8, 24, 1) 100%) border-box
+            border-color: transparent
             &:before 
                background: url(/img/news2.svg) no-repeat center center  
    .link 
@@ -1889,6 +1843,37 @@ input[type="search"]::-webkit-search-results-decoration
          top: 0
          right: 244px
          height: 100%
+   .header-about
+      position: relative
+      background: transparent
+      .header__image
+         width: 100%
+         height: 100%
+         top: 0
+         object-fit: cover
+         left: 0
+         z-index: 0
+      .header__wrap
+         position: inherit
+      &__content 
+         margin-top: 28px
+         margin-left: auto
+         width: 100%
+         max-width: 655px
+      &__name 
+         color: rgba(255, 255, 255, 1)
+         font-size: 21px
+         font-weight: 700
+         line-height: 25px
+         margin-bottom: 16px
+      &__text 
+         color: rgba(255, 255, 255, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+         margin-bottom: 25px
+         &:last-child
+            margin-bottom: 0
 .van 
    padding-bottom: 120px
    .top
@@ -2438,6 +2423,26 @@ input[type="search"]::-webkit-search-results-decoration
       z-index: 10
    .menu 
       top: 69px
+   .header9 
+      margin-bottom: 120px
+   .header-career
+      margin-bottom: 48px
+      .form 
+         width: 100%
+         max-width: 655px
+         height: 72px
+         padding: 8px
+         border-radius: 8px
+         background: rgba(255, 255, 255, 0.25)
+         margin-top: 250px
+      .header__content
+         padding-bottom: 8px  
+   .header-for
+      .header-about__content    
+         margin-top: 220px  
+   .order-franch
+      h3 
+         margin-bottom: 24px
 .pack 
    &__top 
       justify-content: space-between
@@ -2527,9 +2532,13 @@ input[type="search"]::-webkit-search-results-decoration
             max-width: 4px
             background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
          &:last-child
-            border-bottom: none
+            border-bottom: none !important
          &:hover 
             color: $red
+            background: transparent  !important
+            border-bottom: 1px solid rgba(223, 223, 223, 1)
+            &:after 
+               display: none
       .tab-btn.active
          background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 45%)
          -webkit-background-clip: text
@@ -2538,6 +2547,13 @@ input[type="search"]::-webkit-search-results-decoration
          text-fill-color: transparent
          &:before 
             display: inline-flex
+         &:hover 
+            p
+               background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 45%)
+               -webkit-background-clip: text
+               -webkit-text-fill-color: transparent
+               background-clip: text
+               text-fill-color: transparent
    .tabs__content
       width: 100%
       max-width: 74.82%
@@ -2656,7 +2672,7 @@ input[type="search"]::-webkit-search-results-decoration
       background: rgba(240, 240, 240, 1)
       box-sizing: border-box
       position: relative
-      top: -3px
+      top: -1px
    .custom-checkbox:checked + label::before
       background: url(/img/check.svg) no-repeat center center
       background-color: #1D327B
@@ -2747,6 +2763,36 @@ input[type="search"]::-webkit-search-results-decoration
       display: flex
       flex-direction: column 
       align-items: flex-start
+      ul 
+         margin: 22px 0 31px 
+         li 
+            display: flex
+            align-items: flex-start
+            margin-bottom: 12px
+            &:last-child
+               margin-bottom: 0
+            p 
+               margin-left: 16px
+               font-size: 16px
+               font-weight: 400
+               line-height: 19px
+               a 
+                  color: $black
+                  transition: 0.5s
+                  transform: scale(1)
+                  position: relative
+                  &:after 
+                     content: ""
+                     display: block
+                     width: 100%
+                     height: 1px
+                     position: absolute
+                     bottom: -3px   
+                     left: 0
+                     background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+                     opacity: 0.4
+                  &:hover 
+                     color: $red
       small 
          display: flex
          align-items: center
@@ -2830,6 +2876,9 @@ input[type="search"]::-webkit-search-results-decoration
             z-index: 4
    .top 
       max-width: 1301px
+      h2 
+         width: 100%
+         max-width: 639px
 .van5 
    .top 
       max-width: 1063px
@@ -3037,7 +3086,7 @@ input[type="search"]::-webkit-search-results-decoration
 .geo .geo__slider .swiper-slide p, .geo .swiper4 .swiper-slide p
    margin-bottom: 8px
 .page
-   .header-doc
+   .header-doc, .header-contacts
       margin-bottom: 0
       background: transparent !important
       .header__wrap
@@ -3051,6 +3100,8 @@ input[type="search"]::-webkit-search-results-decoration
       h1 
          color: rgba(26, 26, 26, 1) !important
          margin-bottom: 0px
+   .order .mar 
+      margin-bottom: 24px
 .documents
    &__row 
       flex-wrap: wrap 
@@ -3100,4 +3151,2044 @@ input[type="search"]::-webkit-search-results-decoration
                   height: 4px
                   background: rgba(227, 6, 19, 1)
                   margin: 0 10px
-      
+.terms 
+   padding-bottom: 120px
+   &__row 
+      justify-content: space-between
+      margin-top: 48px
+   &__left 
+      border: 1px solid rgba(234, 234, 234, 1)
+      width: 100%
+      max-width: 49.65%
+      border-radius: 8px
+      display: flex
+      justify-content: space-between
+   &__item
+      width: 50%
+      padding: 22px
+      display: flex
+      min-height: 300px
+      flex-direction: column 
+      align-items: flex-start
+      div 
+         display: flex
+         align-items: center
+         justify-content: center
+         padding: 12px
+         border-radius: 8px
+         background: rgba(240, 240, 240, 1)
+      p
+         font-size: 60px
+         font-weight: 700
+         line-height: 100%
+         margin-top: auto
+         display: block
+         background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 45%)
+         -webkit-background-clip: text
+         -webkit-text-fill-color: transparent
+         background-clip: text
+         text-fill-color: transparent
+         span 
+            font-size: 24px
+      small 
+         display: block
+         color: rgba(26, 26, 26, 1)
+         font-size: 14px
+         font-weight: 400
+         line-height: 17px
+      &:first-child
+         border-right: 1px solid rgba(234, 234, 234, 1)
+   &__right
+      width: 100%
+      overflow: hidden
+      max-width: 49.65%
+      position: relative
+      padding: 24px
+      border-radius: 8px
+      background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+      img 
+         position: absolute
+         right: 0
+         top: 0
+         z-index: 0
+         height: 100%
+      p 
+         color: rgba(255, 255, 255, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+.steps 
+   padding-bottom: 120px
+   &__sub 
+      color: rgba(26, 26, 26, 1)
+      font-size: 24px
+      font-weight: 700
+      line-height: 29px
+      margin-bottom: 48px
+      margin-left: auto
+      display: block
+      width: max-content
+      margin-right: 95px
+   &__row 
+      margin-bottom: 8px
+      justify-content: space-between
+   &__item 
+      width: 49.65%
+      overflow: hidden
+      padding: 24px
+      border-radius: 8px
+      background: rgba(240, 240, 240, 1)
+      ul 
+         margin-top: 24px
+         li 
+            display: flex
+            align-items: center
+            margin-bottom: 10px
+            p
+               color: rgba(16, 14, 23, 1)
+               font-size: 16px
+               font-weight: 400
+               line-height: 19px
+               a 
+                  color: $black
+                  transition: 0.5s
+                  transform: scale(1)
+                  position: relative
+                  &:after 
+                     content: ""
+                     display: block
+                     width: 100%
+                     height: 1px
+                     position: absolute
+                     bottom: -3px   
+                     left: 0
+                     background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+                     opacity: 0.4
+                  &:hover 
+                     color: $red
+            &:last-child
+               margin-bottom: 0
+            &:before 
+               content: ""
+               display: inline-flex
+               position: relative
+               top: 0
+               width: 6px
+               height: 6px
+               max-width: 6px
+               border-radius: 50% 
+               flex: 1 0 auto 
+               background: rgba(227, 6, 19, 1)
+               margin-right: 35px
+               margin-left: 10px
+   &__top 
+      display: flex
+      align-items: center
+      align-items: center
+      position: relative
+      padding-bottom: 24px
+      &:after 
+         content: ""
+         display: block
+         position: absolute
+         bottom: 0
+         left: -10%
+         height: 1px
+         width: 300%
+         background: rgba(223, 223, 223, 1)
+      span 
+         display: flex
+         align-items: center
+         justify-content: center
+         border-radius: 50% 
+         margin-right: 16px
+         width: 40px
+         height: 40px
+         background: rgba(255, 255, 255, 1)
+         small
+            font-size: 14px
+            font-weight: 700
+            line-height: 17px
+            background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 45%)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            background-clip: text
+            text-fill-color: transparent
+      p 
+         color: rgba(26, 26, 26, 1)
+         font-size: 24px
+         font-weight: 700
+         line-height: 29px
+   &__bottom 
+      display: flex
+      width: 100%
+      overflow: hidden
+      padding: 24px
+      border: 1px solid rgba(234, 234, 234, 1)
+      border-radius: 8px
+      align-items: center
+      p 
+         margin-left: 26px
+         color: rgba(26, 26, 26, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+   .top
+      max-width: 1172px
+.van9 
+   .top 
+      max-width: 1141px
+.local 
+   padding-bottom: 120px
+   &__replace 
+      margin: 0 16px
+      &:hover 
+         transform: scale(0.93)
+   &__wrap 
+      display: flex
+      justify-content: space-between
+      margin-top: 72px
+      border-radius: 8px
+      background: rgba(240, 240, 240, 1)
+   &__form 
+      padding: 8px
+      border-radius: 8px
+      align-items: center
+      background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+      display: flex
+      justify-content: space-between
+      position: relative
+      label
+         display: block
+         position: absolute
+         color: rgba(125, 125, 137, 1)
+         font-size: 12px
+         font-weight: 400
+         line-height: 14px
+         left: 25px
+         top: 16px
+      button 
+         transition: 0.5s 
+         cursor: pointer
+         border: none 
+         width: 56px
+         height: 56px
+         border-radius: 8px
+         background: rgba(255, 255, 255, 0.25)
+         display: flex
+         align-items: center
+         justify-content: center
+         flex: 1 0 auto 
+         max-width: 56px
+         margin-left: 8px
+         &:hover 
+            background: white
+            .svg 
+               path 
+                  stroke: $red
+      input 
+         width: 100%
+         padding-left: 16px
+         border-radius: 8px
+         background: rgba(245, 245, 245, 1)
+         color: rgba(26, 26, 26, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+         padding-top: 17px
+   &__per 
+      position: relative
+   &__content
+      width: 100%
+      max-width: 434px
+   &__info
+      width: 100%
+      padding: 24px
+      max-width: 67%
+      border-right: 1px solid rgba(223, 223, 223, 1)
+   &__top 
+      margin-bottom: 28px
+      justify-content: space-between
+      p 
+         color: rgba(26, 26, 26, 1)
+         font-size: 32px
+         font-weight: 700
+         line-height: 38px
+   &__route 
+      width: 100%
+      margin-bottom: 36px
+   &__flex 
+      width: 100%
+      border: 1px solid rgba(223, 223, 223, 1)
+      border-radius: 8px
+      justify-content: space-between
+   &__item 
+      width: 50%
+      padding: 24px
+      &:first-child
+         border-right: 1px solid rgba(223, 223, 223, 1)
+      &:nth-child(2)
+         display: flex
+         flex-wrap: wrap 
+         gap: 24px
+   &__el 
+      width: 46%
+      span 
+         display: block
+         color: rgba(26, 26, 26, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+         margin-bottom: 4px
+      p 
+         color: rgba(26, 26, 26, 1)
+         font-size: 16px
+         font-weight: 700
+         line-height: 19px
+   &__area 
+      width: 100%
+      justify-content: space-between
+      align-items: center
+      margin-bottom: 58px
+      p 
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+      div 
+         display: flex
+         align-items: center
+         justify-content: center
+         width: max-content
+         height: 32px
+         border-radius: 8px
+         padding: 6px 8px 6px 8px
+         background: rgba(255, 255, 255, 1)
+         &:before 
+            content: ""
+            display: block
+            width: 16px
+            height: 16px
+            background: url(/img/yes.svg) no-repeat center center
+            margin-right: 8px
+         &:after 
+            content: "Оплачен"
+            display: block
+            color: rgba(26, 26, 26, 1)
+            font-size: 14px
+            font-weight: 400
+            line-height: 17px
+      &.none 
+         div
+            &:before 
+               position: relative
+               top: 1px
+               background: url(/img/no.svg) no-repeat center center
+            &:after 
+               content: "Не оплачен"
+   &__num 
+      font-size: 32px
+      font-weight: 700
+      line-height: 38px
+      background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 45%)
+      -webkit-background-clip: text
+      -webkit-text-fill-color: transparent
+      background-clip: text
+      text-fill-color: transparent
+   &__set 
+      padding-bottom: 0 !important
+      width: 100%
+      margin-top: 8px
+      border-radius: 8px
+      background: rgba(255, 255, 255, 1)
+      h3 
+         padding: 24px
+         color: rgba(26, 26, 26, 1)
+         font-size: 24px
+         font-weight: 700
+         line-height: 29px
+         margin: 0
+   .geo .geo__slider, .geo .swiper4
+      background: rgba(245, 245, 245, 1)
+   &__ret 
+      justify-content: space-between
+      border-top: 1px solid rgba(234, 234, 234, 1)
+   .geo__area
+      margin-bottom: 0
+      padding: 24px
+      width: 50%
+      border-right: 1px solid rgba(234, 234, 234, 1)
+   &__block 
+      width: 50%
+      padding: 24px
+   .geo .geo__slider .swiper-slide, .geo .swiper4 .swiper-slide
+      max-width: 53px
+   &__bottom 
+      padding: 24px
+      display: flex
+      border-top: 1px solid rgba(234, 234, 234, 1)
+      align-items: center
+      p 
+         margin-left: 22px
+         color: rgba(16, 14, 23, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+   &__content 
+      padding: 24px
+   &__view 
+      position: relative
+      div 
+         margin-bottom: 28px
+         position: relative
+         z-index: 2
+         display: flex
+         align-items: flex-start
+         p 
+            margin-left: 16px
+            span 
+               display: block
+               margin-top: 4px
+               color: rgba(26, 26, 26, 1)
+               font-size: 16px
+               font-weight: 700
+               line-height: 19px
+         &:last-child
+            margin-bottom: 0
+            span 
+               font-size: 21px
+               font-weight: 700
+               line-height: 25px
+               background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 45%)
+               -webkit-background-clip: text
+               -webkit-text-fill-color: transparent
+               background-clip: text
+               text-fill-color: transparent
+      &:before 
+         content: ""
+         display: block
+         position: absolute
+         left: 19px
+         top: 0
+         height: 148px
+         width: 2px
+         z-index: 0
+         border-radius: 6px
+         background: rgba(29, 50, 123, 1)
+   &__btn 
+      width: 100%
+      padding: 0 16px
+      justify-content: space-between
+      margin-top: 24px
+   .header__info
+      margin-top: 24px !important
+      h3 
+         font-size: 24px
+         font-weight: 700
+         line-height: 29px
+   .form__flex .form__group
+      width: 49%
+   &__per 
+      height: 56px
+      width: 48%
+      input 
+         height: 100%
+      label
+         left: 17px
+         top: 9px
+   &__btns 
+      display: flex
+      margin-left: 8px
+      align-items: center
+      position: relative
+      a 
+         margin-left: 8px
+         width: max-content
+         padding: 0 20px
+         height: 56px
+         border-radius: 8px
+         background: rgba(255, 255, 255, 0.25)
+         p 
+            margin-left: 12px
+            color: rgba(255, 255, 255, 1)
+            font-size: 16px
+            font-weight: 400
+            line-height: 19px
+      &:before 
+         content: ""
+         display: block
+         height: 100px
+         width: 1px
+         position: absolute
+         left: 0
+         top: -8px
+         background: rgba(255, 255, 255, 0.25)
+.geo-contacts
+   .wrap 
+      margin-top: 20px
+      padding: 0
+      border: none
+   .geo__block
+      margin-top: 0
+   .wrap #map
+      top: -18px
+.main-online
+   padding-bottom: 0
+   margin-bottom: -15px
+   .tabs__nav a div .svg path
+      fill: inherit !important
+   .tabs__nav .tabs__btn_active div .svg path
+      stroke: white
+   .tabs__nav a
+      width: 33%
+   &__wrap 
+      position: relative
+   &__pic 
+      position: absolute
+      left: 0
+      bottom: 0
+      height: 102%
+      z-index: 2
+   &__fig 
+      position: absolute
+      z-index: 0
+      height: 100%
+      left: 0
+      top: 0
+   &__content 
+      padding: 24px
+      width: 100%
+      max-width: 685px
+      margin-left: auto
+      h2 
+         color: white
+         margin-bottom: 24px
+      ul 
+         margin-bottom: 48px
+         li 
+            display: flex
+            align-items: center
+            margin-bottom: 12px
+            &:last-child
+               margin-bottom: 0
+            p 
+               margin-left: 16px
+               color: rgba(255, 255, 255, 1)
+               font-size: 16px
+               font-weight: 400
+               line-height: 19px
+   &__block 
+      display: flex
+      align-items: flex-start
+      justify-content: space-between
+      position: relative
+      padding: 0px
+      border-radius: 8px
+      overflow: hidden
+      background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+   &__info 
+      justify-content: space-between
+   &__item 
+      padding: 24px
+      border-radius: 8px
+      background: rgba(255, 255, 255, 1)
+      width: 49.3%
+   &__flex 
+      align-items: center
+      div 
+         margin-left: 24px
+         img 
+            margin-bottom: 24px
+         p 
+            color: rgba(26, 26, 26, 1)
+            font-size: 16px
+            font-weight: 400
+            line-height: 19px
+            span 
+               display: block
+               color:  rgba(26, 26, 26, 1)
+               font-size: 21px
+               font-weight: 700
+               line-height: 25px
+   &__btn 
+      width: 100%
+      margin-top: 24px
+      height: 48px
+      display: flex
+      border-radius: 8px
+      background: rgba(240, 240, 240, 1)
+      color: rgba(26, 26, 26, 1) !important
+      font-size: 16px
+      font-weight: 400
+      line-height: 19px
+   &__text 
+      color: rgba(255, 255, 255, 1)
+      font-size: 16px
+      font-weight: 400
+      line-height: 19px
+   &__link
+      background: rgba(255, 255, 255, 1)
+      margin-top: 130px
+      width: 269px
+      height: 56px
+      font-size: 18px
+      font-weight: 700
+      justify-content: space-between
+      padding: 0 20px
+      line-height: 22px
+      color: $black
+      .svg 
+         path
+            stroke: rgba(26, 26, 26, 1)
+   .tabs__pane
+      &:nth-child(2)
+         .main-online__pic
+            left: 100px
+         .main-online__fig 
+            height: 126%
+      &:nth-child(3)
+         .main-online__pic
+            height: 105%
+         .main-online__fig 
+            height: 132%
+            left: 11px
+            top: -25px
+         .main-online__content ul
+            margin-bottom: 0
+            margin-top: 53px
+   .for
+      padding-top: 8px
+   .van
+      margin-top: 120px
+   .free7
+      .top 
+         max-width: 1274px
+   .free__right
+      padding: 24px
+      border-radius: 8px
+      background: rgba(240, 240, 240, 1)
+      .main-online__list 
+         span 
+            margin-top: -7px
+            display: flex
+            align-items: center
+            justify-content: center
+            border-radius: 50px 
+            width: 40px
+            height: 40px
+            border-radius: 48px
+            background: rgba(255, 255, 255, 1)
+            small 
+               display: block
+               background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 78%)
+               -webkit-background-clip: text
+               -webkit-text-fill-color: transparent
+               background-clip: text
+               text-fill-color: transparent
+               font-size: 14px
+               font-weight: 700
+               line-height: 17px
+         li 
+            align-items: flex-start !important
+            margin-bottom: 18px
+            div 
+               margin-left: 24px
+               span 
+                  margin-top: 0 !important
+                  display: initial
+                  width: auto
+                  height: auto
+                  background: transparent
+                  border-radius: 0px 
+                  align-items: flex-start
+                  justify-content: flex-start
+               p 
+                  margin-left: 0
+                  margin-bottom: 8px
+                  &:last-child
+                     margin-bottom: 0
+                  span 
+                     font-weight: 700
+   &__button 
+      margin-top: 90px
+      width: 296px
+      height: 56px
+      padding: 0 20px 
+      justify-content: space-between
+.code 
+   margin: 120px 0
+   .top 
+      max-width: 81%
+      margin-bottom: 16px
+   &__info 
+      width: 100%
+      max-width: 655px
+      margin-left: auto
+   &__sub
+      color: rgba(26, 26, 26, 1)
+      font-size: 21px
+      font-weight: 400
+      line-height: 25px
+      margin-bottom: 48px
+   &__block 
+      width: 100%
+      overflow: hidden
+      padding: 24px
+      border-radius: 8px
+      background: rgba(240, 240, 240, 1)
+   &__btn 
+      margin-top: 24px
+      width: 127px
+      height: 48px
+      border-radius: 8px
+      background: rgba(29, 50, 123, 1)
+      color: white
+      font-size: 16px
+      line-height: 19px
+      font-weight: 400
+.main-request
+   padding-bottom: 0
+   .tabs__nav a
+      width: 49.5%
+   .order__wrap .header__info h3
+      margin-bottom: 24px
+   .tabs__pane
+      &:nth-child(2)
+         .van .top
+            max-width: 1157px
+.main-news
+   .tabs__nav .tabs__btn_active div .svg path
+      stroke: white
+   .tabs__nav a
+      width: 32.9%
+   &__row 
+      justify-content: flex-start
+      flex-wrap: wrap 
+      gap: 8px 
+      .swiper-slide
+         overflow: visible
+         width: 24.5%
+         a 
+            display: flex
+            flex-direction: column 
+            width: 100%
+            height: 100%
+            height: 375px
+            align-items: flex-start
+            padding: 24px
+            transform: scale(1)
+            border-radius: 8px
+            border: 1px solid rgba(240, 240, 240, 1)
+            background: rgba(240, 240, 240, 1) 
+            position: relative
+            overflow: hidden
+            &:before 
+               content: ""
+               background: url(/img/news1.svg) no-repeat center center  
+               width: 100%
+               height: 100%
+               position: absolute
+               top: 0
+               left: 0
+               z-index: 0
+               transition: 0.5s
+            div 
+               position: relative
+               z-index: 2
+            &:hover 
+               transform: scale(0.93)
+               .news__bottom
+                  div 
+                     transform: scale(0.93)
+                     img 
+                        transform: rotate(360deg)
+      .swiper-slide_card
+         a
+            background: linear-gradient(#F0F0F0, #F0F0F0) padding-box, linear-gradient(135deg, rgba(29, 50, 123, 1), rgba(225, 8, 24, 1) 100%) border-box
+            border-color: transparent
+         .news__top img
+            opacity: 1
+         a
+            &:after 
+               opacity: 1
+            &:before 
+               background: url(/img/news2.svg) no-repeat center center  
+   &__nav 
+      width: 100%
+      justify-content: space-between
+      align-items: center
+      margin-top: 48px
+      padding-top: 24px
+      border-top: 1px solid rgba(234, 234, 234, 1)
+      ul 
+         display: flex
+         gap: 8px
+         li 
+            display: flex
+            align-items: center
+            justify-content: center
+            border-radius: 8px
+            width: 48px
+            height: 48px
+            overflow: hidden
+            a 
+               width: 100%
+               height: 100%
+               display: flex
+               align-items: center
+               justify-content: center
+               color: rgba(16, 14, 23, 1)
+               font-size: 16px
+               font-weight: 400
+               position: relative
+               line-height: 19px
+               &:hover 
+                  color: $red
+               &:after 
+                  content: ""
+                  position: absolute
+                  top: 0
+                  opacity: 0
+                  left: 0
+                  display: block
+                  z-index: -1
+                  width: 100%
+                  height: 100%
+                  background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+            &.active 
+               a 
+                  color: white !important
+                  &:after 
+                     opacity: 1
+   &__link 
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 48px
+      height: 48px
+      padding: 4px 3px 4px 3px
+      border-radius: 8px
+      background: rgba(240, 240, 240, 1)
+      &:hover 
+         background: $red
+         .svg 
+            path 
+               stroke: white
+.news-item
+   padding-bottom: 80px
+   &__info 
+      p 
+         margin-bottom: 24px
+         color: rgba(26, 26, 26, 1)
+         font-size: 18px
+         font-weight: 700
+         line-height: 22px
+   &__top 
+      justify-content: space-between
+      padding-bottom: 48px
+      margin-bottom: 24px
+      border-bottom: 1px solid rgba(234, 234, 234, 1)
+   &__left 
+      display: flex
+      flex-direction: column 
+      align-items: flex-start
+      height: auto
+      p 
+         margin-top: auto
+         font-size: 48px
+         font-weight: 700
+         line-height: 58px
+         display: flex
+         background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 64%)
+         -webkit-background-clip: text
+         -webkit-text-fill-color: transparent
+         background-clip: text
+         text-fill-color: transparent
+         sub 
+            left: 12px
+            display: block
+            font-size: 14px
+            font-weight: 700
+            line-height: 17px
+            background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 64%)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            background-clip: text
+            text-fill-color: transparent
+   &__pic 
+      object-fit: cover 
+      overflow: hidden   
+      width: 100%   
+      max-width: 655px
+      height: 450px
+      border-radius: 8px
+   &__row
+      display: flex
+      width: 100%
+      justify-content: space-between
+   &__socials 
+      gap: 4px
+      display: flex
+      a 
+         display: flex
+         align-items: center
+         justify-content: center
+         width: 48px
+         height: 48px
+         border-radius: 8px
+         background: rgba(240, 240, 240, 1)
+         &:hover 
+            background: rgba(227, 6, 19, 1)
+            .svg 
+               path 
+                  fill: white
+   &__sub 
+      color: rgba(26, 26, 26, 1)
+      font-size: 21px
+      font-weight: 400
+      line-height: 25px
+      margin-bottom: 30px
+      a 
+         position: relative
+         color: rgba(26, 26, 26, 1)
+         &:after 
+            content: ""
+            display: block
+            width: 100%
+            height: 1px
+            position: absolute
+            bottom: -1px
+            left: 0
+            background: linear-gradient(135deg, rgb(29, 50, 123), rgb(225, 8, 24) 100%)
+            opacity: 0.4
+         &:hover 
+            color: $red
+   &__text
+      margin-bottom: 40px
+   h3 
+      margin-bottom: 16px
+   &__area 
+      margin-bottom: 48px
+      h3 
+         margin-top: 0
+         margin-bottom: 32px
+         color: rgba(26, 26, 26, 1)
+         font-size: 24px
+         font-weight: 700
+         line-height: 29px
+.plus 
+   padding-bottom: 120px
+   .free__left
+      background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+      position: relative
+      img 
+         position: absolute
+         bottom: 0   
+         right: 0
+         z-index: 0
+      h3 
+         margin-top: 0
+         margin-bottom: 24px
+         color: rgba(255, 255, 255, 1)
+         font-size: 24px
+         font-weight: 700
+         line-height: 29px
+      ul 
+         li 
+            color: white
+   .van__box
+      flex-wrap: wrap
+      gap: 8px
+      ul 
+         margin-top: 16px
+   .van__item
+      width: 49.3%
+      &:last-child
+         background: rgb(240, 240, 240)
+.red-list 
+   li 
+      display: flex
+      align-items: flex-start !important
+      margin-bottom: 10px
+      p
+         color: rgba(16, 14, 23, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+         a 
+            color: $black
+            transition: 0.5s
+            transform: scale(1)
+            position: relative
+            &:after 
+               content: ""
+               display: block
+               width: 100%
+               height: 1px
+               position: absolute
+               bottom: -3px   
+               left: 0
+               background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+               opacity: 0.4
+            &:hover 
+               color: $red
+      &:last-child
+         margin-bottom: 0
+      &:before 
+         content: ""
+         display: inline-flex
+         position: relative
+         top: 6px
+         width: 6px
+         height: 6px
+         max-width: 6px
+         border-radius: 50% 
+         flex: 1 0 auto 
+         background: rgba(227, 6, 19, 1)
+         margin-right: 35px
+         margin-left: 10px
+      &.non 
+         &:before 
+            opacity: 0
+.stab 
+   margin-bottom: 120px
+   &__row 
+      align-items: flex-start
+      justify-content: space-between
+   &__content 
+      width: 100%
+      max-width: 655px
+      h2 
+         margin-bottom: 48px
+   &__name 
+      color: rgba(26, 26, 26, 1)
+      font-size: 24px
+      font-weight: 700
+      line-height: 29px
+      margin-bottom: 32px
+   &__text 
+      color: rgba(16, 14, 23, 1)
+      font-size: 16px
+      font-weight: 400
+      line-height: 19px
+.order__top_get
+   .checkbox
+      position: relative
+      &:after 
+         content: ""
+         display: block
+         width: 24px
+         height: 24px
+         position: absolute
+         top: 16px
+         right: 12px
+      &:first-child
+         &:after
+            background: url(/img/ok.svg) no-repeat center center
+      &:nth-child(2)
+         &:after
+            background: url(/img/ok2.svg) no-repeat center center
+.form__group_file  
+   position: relative 
+   display: flex 
+   align-items: center
+   justify-content: center
+   padding: 18px 12px
+   box-sizing: border-box
+   border: 1px solid  rgba(234, 234, 234, 1)
+   border-radius: 8px
+   margin-bottom: 8px
+   cursor: pointer
+   &:hover 
+      .file__name  
+         color: $red
+.form__group_file .form__label  
+   font-size: 14px 
+   color: #777 
+.file__info  
+   display: flex 
+   align-items: center 
+.file__input  
+   display: none 
+   opacity: 0
+.file__btn  
+   display: flex
+   align-items: center
+   justify-content: center
+   width: auto
+   height: auto
+.file__btn:hover  
+   opacity: 0.9 
+.file__name  
+   color: rgba(26, 26, 26, 1)
+   font-size: 14px
+   font-weight: 400
+   line-height: 17px
+   transition: 0.5s
+   margin-left: 12px
+.main-career
+   .tabs__nav a
+      div .svg path
+         fill: transparent
+      &:last-child
+         div .svg path
+            fill: rgb(227, 6, 19)
+   .tabs__nav .tabs__btn_active div .svg path
+      fill: transparent !important
+      stroke: white !important
+   .accordeon
+      padding: 0
+      margin: 0
+      border: none 
+      .accordeon__item
+         flex-direction: column 
+         align-items: flex-start
+         box-sizing: border-box
+         width: 100%
+         padding: 24px
+         border-radius: 8px
+         background: rgba(240, 240, 240, 1)
+         margin-bottom: 8px
+         &:last-child
+            margin-bottom: 0
+      .accordeon__button 
+         flex-direction: column 
+         align-items: flex-start
+         box-sizing: border-box
+         h3
+            margin-top: 12px 
+            margin-bottom: 0
+            color: rgba(26, 26, 26, 1)
+            font-size: 32px
+            font-weight: 700
+            line-height: 38px
+         &:after 
+            background: url(/img/faq1.svg) no-repeat !important
+            width: 48px
+            height: 48px
+            top: 0px
+            right: 0px
+   &__row 
+      display: flex
+      align-items: flex-start
+      justify-content: space-between
+      width: 100%
+      padding: 24px 0
+      border-top: 1px solid rgb(223, 223, 223)
+      h4 
+         margin-top: 0
+         margin-bottom: 0
+         color: rgba(26, 26, 26, 1)
+         font-size: 24px
+         font-weight: 700
+         line-height: 29px
+      &:last-child
+         border-bottom: 1px solid rgb(223, 223, 223)
+         margin-bottom: 24px
+   &__local 
+      margin-right: 32px
+      display: flex
+      align-items: center
+      color: rgba(11, 24, 39, 1)
+      font-size: 16px
+      font-weight: 400
+      line-height: 19px
+      img 
+         margin-right: 12px
+   &__top 
+      align-items: center
+      p 
+         color: rgba(125, 125, 137, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+   .accordeon__button.active:after
+      background: url(/img/faq2.svg) no-repeat !important
+   .panel__text
+      max-width: 100%
+   &__list 
+      max-width: 631px
+      width: 100%
+      li 
+         margin-bottom: 12px
+         display: flex
+         align-items: flex-start
+         color: rgba(16, 14, 23, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+         img 
+            margin-right: 16px
+            position: relative
+            top: -2px
+         &:last-child
+            margin-bottom: 0
+   &__block 
+      width: 100%
+      overflow: hidden
+      padding: 24px
+      border-radius: 8px
+      background:  linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+      display: flex
+      justify-content: space-between
+      align-items: flex-start
+      position: relative
+      z-index: 2
+   &__right
+      padding: 24px
+      border-radius: 8px
+      background: rgba(255, 255, 255, 0.25)
+      overflow: hidden
+      span 
+         display: block
+         margin-bottom: 20px
+         color: rgba(255, 255, 255, 1)
+         font-size: 18px
+         font-weight: 700
+         line-height: 22px
+   &__el 
+      display: flex
+      align-items: center
+      margin-bottom: 8px
+      a 
+         color: rgba(255, 255, 255, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+         margin-left: 12px
+         &:hover 
+            color: lightgrey
+      p 
+         color: rgba(255, 255, 255, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+         margin-left: 12px
+      &:last-child
+         margin-bottom: 0
+   &__left 
+      position: relative
+      z-index: 2
+      h2 
+         color: rgba(255, 255, 255, 1)
+         font-size: 32px
+         font-weight: 700
+         line-height: 38px
+         margin-bottom: 8px
+      p 
+         color: rgba(255, 255, 255, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+      .btn 
+         margin-top: 60px
+         width: 211px
+         height: 56px
+         border-radius: 8px
+         background: rgba(255, 255, 255, 1)
+         color: rgba(26, 26, 26, 1)
+         justify-content: space-between
+         padding: 0 20px
+         .svg 
+            path 
+               stroke: rgba(26, 26, 26, 1)
+   &__fig 
+      position: absolute
+      height: 100%
+      z-index: 0
+      top: 0 
+      left: 50%
+      margin-left: -248px
+.accordeon
+   padding: 0
+   margin: 0
+   border: none 
+   .accordeon__item
+      flex-direction: column 
+      align-items: flex-start
+      box-sizing: border-box
+      width: 100%
+      padding: 24px
+      border-radius: 8px
+      background: rgba(240, 240, 240, 1)
+      margin-bottom: 8px
+      &:last-child
+         margin-bottom: 0
+   .accordeon__button 
+      flex-direction: column 
+      align-items: flex-start
+      box-sizing: border-box
+      h3
+         margin-top: 12px 
+         margin-bottom: 0
+         color: rgba(26, 26, 26, 1)
+         font-size: 32px
+         font-weight: 700
+         line-height: 38px
+      &:after 
+         background: url(/img/faq1.svg) no-repeat !important
+         width: 48px
+         height: 48px
+         top: 0px
+         right: 0px
+   .accordeon__button.active:after
+      background: url(/img/faq2.svg) no-repeat !important
+   .panel__text
+      max-width: 100%
+.local-tar
+   &__sub 
+      margin-bottom: 48px
+      display: flex
+      align-items: center
+      margin-top: 8px
+      width: 100%
+      overflow: hidden
+      padding: 24px
+      border-radius: 8px
+      background: rgba(240, 240, 240, 1)
+      p 
+         margin-left: 24px
+         color: rgba(26, 26, 26, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+         span 
+            font-weight: 700
+   &__tables 
+      display: flex
+      justify-content: space-between
+   &__per 
+      padding: 30px 24px
+      width: 50%
+      table 
+         border-collapse: separate
+         width: 100%
+         border-spacing: 0
+         td
+            text-align: lext
+            color: $black
+            font-size: 16px
+            font-style: normal
+            font-weight: 400
+            line-height: normal
+            padding: 15px 24px
+            background: rgba(255, 255, 255, 1)
+            &:first-child
+               text-align: left
+         tr 
+            &:last-child
+               td
+                  &:first-child
+                     border-radius: 0 0 0 8px
+                  &:last-child
+                     border-radius: 0 0 8px 0
+         thead
+            td
+               background-color: #f6f6f6
+               text-align: center !important
+               color: rgba(255, 255, 255, 1)
+               font-size: 16px
+               font-weight: 400
+               background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+               line-height: 19px
+               &:first-child
+                  border-radius: 8px 8px 0 0  
+               &:last-child
+                  border-radius: 8px 8px 0 0 !important
+         tbody 
+            td 
+               padding: 20px 24px
+               div 
+                  min-width: 86px
+                  text-align: left
+                  p 
+                     font-size: 16px
+                     font-weight: 700
+                     line-height: 19px
+                     background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 64%)
+                     -webkit-background-clip: text
+                     -webkit-text-fill-color: transparent
+                     background-clip: text
+                     text-fill-color: transparent
+                     padding-bottom: 5px
+                     margin-bottom: 5px
+                     border-bottom: 1px solid rgba(223, 223, 223, 1)
+                     &:last-child
+                        padding: 0
+                        margin: 0
+                        border: none
+            tr 
+               &:nth-child(2)
+                  td 
+                     border-top: 1px solid rgba(223, 223, 223, 1)
+                     padding-bottom: 30px
+                     div 
+                        p 
+                           color: $black
+                           background: transparent 
+                           -webkit-text-fill-color: initial
+                           font-weight: 400
+      &:first-child
+         border-right: 1px solid rgba(223, 223, 223, 1)
+   &__box 
+      overflow: hidden
+      margin-bottom: 8px
+      border-radius: 8px
+      background: rgba(240, 240, 240, 1)
+   &__top 
+      display: flex
+      align-items: center
+      justify-content: space-between
+      padding: 24px
+      border-bottom: 1px solid rgba(223, 223, 223, 1)
+      h2 
+         font-size: 32px
+         line-height: 38px
+      p 
+         color: rgba(125, 125, 137, 1)
+         font-size: 16px
+         font-weight: 400
+         line-height: 19px
+   .accordeon 
+      h3 
+         font-size: 24px
+         margin-top: 0
+         line-height: 29px
+      .accordeon__item
+         background: white
+   &__title 
+      margin-bottom: 12px
+      font-size: 24px
+      font-weight: 700
+      line-height: 29px
+   &__text 
+      margin-bottom: 24px
+   &__acc 
+      border-top: 1px solid rgba(223, 223, 223, 1)
+      padding: 24px
+      .panel__text, .panel__text2
+         max-width: 100%
+         border-top: 1px solid rgba(223, 223, 223, 1)
+         padding-top: 24px
+         margin-top: 24px
+      .accordeon .accordeon__button:after
+         top: -11px
+      table 
+         margin-bottom: 24px
+         border-collapse: separate
+         width: 100%
+         border-spacing: 0
+         td
+            text-align: left
+            color: $black
+            font-size: 16px
+            font-style: normal
+            font-weight: 400
+            line-height: normal
+            padding: 20px 24px
+            background: rgba(255, 255, 255, 1)
+            border-top: 1px solid rgba(234, 234, 234, 1)
+            &:first-child
+               text-align: left
+         tr 
+            &:last-child
+               td
+                  &:first-child
+                     border-radius: 0 0 0 8px
+                  &:last-child
+                     border-radius: 0 0 8px 0
+         thead
+            td
+               background-color: #f6f6f6
+               text-align: center !important
+               color: rgba(255, 255, 255, 1)
+               font-size: 16px
+               font-weight: 700
+               line-height: 19px
+               text-align: left !important
+               background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 64%)
+               -webkit-background-clip: text
+               -webkit-text-fill-color: transparent
+               background-clip: text
+               text-fill-color: transparent
+               &:first-child
+                  border-radius: 8px 8px 0 0 
+                  border-left: 1px solid rgba(234, 234, 234, 1)
+               &:last-child
+                  border-radius: 8px 8px 0 0 !important
+                  border-right: 1px solid rgba(234, 234, 234, 1)
+         tbody 
+            td 
+               padding: 20px 24px
+               div 
+                  min-width: 86px
+                  text-align: left
+                  p 
+                     font-size: 16px
+                     font-weight: 700
+                     line-height: 19px
+                     background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 64%)
+                     -webkit-background-clip: text
+                     -webkit-text-fill-color: transparent
+                     background-clip: text
+                     text-fill-color: transparent
+                     padding-bottom: 5px
+                     margin-bottom: 5px
+                     border-bottom: 1px solid rgba(223, 223, 223, 1)
+                     &:last-child
+                        padding: 0
+                        margin: 0
+                        border: none
+               &:first-child
+                  border-left: 1px solid rgba(234, 234, 234, 1)
+               &:last-child
+                  border-right: 1px solid rgba(234, 234, 234, 1)
+            tr 
+               &:last-child
+                  td
+                     border-bottom: 1px solid rgba(234, 234, 234, 1)
+   &__item 
+      padding-bottom: 24px
+      border-bottom: 1px solid rgba(223, 223, 223, 1)
+      margin-bottom: 24px
+      &:last-child
+         margin-bottom: 0
+         border: none
+         padding-bottom: 0
+      ul 
+         margin-top: 20px
+   &__area
+      margin-top: 24px
+      justify-content: space-between
+      .local-tar__scroll
+         width: 49%
+   &__bottom 
+      justify-content: space-between
+      display: flex
+      margin-top: 8px
+   &__el 
+      padding: 24px
+      border-radius: 8px
+      background: rgba(240, 240, 240, 1)
+      width: 49.7%
+      h3 
+         margin-top: 0
+         margin-bottom: 24px
+         font-size: 32px
+         line-height: 38px
+      table 
+         margin-bottom: 0px
+         border-collapse: separate
+         width: 100%
+         border-spacing: 0
+         td
+            text-align: left
+            color: $black
+            font-size: 16px
+            font-style: normal
+            font-weight: 400
+            line-height: normal
+            padding: 20px 24px
+            background: rgba(255, 255, 255, 1)
+            border-top: 1px solid rgba(234, 234, 234, 1)
+            &:first-child
+               text-align: left
+         tr 
+            &:last-child
+               td
+                  &:first-child
+                     border-radius: 8px 0 0 0px
+                  &:last-child
+                     border-radius: 0 0 8px 0px 
+         thead
+            tr
+               td
+                  background-color: white
+                  text-align: center !important
+                  p
+                     color: rgba(255, 255, 255, 1)
+                     font-size: 16px
+                     font-weight: 700
+                     line-height: 19px
+                     text-align: left !important
+                     background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 64%)
+                     -webkit-background-clip: text
+                     -webkit-text-fill-color: transparent
+                     background-clip: text
+                     text-fill-color: transparent
+                  &:first-child
+                     border-radius: 8px 8px 0 0 
+                     border-left: 1px solid rgba(234, 234, 234, 1)
+                  &:last-child
+                     border-radius: 0px 8px 0 0 !important
+                     border-right: 1px solid rgba(234, 234, 234, 1)
+         tbody 
+            td 
+               padding: 20px 24px
+               vertical-align: top
+               div 
+                  min-width: 86px
+                  text-align: left
+                  p 
+                     font-size: 16px
+                     font-weight: 700
+                     line-height: 19px
+                     background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 64%)
+                     -webkit-background-clip: text
+                     -webkit-text-fill-color: transparent
+                     background-clip: text
+                     text-fill-color: transparent
+                     padding-bottom: 5px
+                     margin-bottom: 5px
+                     border-bottom: 1px solid rgba(223, 223, 223, 1)
+                     &:last-child
+                        padding: 0
+                        margin: 0
+                        border: none
+               &:first-child
+                  border-left: 1px solid rgba(234, 234, 234, 1)
+               &:last-child
+                  border-right: 1px solid rgba(234, 234, 234, 1)
+            tr 
+               &:last-child
+                  td
+                     &:last-child
+                        border-bottom: 1px solid rgba(234, 234, 234, 1)
+                        border-radius: 0px 0px 8px 0px
+                     &:first-child
+                        border-radius: 0px 0 0 8px  
+.local-tar__area .local-tar__scroll
+   table 
+      thead td
+            &:first-child
+               border-radius: 8px 0px 0 0 !important
+            &:last-child
+               border-radius: 0px 8px 0 0 !important
+.main-tar
+   padding-bottom: 120px
+   .tabs__nav a
+      div .svg path
+         fill: inherit !important
+      &:nth-child(2)
+         div .svg path
+            stroke: rgba(227, 6, 19, 1) !important
+   .tabs__nav a.tabs__btn_active
+      div .svg path
+         stroke: white !important
+   .pack 
+      .tabs__nav a
+         width: 100%
+         &:hover 
+            p
+               color: $red
+      .tabs__nav a.active
+         justify-content: flex-start
+         p 
+            background: linear-gradient(135deg, rgb(29, 50, 123), rgb(225, 8, 24) 45%)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            background-clip: text
+            text-fill-color: transparent
+      .local-tar__el
+         width: 100%
+         table 
+            td 
+               &:first-child
+                  max-width: 420px
+   &__top 
+      margin-bottom: 24px
+      width: 100%
+      align-items: center
+      justify-content: space-between
+      h3 
+         margin-bottom: 0
+   &__links 
+      a 
+         margin-left: 8px
+         width: max-content
+         padding: 0 20px
+         height: 56px
+         border-radius: 8px
+         background: white
+         p 
+            margin-left: 12px
+            color: $black
+            font-size: 16px
+            font-weight: 400
+            line-height: 19px
+         .svg 
+            path 
+               stroke: $red
+   .accordeon 
+      h3 
+         font-size: 24px
+         margin-top: 0
+         line-height: 29px
+      .accordeon__item
+         background: white
+   .main-tar__top
+      padding: 0px 0 24px
+      border-bottom: 1px solid rgba(223, 223, 223, 1)
+      .form
+         padding: 0
+         background: transparent
+         input 
+            background: white
+         .form__group
+            margin-bottom: 0
+   .local-tar__acc
+      .local-tar__acc
+         padding: 24px 0 0
+      .local-tar__scroll_2
+         overflow-x: auto
+         tr 
+            td
+               vertical-align: top
+               &:nth-child(n+1)
+                  border-left: 1px solid rgb(234, 234, 234)
+               p 
+                  background:  linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 40%)
+                  -webkit-background-clip: text
+                  -webkit-text-fill-color: transparent
+                  background-clip: text
+                  text-fill-color: transparent
+                  font-size: 16px
+                  font-weight: 700
+                  line-height: 19px
+            &:first-child
+               td 
+                  &:first-child
+                     border-radius: 8px 0 0 0px
+                  &:last-child
+                     border-radius: 0px 8px 0 0px
+         table 
+            width: 1527px
+      .local-tar__area .local-tar__scroll table
+         width: 100%
+.main-tar .local-tar__acc .local-tar__scroll_1
+   tr 
+      &:first-child
+         td 
+            &:first-child
+                  border-radius: 8px 0 0 0px !important
+   tbody
+      tr:nth-child(1)
+         td 
+            &:first-child
+                  border-radius: 0px 0 0 0px !important
+.van-for
+   .top 
+      max-width: 1200px
+   .van__item 
+      &:first-child
+         position: relative
+         width: 49.7%   
+         background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+         &:after 
+            display: none
+         h3, p 
+            color: white
+         img 
+            position: absolute
+            bottom: 0
+            right: 0
+      &:last-child
+         background: rgb(240, 240, 240)
+.order-for 
+   .order__info
+      margin-top: 10px
+   .free__right
+      position: sticky
+      top: 50px
+   .order__wrap 
+      align-items: flex-start
+      h3 
+         margin-bottom: 24px
+   &__item 
+      padding: 24px 0
+      border-top: 1px solid rgba(234, 234, 234, 1)
+   &__top 
+      margin-bottom: 24px
+      align-items: center
+      span 
+         display: flex
+         align-items: center
+         justify-content: center
+         border-radius: 50% 
+         margin-right: 16px
+         width: 40px
+         height: 40px
+         border-radius: 48px
+         background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
+         color: rgba(255, 255, 255, 1)
+         font-size: 14px
+         font-weight: 700
+         line-height: 17px
+      p 
+         color: rgba(26, 26, 26, 1)
+         font-size: 18px
+         font-weight: 700
+         line-height: 22px
+   &__text 
+      margin-bottom: 12px
+   .order__top_1
+      margin-bottom: 24px
+   .order__top_2 
+      margin-bottom: 24px
+      gap: 8px 
+      flex-wrap: wrap 
+      .checkbox
+         &:last-child
+            width: 100%
+         &:first-child
+            margin-right: 0
+   .order__top_3
+      margin-bottom: 8px
+.van-franch
+   .top 
+      max-width: 1014px
+   .van__item
+      width: 49.6%
+      position: relative
+      &:after 
+         display: none
+      img 
+         position: absolute
+         right: 0
+         z-index: 0
+         bottom: 0
+      h3 
+         position: relative
+         z-index: 3
+      p 
+         width: 100%
+         position: relative
+         z-index: 2
+         max-width: 276px
+      small 
+         display: flex
+         border-radius: 50px 
+         width: 40px
+         height: 40px
+         background: white
+         margin-top: auto
+         align-items: center
+         justify-content: center
+         span 
+            display: flex
+            font-size: 14px
+            font-weight: 700
+            line-height: 17px
+            justify-content: center
+            width: 100%
+            height: 100%
+            align-items: center
+            background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 75%)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            background-clip: text
+            text-fill-color: transparent
+      &:last-child
+         background: rgb(240, 240, 240)
+   .van__box
+      flex-wrap: wrap
+      gap: 8px
+.main-rules
+   .tabs__nav
+      a
+         div .svg path
+            fill: transparent
+         &:first-child
+            div .svg path
+               fill: $red
+   .tabs__nav .tabs__btn_active div .svg path
+      fill: inherit
+   .tabs__nav .pp.tabs__btn_active  div .svg path
+      fill: white
+   .main-career__block
+      margin-bottom: 120px
+      .rules__links 
+         gap: 8px
+         a 
+            justify-content: space-between
+            width: max-content
+            padding: 0 16px 0 4px 
+            align-items: center
+            overflow: hidden
+            p 
+               font-size: 18px
+               font-weight: 700
+               line-height: 22px
+               color: $black
+            img 
+               margin-left: 0
+               margin-right: 16px
+            span 
+               color: rgba(26, 26, 26, 1)
+               font-size: 14px
+               font-weight: 400
+               line-height: 17px
+               display: inline-block
+               margin-left: 24px
+               &:first-of-type
+                  margin-left: 32px
+                  position: relative
+                  &:after 
+                     content: ""
+                     display: flex
+                     align-items: center
+                     justify-content: center
+                     border-radius: 50px
+                     width: 4px
+                     height: 4px
+                     background: rgba(227, 6, 19, 1)
+                     position: absolute
+                     top: 6px
+                     right: -15px
+                  &:before
+                     content: ""
+                     display: flex
+                     align-items: center
+                     justify-content: center
+                     width: 1px
+                     height: 200px
+                     background: rgba(234, 234, 234, 1)
+                     position: absolute
+                     top: -20px
+                     left: -15px
+   .main-career__fig
+      position: absolute
+      height: 100%
+      z-index: 0
+      top: 0
+      left: initial
+      right: 0
+      margin-left: 0
+   .steps__item
+      width: 32.9%
+      ul li
+         margin-bottom: 12px
+         align-items: flex-start
+         img 
+            margin-right: 16px
+         &:before 
+            display: none
+         &:last-child
+            margin-bottom: 0
+   .steps__sub
+      font-size: 21px
+      line-height: 25px 
+      margin-right: 0
+      font-weight: 400
+   .top 
+      margin-bottom: 16px
+      max-width: 1313px
+   .tabs__pane:nth-child(3), .tabs__pane:nth-child(2)
+      .steps__item
+         width: 49.6%
+      .top 
+         max-width: 1103px
+      .steps__sub 
+         margin-right: 45px
+      .main-career__left .btn
+         margin-top: 40px
+      .order 
+         margin-bottom: 0 !important
+      .order__wrap
+         .header__info
+            h3
+               margin-bottom: 8px
+            p 
+               margin-bottom: 24px
+.papers 
+   &__item 
+      overflow: hidden
+      padding: 24px
+      border-radius: 8px
+      background: rgba(240, 240, 240, 1)
+      margin-bottom: 8px
+      &:last-child
+         margin-bottom: 0
+      h3 
+         margin-top: 0
+         margin-bottom: 24px
+         color: rgba(26, 26, 26, 1)
+         font-size: 32px
+         font-weight: 700
+         line-height: 38px
+   &__box 
+      width: 100%
+      overflow: hidden
+      border-radius: 8px
+      background: rgba(255, 255, 255, 1)
+   &__row 
+      border-top: 1px solid rgba(234, 234, 234, 1)
+      padding: 20px 24px
+      display: flex
+      align-items: flex-start
+      justify-content: flex-start
+      div 
+         width: 33%
+         margin-right: 8px
+         &:last-child
+            margin-right: 0
+         p 
+            margin-bottom: 8px
+            &:last-child
+               margin-bottom: 0
+      &:first-child
+         div 
+            p 
+               font-size: 16px
+               font-weight: 700
+               line-height: 19px
+               background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 75%)
+               -webkit-background-clip: text
+               -webkit-text-fill-color: transparent
+               background-clip: text
+               text-fill-color: transparent
+.arcticmodal-container_i, .arcticmodal-container_i2
+   width: 100%
+   padding: 0
+.arcticmodal-overlay, .arcticmodal-container
+   background: rgba(0, 0, 0, 0.65)
+.popup-call__box
+   padding: 48px 24px 
+   right: 0
+   margin-left: 0
+   width: 50%
+   left: initial
+   height: 100%
+   overflow: visible
+   top: 0
+   border-radius: 0px
+   .header__info
+      padding: 0
+      max-width: 100%
+      background: transparent
+      p 
+         margin-bottom: 32px
+      h3 
+         margin-top: 0
+         margin-bottom: 18px
+         font-size: 48px
+         font-weight: 700
+         line-height: 58px
+      .form
+         padding: 0
+         .btn 
+            width: 181px
+.box-modal
+   height: 100vh
+.box-modal__close
+   height: 40px
+   left: -81px
+   right: initial
+   width: 40px
+
+
+
+
+
+
+
+

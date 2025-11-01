@@ -32,7 +32,7 @@
 
 </head>
 
-<body>
+<body class="hidd">
 	<h2 style="text-align: center; margin: 40px auto; color: black">
 		Pages
 	</h2>
@@ -77,30 +77,74 @@
 			<a href="documents.html"
 				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Документы</a>
 		</li>
-		<!-- <li style="width: 25%; margin: 40px auto 0;">
-			<a href="sitemap.html"
-				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Карта
-				сайта</a>
+		<li style="width: 25%; margin: 40px auto 0;">
+			<a href="serv9.html"
+				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Страхование груза</a>
 		</li>
 		<li style="width: 25%; margin: 40px auto 0;">
-			<a href="policy.html"
-				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Политика</a>
+			<a href="local.html"
+				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Отслеживание груза</a>
 		</li>
 		<li style="width: 25%; margin: 40px auto 0;">
-			<a href="service.html"
-				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Услуга</a> -->
+			<a href="contacts.html"
+				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Контакты</a>
+		</li>
+		<li style="width: 25%; margin: 40px auto 0;">
+			<a href="online1.html"
+				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Онлайн</a>
+		</li>
+		<li style="width: 25%; margin: 40px auto 0;">
+			<a href="request.html"
+				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Запрос документов</a>
+		</li>
+		<li style="width: 25%; margin: 40px auto 0;">
+			<a href="news.html"
+				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Новости</a>
+		</li>
+		<li style="width: 25%; margin: 40px auto 0;">
+			<a href="news-item.html"
+				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Новость</a>
+		</li>
+		<li style="width: 25%; margin: 40px auto 0;">
+			<a href="about.html"
+				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">О компании</a>
+		</li>
+		<li style="width: 25%; margin: 40px auto 0;">
+			<a href="letter.html"
+				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Письмо</a>
+		</li>
+		<li style="width: 25%; margin: 40px auto 0;">
+			<a href="franchise.html"
+				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Представительство</a>
+		</li>
+		<li style="width: 25%; margin: 40px auto 0;">
+			<a href="career.html"
+				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Карьера</a>
+		</li>
+		<li style="width: 25%; margin: 40px auto 0;">
+			<a href="tariffs.html"
+				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Тарифы</a>
+		</li>
+		<li style="width: 25%; margin: 40px auto 0;">
+			<a href="tariffs-service.html"
+				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Тарифы на услуги</a>
+		</li>
+		<li style="width: 25%; margin: 40px auto 0;">
+			<a href="for.html"
+				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Перевозчикам</a>
+		</li>
+		<li style="width: 25%; margin: 40px auto 0;">
+			<a href="rules.html"
+				style="font-weight: bold; color: black; font-size: 25px; display: block; text-align: center;">Правила</a>
 		</li>
 	</ul>
-
-				
-
 	<div class="d-flex"
 		style="justify-content: center; margin-top: 80px; max-width: 1000px; margin: 0 auto; flex-wrap: wrap;">
-		<a href="#" class="btn btn_1 a1" style="margin: 20px;">
+		<a href="#" class="btn a1" style="margin: 20px;">
 			popup <img src="img/btn.svg" alt="">
 		</a>
-		<a href="#" class="btn btn_2 a2" style="margin: 20px;">
-			thank  <img src="img/btn.svg" alt="">
+		<a href="#" class="btn a2" style="margin: 20px;">
+			popup2 <img src="img/btn.svg" alt="">
 		</a>
 	</div>
 	<div style="display:none;">
@@ -109,155 +153,94 @@
 				<div class="box-modal__close articmodal-close">
 					<img src="img/close.svg" alt="">
 				</div>
-				<p class="popup__name">
-					Заявка
-				</p>
-				<form action="success.php" class="call__form js-form" id="popupResult" method="post">
-					<div class="popup__item">
-						<label>
-							<span> * </span> Ваши контакты
-						</label>
-						<input type="tel" placeholder="Номер телефона" class="form__field tel" required="" name="tel">
-					</div>
-					<div class="popup__item">
-						<label>
-							<span> * </span> Что вас интересует
-						</label>
-						<select class="select form__field" name="sel">
-							<option value="1">Пеллеты</option>
-							<option value="2">Брикеты RUF</option>
-							<option value="3">Древесную муку</option>
-							<option value="4">Древесную стружку</option>
-						</select>
-					</div>
-					<div class="popup__item">
-						<label>
-							Сообщение
-						</label>
-						<textarea name="text" placeholder="Комментарий, суть обращения"></textarea>
-					</div>
-					<div class="call__bottom q">
-						<div class="call__flex input-holder checkbox q">
-							<input class="form-check-input custom-checkbox form-control" type="checkbox" name="check"
-								id="form1" value="Я даю свое согласие на обработку персональных данных" checked>
-							<label class="form-check-label " for="form1">
+				<div class="header__info">
+					<h3>
+						Оставьте заявку
+					</h3>
+					<p>
+						Рассчитаем лучший вариант под ваши задачи.
+					</p>
+					<form action="success.php" class="form js-form" id="popupResult" method="post">
+						<div class="form__flex">
+							<div class="form__group">
+								<input type="text" placeholder="" class="form__field" name="name" id="name" required>
+								<label for="name" class="form__label">Имя <span>*</span></label>
+							</div>
+							<div class="form__group">
+								<input type="tel" placeholder="" class="form__field tel" name="tel" id="tel" required>
+								<label for="name" class="form__label">Телефон <span>*</span></label>
+							</div>
+						</div>
+						<textarea name="text" placeholder="Дополнительные вопросы" required></textarea>
+						<button class="btn">
+							Отправить <img src="img/btn.svg" alt="">
+						</button>
+						<div class="checkbox q">
+							<input class="form-check-input custom-checkbox form-control" type="checkbox" name="check2" id="formo2"
+								value="Я даю свое согласие на обработку персональных данных">
+							<label class="form-check-label " for="formo2">
 								<span>
-									Соглашаюсь с условиями <a href="#" target="_blank">Политики конфиденциальности</a>.
+									Нажимая на кнопку, вы даёте согласие на <a href="#"> обработку ваших персональных данных</a>
 								</span>
 							</label>
 						</div>
-					</div>
-					<button class="btn">
-						Отправить заявку
-					</button>
-				</form>
-				<div class="tabs">
-					<div class="tabs__nav d-flex">
-						<a href="#" class="tabs__btn tabs__btn_active active">
-							Альбом до 2021 год
-						</a>
-						<a href="#" class="tabs__btn">
-							Альбом с 2021 года
-						</a>
-					</div>
-					<div class="tabs__content">
-						<div class="tabs__pane tabs__pane_show">
-							<div class="gal__box">
-								<div class="photo__box q">
-									<a href="img/photo11.png" data-fancybox="gallery1">
-										<img src="img/photo11.png" alt="">
-										<p>
-											новые ручные ткани Красноярья
-										</p>
-									</a>
-									<a href="img/photo22.png" data-fancybox="gallery2">
-										<img src="img/photo22.png" alt="">
-										<p>
-											новые ручные ткани Красноярья
-										</p>
-									</a>
-									<a href="img/photo33.png" data-fancybox="gallery3">
-										<img src="img/photo33.png" alt="">
-										<p>
-											новые ручные ткани Красноярья
-										</p>
-									</a>
-								</div>
-							</div>
-						</div>
-						<div class="tabs__pane">
-							<div class="gal__box">
-								<div class="photo__box q">
-									<a href="img/photo11.png" data-fancybox="gallery1">
-										<img src="img/photo11.png" alt="">
-										<p>
-											новые ручные ткани Красноярья2
-										</p>
-									</a>
-									<a href="img/photo22.png" data-fancybox="gallery2">
-										<img src="img/photo22.png" alt="">
-										<p>
-											новые ручные ткани Красноярья2
-										</p>
-									</a>
-									<a href="img/photo33.png" data-fancybox="gallery3">
-										<img src="img/photo33.png" alt="">
-										<p>
-											новые ручные ткани Красноярья2
-										</p>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="accordeon">
-					<div class="accordeon-container">
-						<li class="accordeon__item">
-							<div class="accordeon__button closed">Насколько конфиденциальна <br class="mob"> работа вебкам
-								модели?</div>
-							<ul class="accordeon__panel">
-								<li class="panel__text">
-									<p class="panel__info">
-										Наша студия сотрудничает только с зарубежными сайтами, доступ к которым из России
-										ограничен, поэтому вероятность, что Вас кто-то узнает достаточно мала.
-									</p>
-									<p class="panel__info">
-										Студия не раскрывает личные данные модели, а заботится о ее безопасности, поэтому перед
-										началом работы мы проводим инструктаж, как обезопасить себя и свои социальные сети.
-									</p>
-									<p class="panel__info">
-										Однако важно понимать, что работая в интернете, стопроцентной гарантии анонимности не
-										существует, но мы сделаем все, чтобы работа в интернете была не только комфортной, но и
-										безопасной.
-									</p>
-								</li>
-							</ul>
-						</li>
-						<li class="accordeon__item">
-							<div class="accordeon__button closed">В чем заключается <br class="mob"> суть работы?</div>
-							<ul class="accordeon__panel">
-								<li class="panel__text">
-									<p class="panel__info">
-										Суть работы заключается в ведении прямых эфиров и общении с пользователями на зарубежных
-										сайтах. Мы работаем с такими сайтами, как Chaturbate, Stripchat, Flirt4free, Camsoda и др.
-									</p>
-									<p class="panel__info">
-										Как происходит общение: Модель ведет онлайн трансляцию, где посетители сайта ее видят и
-										могут переписываться. Общение ведётся преимущественно на английском языке. Зачастую
-										пользователи хотят пообщаться с симпатичной девушкой, но могут попросить станцевать
-										стриптиз или показать эротическое шоу. Просьбы могут быть любые, важно, что модель сама
-										выстраивает границы и может завершить шоу в любой момент.
-									</p>
-								</li>
-							</ul>
-						</li>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div style="display:none;">
+		<div class="box-modal" id="popup-call2">
+			<div class="popup-call__box call">
+				<div class="box-modal__close articmodal-close">
+					<img src="img/close.svg" alt="">
+				</div>
+				<div class="header__info">
+					<h3>
+						Оставьте заявку <br> на вакансию
+					</h3>
+					<p>
+						Наш менеджер по персоналу свяжется с вами.
+					</p>
+					<form action="success.php" class="form js-form" id="popupResult" method="post">
+						<div class="form__flex">
+							<div class="form__group">
+								<input type="text" placeholder="" class="form__field" name="name" id="name" required>
+								<label for="name" class="form__label">Имя <span>*</span></label>
+							</div>
+							<div class="form__group">
+								<input type="tel" placeholder="" class="form__field tel" name="tel" id="tel" required>
+								<label for="name" class="form__label">Телефон <span>*</span></label>
+							</div>
+						</div>
+						<textarea name="text" placeholder="Дополнительные вопросы" required></textarea>
+						<div class="form__group_file">
+							<input type="file" class="form__field file__input" id="fileInput" multiple>
+							<div class="file__info">
+								<label for="fileInput" class="file__btn">
+									<img src="img/add.svg" alt="" class="svg">
+								</label>
+								<span class="file__name">Прикрепить документы (до 2 МБ, до 5 файлов)</span>
+							</div>
+						</div>
+						<button class="btn">
+							Отправить <img src="img/btn.svg" alt="">
+						</button>
+						<div class="checkbox q">
+							<input class="form-check-input custom-checkbox form-control" type="checkbox" name="check2" id="formi2"
+								value="Я даю свое согласие на обработку персональных данных">
+							<label class="form-check-label " for="formi2">
+								<span>
+									Нажимая на кнопку, вы даёте согласие на <a href="#"> обработку ваших персональных данных</a>
+								</span>
+							</label>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div style="display:none;">
 		<div class="box-modal" id="popup-thank">
 			<div class="popup-call__box">
 				<img src="img/thank.svg" alt="">
@@ -270,7 +253,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js?ver=5.1"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>

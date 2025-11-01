@@ -1,46 +1,60 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   class ItcTabs {
     constructor(target, config) {
       const defaultConfig = {};
       this._config = Object.assign(defaultConfig, config);
       this._elTabs = typeof target === 'string' ? document.querySelector(target) : target;
-      this._elButtons = this._elTabs.querySelectorAll('.tabs__btn');
-      this._elPanes = this._elTabs.querySelectorAll('.tabs__pane');
+
+      // Берём только верхнеуровневые кнопки и панели внутри контейнера
+      // структура ожидается: .tabs__nav (верхняя) и .tabs__content (верхняя)
+      this._elButtons = Array.from(this._elTabs.querySelectorAll(':scope > .tabs__nav .tabs__btn'));
+      this._elPanes = Array.from(this._elTabs.querySelectorAll(':scope > .tabs__content > .tabs__pane'));
+
       this._eventShow = new Event('tab.itc.change');
       this._init();
       this._events();
     }
+
     _init() {
       this._elTabs.setAttribute('role', 'tablist');
       this._elButtons.forEach((el, index) => {
         el.dataset.index = index;
         el.setAttribute('role', 'tab');
-        this._elPanes[index].setAttribute('role', 'tabpanel');
+        // защитно: если панель для этого индекса есть — пометить role
+        if (this._elPanes[index]) {
+          this._elPanes[index].setAttribute('role', 'tabpanel');
+        }
       });
     }
+
     show(elLinkTarget) {
-      const elPaneTarget = this._elPanes[elLinkTarget.dataset.index];
-      const elLinkActive = this._elTabs.querySelector('.tabs__btn_active');
-      const elPaneShow = this._elTabs.querySelector('.tabs__pane_show');
-      if (elLinkTarget === elLinkActive) {
-        return;
-      }
-      elLinkActive ? elLinkActive.classList.remove('tabs__btn_active') : null;
-      elPaneShow ? elPaneShow.classList.remove('tabs__pane_show') : null;
+      const index = Number(elLinkTarget.dataset.index);
+      const elPaneTarget = this._elPanes[index];
+      const elLinkActive = this._elTabs.querySelector(':scope > .tabs__nav .tabs__btn.tabs__btn_active');
+      const elPaneShow = this._elTabs.querySelector(':scope > .tabs__content > .tabs__pane.tabs__pane_show');
+
+      if (elLinkTarget === elLinkActive) return;
+
+      elLinkActive?.classList.remove('tabs__btn_active');
+      elPaneShow?.classList.remove('tabs__pane_show');
+
       elLinkTarget.classList.add('tabs__btn_active');
-      elPaneTarget.classList.add('tabs__pane_show');
+      if (elPaneTarget) elPaneTarget.classList.add('tabs__pane_show');
+
       this._elTabs.dispatchEvent(this._eventShow);
       elLinkTarget.focus();
     }
+
     showByIndex(index) {
       const elLinkTarget = this._elButtons[index];
-      elLinkTarget ? this.show(elLinkTarget) : null;
-    };
+      if (elLinkTarget) this.show(elLinkTarget);
+    }
+
     _events() {
       this._elTabs.addEventListener('click', (e) => {
         const target = e.target.closest('.tabs__btn');
-        if (target) {
+        // убедимся, что найденная кнопка — именно верхнеуровневая (в списке текущих buttons)
+        if (target && this._elButtons.includes(target)) {
           e.preventDefault();
           this.show(target);
         }
@@ -48,8 +62,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // инициализация .tabs как табов
-  new ItcTabs('.tabs');
+  // Инициализируем все топ-уровневые блоки табов (.tabs и .tabs2 и т.д.)
+  document.querySelectorAll('.tabs, .tabs2').forEach((tabsContainer) => {
+    new ItcTabs(tabsContainer);
+  });
+});
+document.addEventListener('DOMContentLoaded', function() {
+  const replaceBtn = document.querySelector('.local__replace');
+  const inputs = document.querySelectorAll('.local__per input');
+
+  if (replaceBtn && inputs.length >= 2) {
+    replaceBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      // сохраняем значение первого
+      const temp = inputs[0].value;
+      // меняем местами
+      inputs[0].value = inputs[1].value;
+      inputs[1].value = temp;
+    });
+  }
 });
 document.addEventListener("DOMContentLoaded", () => {
   const stage = document.querySelector('#stage');
@@ -429,46 +461,182 @@ document.addEventListener("DOMContentLoaded", () => {
   // инициализация
   new ItcTabs('.tabs');
 });
-
 document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.querySelector(".local__btn");
+  const formBlock = document.querySelector(".header__info");
+
+  if (!btn || !formBlock) return;
+
+  // Скрываем форму по умолчанию
+  formBlock.style.display = "none";
+
+  btn.addEventListener("click", e => {
+    e.preventDefault();
+    btn.style.display = "none";
+    formBlock.style.display = "block";
+
+    // Плавное появление
+    formBlock.style.opacity = 0;
+    formBlock.style.transition = "opacity 0.5s ease";
+    requestAnimationFrame(() => {
+      formBlock.style.opacity = 1;
+    });
+  });
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.querySelector('#fileInput');
+  const fileGroup = document.querySelector('.form__group_file');
+  const fileName = document.querySelector('.file__name');
+
+  // Клик по всей области вызывает выбор файлов
+  fileGroup.addEventListener('click', (e) => {
+    // Исключаем повторное срабатывание, если кликнули прямо по input (на случай, если его случайно сделают видимым)
+    if (e.target !== input) {
+      input.click();
+    }
+  });
+
+  // Обновление текста после выбора файлов
+  input.addEventListener('change', () => {
+    if (input.files.length === 0) {
+      fileName.textContent = 'Файлы не выбраны';
+    } else if (input.files.length === 1) {
+      fileName.textContent = input.files[0].name;
+    } else {
+      fileName.textContent = `Выбрано файлов: ${input.files.length}`;
+    }
+  });
+});
+document.addEventListener('DOMContentLoaded', function() {
+  const copyBtns = document.querySelectorAll('.code__btn');
+
+  copyBtns.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const codeBlock = btn.closest('.code__block');
+      const codeText = codeBlock.querySelector('.code__text').textContent.trim();
+
+      navigator.clipboard.writeText(codeText)
+        .then(() => {
+          btn.textContent = 'Скопировано!';
+          setTimeout(() => btn.textContent = 'Скопировать', 2000);
+        })
+        .catch(err => {
+          console.error('Ошибка копирования:', err);
+        });
+    });
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  // Списки значений
   const cities = [
     "Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург",
     "Казань", "Нижний Новгород", "Самара", "Ростов-на-Дону",
     "Уфа", "Красноярск", "Владивосток", "Пермь"
   ];
 
-  // Берём все формы
+  const times = Array.from({ length: 24 * 2 }, (_, i) => {
+    const h = Math.floor(i / 2);
+    const m = i % 2 === 0 ? "00" : "30";
+    return `${String(h).padStart(2, "0")}:${m}`;
+  });
+
+  const dates = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date();
+    d.setDate(d.getDate() + i);
+    return d.toLocaleDateString("ru-RU", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric"
+    });
+  });
+
+  const documents = [
+    "Паспорт",
+    "Заграничный паспорт",
+    "Водительское удостоверение",
+    "Свидетельство о рождении",
+    "ИНН",
+    "СНИЛС",
+    "Удостоверение личности моряка",
+    "Военный билет"
+  ];
+
+  const bodytypes = [
+    "Фургон",
+    "Тент",
+    "Рефрижератор",
+    "Открытая платформа",
+    "Контейнеровоз",
+    "Автовоз",
+    "Цистерна",
+    "Самосвал",
+    "Бортовой"
+  ];
+
+  const statuses = [
+    "Создан",
+    "Ожидает отправки",
+    "В пути",
+    "На терминале",
+    "Доставлен",
+    "Отменён"
+  ];
+
+  const franchises = [
+    "Микро (до 50 м²)",
+    "Мини (до 100 м²)",
+    "Стандарт (100–300 м²)",
+    "Флагман (более 300 м²)",
+    "Онлайн формат",
+    "Партнёрский пункт выдачи",
+    "Корнер в торговом центре"
+  ];
+
+  // Все списки в одном объекте
+  const lists = {
+    city: cities,
+    time: times,
+    date: dates,
+    documents: documents,
+    bodytype: bodytypes,
+    status: statuses,
+    franchise: franchises
+  };
+
+  // Обрабатываем все формы
   const forms = document.querySelectorAll(".form");
 
   forms.forEach(form => {
-    // Находим пары инпут + дропдаун внутри формы
-    const inputs = form.querySelectorAll(".form__group");
+    const groups = form.querySelectorAll(".form__group");
 
-    inputs.forEach(group => {
+    groups.forEach(group => {
       const field = group.querySelector("input");
       const dropdown = group.querySelector(".form__dropdown");
+      const type = group.dataset.type;
+      if (!field || !dropdown || !lists[type]) return;
 
-      if (!field || !dropdown) return;
+      const items = lists[type];
+      dropdown.innerHTML = items.map(i => `<li>${i}</li>`).join("");
 
-      // Заполняем список городов
-      dropdown.innerHTML = cities.map(c => `<li>${c}</li>`).join("");
-
-      // Показ списка при фокусе
+      // Показ при фокусе
       field.addEventListener("focus", () => {
         closeAllDropdowns();
         dropdown.classList.add("active");
       });
 
-      // Фильтрация по вводу
-      field.addEventListener("input", () => {
-        const value = field.value.toLowerCase();
-        dropdown.innerHTML = cities
-          .filter(c => c.toLowerCase().includes(value))
-          .map(c => `<li>${c}</li>`)
-          .join("");
-      });
+      // Фильтрация по вводу (для всех текстовых списков)
+      if (["city", "documents", "bodytype", "status", "franchise"].includes(type)) {
+        field.addEventListener("input", () => {
+          const value = field.value.toLowerCase();
+          dropdown.innerHTML = items
+            .filter(i => i.toLowerCase().includes(value))
+            .map(i => `<li>${i}</li>`)
+            .join("");
+        });
+      }
 
-      // Выбор города
+      // Выбор значения
       dropdown.addEventListener("click", e => {
         if (e.target.tagName === "LI") {
           field.value = e.target.textContent;
@@ -478,7 +646,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Закрытие всех списков при клике вне
+  // Закрытие всех дропдаунов при клике вне
   document.addEventListener("click", e => {
     if (!e.target.closest(".form__group")) {
       closeAllDropdowns();
