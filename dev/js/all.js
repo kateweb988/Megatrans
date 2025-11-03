@@ -67,6 +67,23 @@ document.addEventListener("DOMContentLoaded", () => {
     new ItcTabs(tabsContainer);
   });
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.querySelector('.geo__block input[type="search"]');
+    const geoItems = document.querySelectorAll('.geo__item');
+
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase().trim();
+
+        geoItems.forEach(item => {
+            const title = item.querySelector('.geo__title').textContent.toLowerCase();
+            if (title.includes(query)) {
+                item.style.display = ''; // показываем элемент
+            } else {
+                item.style.display = 'none'; // скрываем элемент
+            }
+        });
+    });
+});
 document.addEventListener('DOMContentLoaded', function() {
   const replaceBtn = document.querySelector('.local__replace');
   const inputs = document.querySelectorAll('.local__per input');
@@ -709,6 +726,11 @@ document.addEventListener('DOMContentLoaded', function () {
   $('.a2, .link').click(function (e) {
     e.preventDefault();
     $('#popup-call2').arcticmodal({
+    });
+  });
+  $('.a3').click(function (e) {
+    e.preventDefault();
+    $('#popup-call3').arcticmodal({
     });
   });
 

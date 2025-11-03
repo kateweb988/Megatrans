@@ -80,10 +80,21 @@
         width: 72%
     .plus .van__item
         padding: 20px
-    .main-rules .tabs__pane:nth-child(3) .steps__sub, .main-rules .tabs__pane:nth-child(2) .steps__sub
+    .main-rules .tabs__pane:nth-child(3)
         margin-right: 0
-    .main-rules .tabs__pane:nth-child(3) .top, .main-rules .tabs__pane:nth-child(2) .top
+    .main-rules .tabs__pane:nth-child(3) .top
         max-width: 1001px
+    .main-rules .tabs__pane:nth-child(2)
+        .steps .top
+            max-width: 1147px
+        .order
+            margin-bottom: 0
+    .danger__item
+        width: 24.3%
+    .danger__item img
+        max-width: 100%
+    .danger__item:last-child a
+        width: 100%
 @media screen and (max-width: 1199px)
     input, textarea, select
         -webkit-appearance: none
@@ -448,6 +459,15 @@
             margin-bottom: 17px
     .main-rules .steps__sub
         margin-bottom: 30px
+    .danger__item
+        width: 32.7%
+    .danger
+        padding-bottom: 80px
+    .city__row
+        width: 100%
+    .popup-call__box .header__info h3
+        font-size: 39px
+        line-height: 120%
 @media ( max-width: 991px )
     input, textarea, select
       -webkit-appearance: none
@@ -950,6 +970,10 @@
         left: initial
         right: -73px
         width: 40px
+    .danger__item
+        width: 49.4%    
+    .danger .top
+        margin-bottom: 16px
 @media screen and (max-width: 767px)
     button:active, button:focus 
       outline: none
@@ -1487,6 +1511,16 @@
         img 
             width: 100%
             height: 100%
+    .danger__item
+        height: auto
+        padding: 12px
+        width: 100%
+        &:last-child
+            height: 300px
+    .danger__item p
+        margin-bottom: 32px
+    .bottom__row:after
+        display: none
 @media screen and (max-width: 576px)
     button:active, button:focus 
         outline: none
@@ -1915,6 +1949,47 @@
         width: 100%
     .box-modal__close 
         right: -42px
+    .menu 
+        transition: 0s
+    .tooltip:hover .tooltip__text
+        transform: translateX(-93%) translateY(4px)
+    .tooltip__text::after 
+        right: 0
+        top: 94%
+        left: initial
+        transform: translateX(-46%)
+    .city__row a
+        font-size: 14px
+    .city__row
+        column-gap: 20px
+    #popup-thank h3
+        margin-top: 20px
+    .van__item 
+        &:after 
+            display: block
+    .order__top
+        flex-direction: column
+    .main-rules .steps__item
+        margin-bottom: 8px
+        &:last-child
+            margin-bottom: 0
+    .page .header-career
+        .form .form__group
+            margin-bottom: 0
+    .page .header-career .form
+        height: 65px
+    .main-tar .accordeon h3
+        font-size: 18px
+        line-height: 120%
+    .main-tar .accordeon .accordeon__item
+        min-height: 67px
+    .local-tar__scroll_1
+        margin-bottom: 20px
+    .local-tar__scroll
+        margin-bottom: 12px
+    .main-tar
+        .tabs__nav
+            overflow: hidden
 @media screen and (max-width: 390px)
     .log__map 
         top: 105px
