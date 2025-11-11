@@ -663,7 +663,11 @@ body.no-scroll
          color: rgba(125, 125, 137, 1)
          font-size: 14px
          font-weight: 400
+         cursor: pointer
          line-height: 17px
+         transition: 0.5s
+         &:hover
+            color: $red
       &:before 
          content: ""
          display: block
@@ -847,7 +851,7 @@ body.no-scroll
       span 
          color: #E30613
    .form__field:focus + .form__label,
-   .form__field:not(:placeholder-shown) + .form__label
+   .form__field.filled + .form__label
       top: 17px
       left: 13px
       font-size: 12px
@@ -939,6 +943,11 @@ body.no-scroll
          font-size: 16px
          font-weight: 400
          line-height: 19px
+.form__field.error-input
+   border-color: red !important
+.checkbox
+   .error-input + label::before
+      border-color: red
 .form2 
    display: flex
    align-items: center
@@ -1069,6 +1078,14 @@ label.error
       background: rgba(240, 240, 240, 1)
       position: relative
       transition: 0.5s
+      & > a
+         position: absolute
+         width: 100%
+         height: 100%
+         z-index: 2
+         top: 0
+         left: 0
+         display: block
       &:hover
          transform: scale(0.93)
          .main__content 
@@ -1081,6 +1098,7 @@ label.error
       position: absolute
       bottom: 0
       right: 0
+      max-width: 300px
    &__content 
       height: 100%
       display: flex
@@ -1801,6 +1819,7 @@ input[type="search"]::-webkit-search-results-decoration
       padding: 0
       max-width: 100%
       position: initial
+      z-index: 3
       .go_to 
          position: absolute
          bottom: 20px
@@ -2035,7 +2054,6 @@ input[type="search"]::-webkit-search-results-decoration
       width: 8rem 
       pointer-events: none 
       z-index: 3 
-      filter: blur(6px) 
    &::before  
       left: 0 
       background: linear-gradient(90deg,rgba(255, 255, 255, 1) 0%,rgba(255, 255, 255, 0) 60%) 
@@ -2185,6 +2203,28 @@ input[type="search"]::-webkit-search-results-decoration
    &__right 
       width: 100%
       max-width: 655px
+      h4 
+         color: rgba(26, 26, 26, 1)
+         font-size: 21px
+         font-weight: 400
+         line-height: 25px
+         margin-top: 0
+         margin-bottom: 30px
+         a 
+            position: relative
+            color: rgba(26, 26, 26, 1)
+            &:after 
+               content: ""
+               display: block
+               width: 100%
+               height: 1px
+               position: absolute
+               bottom: -1px
+               left: 0
+               background: linear-gradient(135deg, rgb(29, 50, 123), rgb(225, 8, 24) 100%)
+               opacity: 0.4
+            &:hover 
+               color: $red
       h2 
          margin-bottom: 48px
       ul 
@@ -2193,6 +2233,18 @@ input[type="search"]::-webkit-search-results-decoration
             display: flex
             align-items: center
             margin-bottom: 12px
+            &:before 
+               content: ""
+               display: inline-block
+               margin-right: 0px
+               background: url(/img/li.svg) no-repeat center center
+               width: 32px
+               height: 32px
+               flex: 1 0 auto 
+               max-width: 32px
+               margin-left: 0
+               border-radius: 0px
+               top: -5px
             &:last-child
                margin-bottom: 0
             p 
@@ -2211,7 +2263,7 @@ input[type="search"]::-webkit-search-results-decoration
                      width: 100%
                      height: 1px
                      position: absolute
-                     bottom: -3px   
+                     bottom: 0px   
                      left: 0
                      background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
                      opacity: 0.4
@@ -2294,7 +2346,7 @@ input[type="search"]::-webkit-search-results-decoration
                         width: 100%
                         height: 1px
                         position: absolute
-                        bottom: -3px   
+                        bottom: 0px   
                         left: 0
                         background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
                         opacity: 0.4
@@ -2367,6 +2419,8 @@ input[type="search"]::-webkit-search-results-decoration
          .custom-checkbox:checked + label::before
             background: url(/img/round.svg) no-repeat center center
             background-color: #1D327B
+   .free__right ul li:before
+      background: url(/img/li2.svg) no-repeat center center
 .bottom 
    border-top: 1px solid rgba(234, 234, 234, 1)
    &__row 
@@ -2686,7 +2740,7 @@ input[type="search"]::-webkit-search-results-decoration
       background: rgba(240, 240, 240, 1)
       box-sizing: border-box
       position: relative
-      top: -1px
+      top: -2px
    .custom-checkbox:checked + label::before
       background: url(/img/check.svg) no-repeat center center
       background-color: #1D327B
@@ -2710,7 +2764,7 @@ input[type="search"]::-webkit-search-results-decoration
                   width: 100%
                   height: 1px
                   position: absolute
-                  bottom: -3px   
+                  bottom: 0px   
                   left: 0
                   background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
                   opacity: 0.4
@@ -2801,7 +2855,7 @@ input[type="search"]::-webkit-search-results-decoration
                      width: 100%
                      height: 1px
                      position: absolute
-                     bottom: -3px   
+                     bottom: 0px   
                      left: 0
                      background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
                      opacity: 0.4
@@ -3274,7 +3328,7 @@ input[type="search"]::-webkit-search-results-decoration
                      width: 100%
                      height: 1px
                      position: absolute
-                     bottom: -3px   
+                     bottom: 0px   
                      left: 0
                      background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
                      opacity: 0.4
@@ -3372,15 +3426,8 @@ input[type="search"]::-webkit-search-results-decoration
       display: flex
       justify-content: space-between
       position: relative
-      label
-         display: block
-         position: absolute
-         color: rgba(125, 125, 137, 1)
-         font-size: 12px
-         font-weight: 400
-         line-height: 14px
-         left: 25px
-         top: 16px
+      .form__group
+         width: 49%
       button 
          transition: 0.5s 
          cursor: pointer
@@ -3411,7 +3458,7 @@ input[type="search"]::-webkit-search-results-decoration
          line-height: 19px
          padding-top: 17px
          height: 56px
-   &__per 
+   .form__group
       position: relative
    &__content
       width: 100%
@@ -3478,28 +3525,14 @@ input[type="search"]::-webkit-search-results-decoration
          border-radius: 8px
          padding: 6px 8px 6px 8px
          background: rgba(255, 255, 255, 1)
-         &:before 
-            content: ""
-            display: block
-            width: 16px
-            height: 16px
-            background: url(/img/yes.svg) no-repeat center center
+         img
             margin-right: 8px
-         &:after 
-            content: "Оплачен"
+         p
             display: block
             color: rgba(26, 26, 26, 1)
             font-size: 14px
             font-weight: 400
             line-height: 17px
-      &.none 
-         div
-            &:before 
-               position: relative
-               top: 1px
-               background: url(/img/no.svg) no-repeat center center
-            &:after 
-               content: "Не оплачен"
    &__num 
       font-size: 32px
       font-weight: 700
@@ -3654,7 +3687,7 @@ input[type="search"]::-webkit-search-results-decoration
    .tabs__nav .tabs__btn_active div .svg path
       stroke: white
    .tabs__nav a
-      width: 33%
+      width: 49.6%
    &__wrap 
       position: relative
    &__pic 
@@ -3750,14 +3783,14 @@ input[type="search"]::-webkit-search-results-decoration
       justify-content: space-between
       padding: 0 20px
       line-height: 22px
-      color: $black
+      color: $black !important
       .svg 
          path
             stroke: rgba(26, 26, 26, 1)
    .tabs__pane
       &:nth-child(2)
          .main-online__pic
-            left: 100px
+            left: 14px
          .main-online__fig 
             height: 126%
       &:nth-child(3)
@@ -4060,27 +4093,6 @@ input[type="search"]::-webkit-search-results-decoration
             .svg 
                path 
                   fill: white
-   &__sub 
-      color: rgba(26, 26, 26, 1)
-      font-size: 21px
-      font-weight: 400
-      line-height: 25px
-      margin-bottom: 30px
-      a 
-         position: relative
-         color: rgba(26, 26, 26, 1)
-         &:after 
-            content: ""
-            display: block
-            width: 100%
-            height: 1px
-            position: absolute
-            bottom: -1px
-            left: 0
-            background: linear-gradient(135deg, rgb(29, 50, 123), rgb(225, 8, 24) 100%)
-            opacity: 0.4
-         &:hover 
-            color: $red
    &__text
       margin-bottom: 40px
    h3 
@@ -4094,6 +4106,13 @@ input[type="search"]::-webkit-search-results-decoration
          font-size: 24px
          font-weight: 700
          line-height: 29px
+   .free__right
+      p 
+         margin-bottom: 40px
+      ul 
+         li 
+            p 
+               margin-bottom: 0
 .plus 
    padding-bottom: 120px
    .free__left
@@ -4144,7 +4163,7 @@ input[type="search"]::-webkit-search-results-decoration
                width: 100%
                height: 1px
                position: absolute
-               bottom: -3px   
+               bottom: 0px   
                left: 0
                background: linear-gradient(135.00deg, rgba(29, 50, 123, 1),rgba(225, 8, 24, 1) 100%)
                opacity: 0.4
@@ -4208,6 +4227,7 @@ input[type="search"]::-webkit-search-results-decoration
             background: url(/img/ok2.svg) no-repeat center center
 .form__group_file  
    position: relative 
+   flex-direction: column
    display: flex 
    align-items: center
    justify-content: center
@@ -4244,6 +4264,31 @@ input[type="search"]::-webkit-search-results-decoration
    line-height: 17px
    transition: 0.5s
    margin-left: 12px
+.file__list
+   flex-wrap: wrap
+   display: flex
+   justify-content: center
+   gap: 10px
+   &.active
+      margin-top: 20px
+.file__item
+   width: max-content
+   height: 36px
+   font-weight: 400
+   font-size: 14px
+   line-height: 130%
+   color: #1A1A1A
+   display: flex
+   align-items: center
+   justify-content: center
+   padding: 0px 12px
+   background: #F0F0F0
+   border-radius: 8px
+.file__remove
+   width: 16px
+   height: 16px
+   margin-left: 8px
+   background: url(/img/red-exit.svg) no-repeat !important
 .main-career
    .tabs__nav a
       div .svg path
@@ -4324,23 +4369,33 @@ input[type="search"]::-webkit-search-results-decoration
       background: url(/img/faq2.svg) no-repeat !important
    .panel__text
       max-width: 100%
-   &__list 
-      max-width: 631px
-      width: 100%
-      li 
-         margin-bottom: 12px
-         display: flex
-         align-items: flex-start
-         color: rgba(16, 14, 23, 1)
-         font-size: 16px
-         font-weight: 400
-         line-height: 19px
-         img 
-            margin-right: 16px
-            position: relative
-            top: -2px
-         &:last-child
-            margin-bottom: 0
+      ul
+         max-width: 631px
+         width: 100%
+         li 
+            margin-bottom: 12px
+            display: flex
+            align-items: flex-start
+            color: rgba(16, 14, 23, 1)
+            font-size: 16px
+            font-weight: 400
+            line-height: 19px
+            &:before 
+               content: ""
+               display: inline-block
+               margin-right: 0px
+               background: url(/img/li2.svg) no-repeat center center
+               width: 32px
+               height: 32px
+               flex: 1 0 auto 
+               max-width: 32px
+               margin-left: 0
+               border-radius: 0px
+               top: -3px
+               margin-right: 16px
+               position: relative
+            &:last-child
+               margin-bottom: 0
    &__block 
       width: 100%
       overflow: hidden
@@ -5088,10 +5143,17 @@ input[type="search"]::-webkit-search-results-decoration
       ul li
          margin-bottom: 12px
          align-items: flex-start
-         img 
-            margin-right: 16px
          &:before 
-            display: none
+            display: inline-block
+            margin-right: 16px
+            background: url(/img/li2.svg) no-repeat center center
+            width: 32px
+            height: 32px
+            flex: 1 0 auto 
+            max-width: 32px
+            margin-left: 0
+            border-radius: 0px
+            top: -5px
          &:last-child
             margin-bottom: 0
    .steps__sub
@@ -5325,6 +5387,60 @@ input[type="search"]::-webkit-search-results-decoration
       tbody tr:first-child td:first-child  
          z-index: 3 
          background: white
-
-   
- 
+.local-tar__el table tbody tr:last-child td:last-child
+   border-bottom: none
+.main-tar .local-tar__acc .local-tar__scroll_2 tr td:nth-child(n+1)
+   border-right: 1px solid rgb(234, 234, 234)
+#citySelect
+   width: 88.5%
+   padding: 15px 12px 15px 10px
+   margin-left: 24px
+   margin-top: 12px
+   margin-bottom: 20px
+   appearance: none
+   -webkit-appearance: none
+   -moz-appearance: none
+   cursor: pointer
+   outline: none
+   position: relative
+.geo__filter 
+   position: relative
+   &:after 
+      content: ""
+      position: absolute
+      right: 38px
+      top: 35px
+      transform: translateY(-50%) rotate(45deg)
+      width: 8px
+      height: 8px
+      border-right: 2px solid #666;
+      border-bottom: 2px solid #666
+      pointer-events: none
+      transition: right 0.3s
+.free8 .free6__area
+   ul li:before
+      background: url(/img/li2.svg) no-repeat center center
+.local__form_main
+   label 
+      font-weight: 400
+      font-size: 12px
+      line-height: 140%
+      font-feature-settings: 'liga' off
+      color: #7D7D89
+      position: absolute
+      top: 16px
+      left: 25px
+.plus .van__box ul
+   li:before 
+      content: ""
+      display: inline-flex
+      position: relative
+      top: 6px
+      width: 6px
+      height: 6px
+      max-width: 6px
+      border-radius: 50%
+      flex: 1 0 auto
+      background: rgb(227, 6, 19)
+      margin-right: 35px
+      margin-left: 10px

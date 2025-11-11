@@ -329,12 +329,12 @@
 										</div> -->
 								<div class="tabs__pane tabs__pane_show">
 									<form action="success.php" class="form js-form" id="popupResult" method="post">
-										<div class="form__group">
+										<div class="form__group" data-type="city">
 											<input type="text" class="form__field" name="local1" placeholder="" id="local1" required>
 											<label for="local1" class="form__label">Откуда</label> 
 											<ul class="form__dropdown" id="dropdown-local1"></ul>
 										</div>
-										<div class="form__group">
+										<div class="form__group" data-type="city">
 											<input type="text" placeholder="" class="form__field" name="local2" id="local2" required>
 											<label for="local2" class="form__label">Куда</label> 
 											<ul class="form__dropdown" id="dropdown-local2"></ul>
@@ -457,6 +457,7 @@
 							<div class="tabs__pane tabs__pane_show">
 								<div class="main__row q">
 									<div class="main__item">
+										<a href="#"></a>
 										<img src="img/main1.png" alt="" class="main__pic">
 										<div class="main__content">
 											<h3>
@@ -476,6 +477,7 @@
 										</div>
 									</div>
 									<div class="main__item">
+										<a href="#"></a>
 										<img src="img/main2.png" alt="" class="main__pic">
 										<div class="main__content">
 											<h3>
@@ -495,6 +497,7 @@
 										</div>
 									</div>
 									<div class="main__item">
+										<a href="#"></a>
 										<img src="img/main3.png" alt="" class="main__pic">
 										<div class="main__content">
 											<h3>
@@ -514,6 +517,7 @@
 										</div>
 									</div>
 									<div class="main__item">
+										<a href="#"></a>
 										<img src="img/main4.png" alt="" class="main__pic">
 										<div class="main__content">
 											<h3>
@@ -537,6 +541,7 @@
 							<div class="tabs__pane">
 								<div class="main__row q">
 									<div class="main__item">
+										<a href="#"></a>
 										<img src="img/main5.png" alt="" class="main__pic">
 										<div class="main__content">
 											<h3>
@@ -556,6 +561,7 @@
 										</div>
 									</div>
 									<div class="main__item">
+										<a href="#"></a>
 										<img src="img/main6.png" alt="" class="main__pic">
 										<div class="main__content">
 											<h3>
@@ -575,6 +581,7 @@
 										</div>
 									</div>
 									<div class="main__item">
+										<a href="#"></a>
 										<img src="img/main7.png" alt="" class="main__pic">
 										<div class="main__content">
 											<h3>
@@ -593,6 +600,7 @@
 										</div>
 									</div>
 									<div class="main__item">
+										<a href="#"></a>
 										<img src="img/main8.png" alt="" class="main__pic">
 										<div class="main__content">
 											<h3>
@@ -616,6 +624,7 @@
 							<div class="tabs__pane">
 								<div class="main__row q">
 									<div class="main__item">
+										<a href="#"></a>
 										<img src="img/main9.png" alt="" class="main__pic">
 										<div class="main__content">
 											<h3>
@@ -635,6 +644,7 @@
 										</div>
 									</div>
 									<div class="main__item">
+										<a href="#"></a>
 										<img src="img/main10.png" alt="" class="main__pic">
 										<div class="main__content">
 											<h3>
@@ -654,6 +664,7 @@
 										</div>
 									</div>
 									<div class="main__item">
+										<a href="#"></a>
 										<img src="img/main11.png" alt="" class="main__pic">
 										<div class="main__content">
 											<h3>
@@ -673,6 +684,7 @@
 										</div>
 									</div>
 									<div class="main__item">
+										<a href="#"></a>
 										<img src="img/main12.png" alt="" class="main__pic">
 										<div class="main__content">
 											<h3>
@@ -696,6 +708,7 @@
 							<div class="tabs__pane">
 								<div class="main__row q">
 									<div class="main__item">
+										<a href="#"></a>
 										<img src="img/main13.png" alt="" class="main__pic">
 										<div class="main__content">
 											<h3>
@@ -715,6 +728,7 @@
 										</div>
 									</div>
 									<div class="main__item">
+										<a href="#"></a>
 										<img src="img/main14.png" alt="" class="main__pic">
 										<div class="main__content">
 											<h3>
@@ -734,6 +748,7 @@
 										</div>
 									</div>
 									<div class="main__item">
+										<a href="#"></a>
 										<img src="img/main15.png" alt="" class="main__pic">
 										<div class="main__content">
 											<h3>
@@ -753,6 +768,7 @@
 										</div>
 									</div>
 									<div class="main__item">
+										<a href="#"></a>
 										<img src="img/main16.png" alt="" class="main__pic">
 										<div class="main__content">
 											<h3>
@@ -1282,6 +1298,88 @@
 				</div>
 			</div>
 		</footer>
+		<div style="display:none;">
+			<div class="box-modal" id="popup-call3">
+				<div class="popup-call__box call">
+					<div class="box-modal__close articmodal-close">
+						<img src="img/close.svg" alt="">
+					</div>
+					<div class="header__info">
+						<h3>
+							Выберите ваш город
+						</h3>
+						<div class="city__row">
+							<a href="#" class="underline">
+								Москва
+							</a>
+							<a href="#" class="underline">
+								Санкт-Петербург
+							</a>
+							<a href="#" class="underline">
+								Буйнакск
+							</a>
+							<a href="#" class="underline">
+								Воронеж
+							</a>
+							<a href="#" class="underline">
+								Грозный
+							</a>
+							<a href="#" class="underline">
+								Дербент
+							</a>
+							<a href="#" class="underline">
+								Донецк
+							</a>
+							<a href="#" class="underline">
+								Екатеринбург
+							</a>
+							<a href="#" class="underline">
+								Иваново
+							</a>
+							<a href="#" class="underline">
+								Избербаш
+							</a>
+							<a href="#" class="underline">
+								Казань
+							</a>
+							<a href="#" class="underline">
+								Каспийск
+							</a>
+							<a href="#" class="underline">
+								Краснодар
+							</a>
+							<a href="#" class="underline">
+								Луганск
+							</a>
+							<a href="#" class="underline">
+								Махачкала
+							</a>
+							<a href="#" class="underline">
+								Набережные Челны
+							</a>
+							<a href="#" class="underline">
+								Пятигорск
+							</a>
+							<a href="#" class="underline">
+								Ростов-на-Дону
+							</a>
+							<a href="#" class="underline">
+								Симферополь
+							</a>
+							<a href="#" class="underline">
+								Сургут
+							</a>
+							<a href="#" class="underline">
+								Тюмень
+							</a>
+							<a href="#" class="underline">
+								Хасавюрт
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>

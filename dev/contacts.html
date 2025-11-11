@@ -254,13 +254,17 @@
 		<section class="geo geo-contacts" id="geo">
 			<div class="container">
 				<div class="wrap">
-					<div class="geo__block">
-						<form action="#">
-							<input type="search" placeholder="Поиск по филиалам">
-							<button>
-								<img src="img/search.svg" alt="" class="svg">
-							</button>
-						</form>
+					<div class="geo__block geo__filter arrow-left">
+						<select id="citySelect">
+							<option value="all">Все города</option>
+							<option value="ekb">Екатеринбург</option>
+							<option value="msk">Москва</option>
+							<option value="stv">Ставрополь</option>
+							<option value="anapa">Анапа</option>
+							<option value="vorkuta">Воркута</option>
+							<option value="vladivostok">Владивосток</option>
+							<option value="piter">Санкт-Петербург</option>
+						</select>
 						<div class="geo__items">
 							<div class="geo__item" data-id="ekb" data-coords="56.810563,60.612746">
 								<p class="geo__title">Екатеринбург</p>
@@ -433,13 +437,13 @@
 						<p class="order__text">
 							Рассчитаем лучший вариант под ваши задачи.
 						</p>
-						<form action="success.php" class="form js-form" id="popupResult" method="post">
-							<div class="form__group">
+						<form action="success.php" class="form  js-form" id="popupResult" method="post">
+							<div class="form__group" data-type="city">
 								<input type="text" class="form__field" name="local1" placeholder="" id="local1" required>
 								<label for="local1" class="form__label">Откуда</label> 
 								<ul class="form__dropdown" id="dropdown-local1"></ul>
 							</div>
-							<div class="form__group">
+							<div class="form__group" data-type="city">
 								<input type="text" placeholder="" class="form__field" name="local2" id="local2" required>
 								<label for="local2" class="form__label">Куда</label> 
 								<ul class="form__dropdown" id="dropdown-local2"></ul>
@@ -462,7 +466,7 @@
 									value="Я даю свое согласие на обработку персональных данных">
 								<label class="form-check-label " for="form2">
 									<span>
-										Нажимая на кнопку, вы даёте согласие на <a href="#"> обработку ваших персональных данных</a>
+										Я даю <a href="#"> согласие</a> на обработку своих <a href="#"> персональных данных</a>
 									</span>
 								</label>
 							</div>

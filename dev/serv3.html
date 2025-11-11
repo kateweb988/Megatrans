@@ -265,7 +265,7 @@
 				</div>
 			</div>
 		</header>
-		<section class="van pack" id="van">
+		<section class="van pack" >
 			<div class="container">
 				<div class="pack__top q">
 					<a href="#">
@@ -281,7 +281,7 @@
 						</p>
 					</a>
 				</div>
-				<div class="pack__wrap">
+				<div class="pack__wrap" id="van">
 					<div class="tabs">
 						<div class="tabs__nav d-flex">
 							<a href="#" class="tabs__btn tab-btn active" data-tab="1">
@@ -532,12 +532,12 @@
 							Рассчитаем лучший вариант под ваши задачи.
 						</p>
 						<form action="success.php" class="form js-form" id="popupResult" method="post">
-							<div class="form__group">
+							<div class="form__group" data-type="city">
 								<input type="text" class="form__field" name="local1" placeholder="" id="local1" required>
 								<label for="local1" class="form__label">Откуда</label> 
 								<ul class="form__dropdown" id="dropdown-local1"></ul>
 							</div>
-							<div class="form__group">
+							<div class="form__group" data-type="city">
 								<input type="text" placeholder="" class="form__field" name="local2" id="local2" required>
 								<label for="local2" class="form__label">Куда</label> 
 								<ul class="form__dropdown" id="dropdown-local2"></ul>
@@ -590,7 +590,7 @@
 									value="Я даю свое согласие на обработку персональных данных">
 								<label class="form-check-label " for="form2">
 									<span>
-										Нажимая на кнопку, вы даёте согласие на <a href="#"> обработку ваших персональных данных</a>
+										Я даю <a href="#"> согласие</a> на обработку своих <a href="#"> персональных данных</a>
 									</span>
 								</label>
 							</div>

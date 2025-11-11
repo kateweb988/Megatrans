@@ -266,12 +266,12 @@
 							Рассчитайте
 						</h3>
 						<form action="success.php" class="form js-form" id="popupResult" method="post">
-							<div class="form__group">
+							<div class="form__group" data-type="city">
 								<input type="text" class="form__field" name="local1" placeholder="" id="local1" required>
 								<label for="local1" class="form__label">Откуда</label> 
 								<ul class="form__dropdown" id="dropdown-local1"></ul>
 							</div>
-							<div class="form__group">
+							<div class="form__group" data-type="city">
 								<input type="text" placeholder="" class="form__field" name="local2" id="local2" required>
 								<label for="local2" class="form__label">Куда</label> 
 								<ul class="form__dropdown" id="dropdown-local2"></ul>
@@ -503,19 +503,19 @@
 							</p>
 							<ul>
 								<li>
-									<img src="img/li.svg" alt="">
+									 
 									<p>
 										По телефонам терминала в разделе <a href="#"> контакты</a>
 									</p>
 								</li>
 								<li>
-									<img src="img/li.svg" alt="">
+									 
 									<p>
 										Через сервис <a href="#">  отслеживания </a>
 									</p>
 								</li>
 								<li>
-									<img src="img/li.svg" alt="">
+									 
 									<p>
 										В личном кабинете на сайте или в <a href="#">  приложении</a>
 									</p>
@@ -545,19 +545,19 @@
 						</p>
 						<ul>
 							<li>
-								<img src="img/li2.svg" alt="">
+								 
 								<p>
 									По телефону горячей линии: <a href="tel:8 8007007455"> 8 800 700 74 55</a>
 								</p>
 							</li>
 							<li>
-								<img src="img/li2.svg" alt="">
+								 
 								<p>
 									В личном кабинете на <a href="#"> сайте</a>
 								</p>
 							</li>
 							<li>
-								<img src="img/li2.svg" alt="">
+								 
 								<p>
 									В <a href="#"> приложении</a>
 								</p>
@@ -589,7 +589,7 @@
 							<div class="order__top q">
 								<div class="checkbox q">
 									<input class="form-check-input custom-checkbox form-control" type="radio" name="checkk" id="forms2"
-										value="Я даю свое согласие на обработку персональных данных">
+										value="Я даю свое согласие на обработку персональных данных" checked>
 									<label class="form-check-label " for="forms2">
 										<span>
 											до 10 м3
@@ -606,12 +606,12 @@
 									</label>
 								</div>
 							</div>
-							<div class="form__group">
+							<div class="form__group" data-type="city">
 								<input type="text" class="form__field" name="local1" placeholder="" id="local1" required>
 								<label for="local1" class="form__label">Откуда</label> 
 								<ul class="form__dropdown" id="dropdown-local1"></ul>
 							</div>
-							<div class="form__group">
+							<div class="form__group" data-type="city">
 								<input type="text" placeholder="" class="form__field" name="local2" id="local2" required>
 								<label for="local2" class="form__label">Куда</label> 
 								<ul class="form__dropdown" id="dropdown-local2"></ul>
@@ -664,7 +664,7 @@
 									value="Я даю свое согласие на обработку персональных данных">
 								<label class="form-check-label " for="form2">
 									<span>
-										Нажимая на кнопку, вы даёте согласие на <a href="#"> обработку ваших персональных данных</a>
+										Я даю <a href="#"> согласие</a> на обработку своих <a href="#"> персональных данных</a>
 									</span>
 								</label>
 							</div>
