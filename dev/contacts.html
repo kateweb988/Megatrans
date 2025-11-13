@@ -251,20 +251,23 @@
 				</div>
 			</div>
 		</header>
-		<section class="geo geo-contacts" id="geo">
+		<section class="geo geo-contacts" id="geo-contacts">
 			<div class="container">
 				<div class="wrap">
 					<div class="geo__block geo__filter arrow-left">
-						<select id="citySelect">
-							<option value="all">Все города</option>
-							<option value="ekb">Екатеринбург</option>
-							<option value="msk">Москва</option>
-							<option value="stv">Ставрополь</option>
-							<option value="anapa">Анапа</option>
-							<option value="vorkuta">Воркута</option>
-							<option value="vladivostok">Владивосток</option>
-							<option value="piter">Санкт-Петербург</option>
-						</select>
+						<div class="geo__dropdown">
+							<div class="geo__dropdown-selected">Все города</div>
+							<ul class="geo__dropdown-list">
+								<li data-value="all">Все города</li>
+								<li data-value="ekb">Екатеринбург</li>
+								<li data-value="msk">Москва</li>
+								<li data-value="stv">Ставрополь</li>
+								<li data-value="anapa">Анапа</li>
+								<li data-value="vorkuta">Воркута</li>
+								<li data-value="vladivostok">Владивосток</li>
+								<li data-value="piter">Санкт-Петербург</li>
+							</ul>
+						</div>
 						<div class="geo__items">
 							<div class="geo__item" data-id="ekb" data-coords="56.810563,60.612746">
 								<p class="geo__title">Екатеринбург</p>

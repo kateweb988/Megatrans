@@ -659,13 +659,210 @@ document.addEventListener('DOMContentLoaded', function () {
     $('#popup-call2').arcticmodal({
     });
   });
-  $('.a3, .nav__item p').click(function (e) {
+  $('.a3, .nav__el span ').click(function (e) {
     e.preventDefault();
     $('#popup-call3').arcticmodal({
     });
   });
 
 });
+// document.addEventListener("DOMContentLoaded", () => {
+//   // --- popup1 ---
+//   const popupBg = document.querySelector('.popup__bg');
+//   const popup = document.querySelector('.popup');
+//   const openPopupButtons = document.querySelectorAll('section a.btn, .nav__call, .footer__call, .item__el');
+//   const closePopupButton = document.querySelector('.close-popup');
+
+//   openPopupButtons.forEach(button => {
+//     button.addEventListener('click', e => {
+//       e.preventDefault();
+//       popupBg.classList.add('active');
+//       popup.classList.add('active');
+//     });
+//   });
+
+//   if (closePopupButton) {
+//     closePopupButton.addEventListener('click', () => {
+//       popupBg.classList.remove('active');
+//       popup.classList.remove('active');
+//     });
+//   }
+
+//   document.addEventListener('click', e => {
+//     if (e.target === popupBg) {
+//       popupBg.classList.remove('active');
+//       popup.classList.remove('active');
+//     }
+//   });
+
+//   document.addEventListener('keydown', e => {
+//     if (e.key === 'Escape') {
+//       popupBg.classList.remove('active');
+//       popup.classList.remove('active');
+//     }
+//   });
+
+//   // --- popup2 ---
+//   const popupBg2 = document.querySelector('.popup__bg2');
+//   const popup2 = document.querySelector('.popup2');
+//   const closePopupButton2 = document.querySelectorAll('.popup__bg2 .close-popup');
+
+//   closePopupButton2.forEach(btn => {
+//     btn.addEventListener('click', () => {
+//       popupBg2.classList.remove('active');
+//       popup2.classList.remove('active');
+//     });
+//   });
+
+//   document.addEventListener('click', e => {
+//     if (e.target === popupBg2) {
+//       popupBg2.classList.remove('active');
+//       popup2.classList.remove('active');
+//     }
+//   });
+
+//   document.addEventListener('keydown', e => {
+//     if (e.key === 'Escape') {
+//       popupBg2.classList.remove('active');
+//       popup2.classList.remove('active');
+//     }
+//   });
+
+//   // ====== Дропдауны всех типов + подъем лейблов ======
+//   const lists = {
+//     city: ["Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург","Казань","Нижний Новгород","Самара","Ростов-на-Дону","Уфа","Красноярск","Владивосток","Пермь"],
+//     time: Array.from({ length: 24 * 2 }, (_, i) => { const h = Math.floor(i/2); const m = i%2===0?"00":"30"; return `${String(h).padStart(2,"0")}:${m}`; }),
+//     date: Array.from({ length: 7 }, (_, i) => { const d = new Date(); d.setDate(d.getDate()+i); return d.toLocaleDateString("ru-RU",{day:"2-digit",month:"2-digit",year:"numeric"}); }),
+//     documents: ["Паспорт","Заграничный паспорт","Водительское удостоверение","Свидетельство о рождении","ИНН","СНИЛС","Удостоверение личности моряка","Военный билет"],
+//     bodytype: ["Фургон","Тент","Рефрижератор","Открытая платформа","Контейнеровоз","Автовоз","Цистерна","Самосвал","Бортовой"],
+//     status: ["Создан","Ожидает отправки","В пути","На терминале","Доставлен","Отменён"],
+//     franchise: ["Микро (до 50 м²)","Мини (до 100 м²)","Стандарт (100–300 м²)","Флагман (более 300 м²)","Онлайн формат","Партнёрский пункт выдачи","Корнер в торговом центре"]
+//   };
+
+//   const allGroups = document.querySelectorAll('.form__group');
+
+//   allGroups.forEach(group => {
+//     const type = group.dataset.type;
+//     const field = group.querySelector('input');
+//     const dropdown = group.querySelector('.form__dropdown');
+//     if(!type || !field || !dropdown || !lists[type]) return;
+    
+//     const items = lists[type];
+//     dropdown.innerHTML = items.map(i => `<li>${i}</li>`).join('');
+
+//     // открыть дропдаун на фокус
+//     field.addEventListener('focus', () => {
+//       closeAllDropdowns();
+//       dropdown.classList.add('active');
+//     });
+
+//     // фильтрация для текстовых списков
+//     if(["city","documents","bodytype","status","franchise"].includes(type)) {
+//       field.addEventListener('input', () => {
+//         const val = field.value.toLowerCase();
+//         dropdown.innerHTML = items.filter(i => i.toLowerCase().includes(val))
+//                                   .map(i => `<li>${i}</li>`).join('');
+//       });
+//     }
+
+//     // выбор значения
+//     dropdown.addEventListener('click', e => {
+//       if(e.target.tagName==='LI') {
+//         field.value = e.target.textContent;
+//         dropdown.classList.remove('active');
+//         field.classList.add('filled');
+//       }
+//     });
+//   });
+
+//   document.addEventListener('click', e => {
+//     if(!e.target.closest('.form__group')) closeAllDropdowns();
+//   });
+
+//   function closeAllDropdowns() {
+//     document.querySelectorAll('.form__dropdown').forEach(d => d.classList.remove('active'));
+//   }
+
+//   // подъем лейблов
+//   const allFields = document.querySelectorAll('.form__field, textarea');
+//   allFields.forEach(field => {
+//     const checkFilled = () => field.value.trim()!==""?field.classList.add('filled'):field.classList.remove('filled');
+//     field.addEventListener('input', checkFilled);
+//     checkFilled();
+//   });
+
+//   // --- Валидация и AJAX ---
+//   $(document).ready(function () {
+//     $('[data-submit]').on('click', function(e){ e.preventDefault(); $(this).parents('form').submit(); });
+
+//     $.validator.addMethod("regex", function(value, element, regexp){
+//       var re = new RegExp(regexp);
+//       return this.optional(element) || re.test(value);
+//     }, "Некорректный формат");
+
+//     function valEl(el) {
+//       el.find('.form__field').removeClass('error-input valid');
+//       el.find('label.error').remove();
+
+//       el.validate({
+//         errorPlacement: function(){},
+//         highlight: function(element){ $(element).addClass('error-input'); },
+//         unhighlight: function(element){ $(element).removeClass('error-input').addClass('valid'); },
+//         focusInvalid: false,
+//         rules:{
+//           name:{required:true},
+//           tel:{required:true,regex:'^([\\+]+)*[0-9\\x20\\x28\\x29\\-]{5,20}$'},
+//           local1:{required:true},
+//           text:{required:true},
+//           checkk:{required:true},
+//           check2:{required:true},
+//           check:{required:true}
+//         },
+//         messages:{
+//           name:{required:'Заполните поле'},
+//           tel:{required:'Заполните поле', regex:'Неверный формат телефона'},
+//           local1:{required:'Укажите город'},
+//           text:{required:'Введите сообщение'},
+//           checkk:{required:'Выберите вариант (до 10 м3 / более 10 м3)'},
+//           check2:{required:'Подтвердите согласие на обработку персональных данных'},
+//           check:{required:'Подтвердите согласие на обработку персональных данных'}
+//         },
+//         submitHandler:function(form){
+//           const $form=$(form);
+//           const radioChecked = $form.find('input[name="checkk"]:checked').length>0;
+//           const consent1 = $form.find('input[name="check2"]').is(':checked');
+//           const consent2 = $form.find('input[name="check"]').is(':checked');
+//           if(!radioChecked || !consent1 || !consent2){ alert('Пожалуйста, заполните все обязательные поля и отметьте согласия.'); return false; }
+
+//           $('#loader').fadeIn();
+//           $.ajax({ type:'POST', url:$form.attr('action'), data:$form.serialize() })
+//            .always(()=> {
+//               setTimeout(()=> $('#loader').fadeOut(),800);
+//               setTimeout(()=>{
+//                 popupBg.classList.remove('active');
+//                 popup.classList.remove('active');
+//                 popupBg2.classList.add('active');
+//                 popup2.classList.add('active');
+//                 $form.trigger('reset');
+//                 $form.find('.error-input').removeClass('error-input');
+//                 allFields.forEach(f=>f.classList.remove('filled'));
+//               },1100);
+//            });
+//           return false;
+//         }
+//       });
+//     }
+
+//     $('.js-form').each(function(){ valEl($(this)); });
+
+//     // smooth scroll
+//     $('[data-scroll]').on('click', function(event){
+//       event.preventDefault();
+//       $('html, body').animate({ scrollTop: $($.attr(this,'data-scroll')).offset().top }, 2000);
+//     });
+//   });
+// });
+
 document.addEventListener("DOMContentLoaded", () => {
   // --- popup1 ---
   const popupBg = document.querySelector('.popup__bg');
@@ -731,8 +928,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // ====== Дропдауны всех типов + подъем лейблов ======
   const lists = {
     city: ["Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург","Казань","Нижний Новгород","Самара","Ростов-на-Дону","Уфа","Красноярск","Владивосток","Пермь"],
-    time: Array.from({ length: 24 * 2 }, (_, i) => { const h = Math.floor(i/2); const m = i%2===0?"00":"30"; return `${String(h).padStart(2,"0")}:${m}`; }),
-    date: Array.from({ length: 7 }, (_, i) => { const d = new Date(); d.setDate(d.getDate()+i); return d.toLocaleDateString("ru-RU",{day:"2-digit",month:"2-digit",year:"numeric"}); }),
+    time: Array.from({ length: 24 * 2 }, (_, i) => { 
+      const h = Math.floor(i/2); 
+      const m = i%2===0?"00":"30"; 
+      return `${String(h).padStart(2,"0")}:${m}`; 
+    }),
     documents: ["Паспорт","Заграничный паспорт","Водительское удостоверение","Свидетельство о рождении","ИНН","СНИЛС","Удостоверение личности моряка","Военный билет"],
     bodytype: ["Фургон","Тент","Рефрижератор","Открытая платформа","Контейнеровоз","Автовоз","Цистерна","Самосвал","Бортовой"],
     status: ["Создан","Ожидает отправки","В пути","На терминале","Доставлен","Отменён"],
@@ -745,18 +945,37 @@ document.addEventListener("DOMContentLoaded", () => {
     const type = group.dataset.type;
     const field = group.querySelector('input');
     const dropdown = group.querySelector('.form__dropdown');
-    if(!type || !field || !dropdown || !lists[type]) return;
-    
+    if(!type || !field) return;
+
+    // ====== КАЛЕНДАРЬ для date ======
+    if (type === 'date') {
+      if (dropdown) dropdown.remove(); // убираем стандартный список
+      flatpickr(field, {
+        dateFormat: "d.m.Y", // формат: 13.11.2025
+        minDate: "today",
+        locale: "ru",
+        disableMobile: true,
+        onReady: function(selectedDates, dateStr, instance) {
+          instance.calendarContainer.classList.add('flatpickr-theme');
+        },
+        onChange: function(selectedDates, dateStr) {
+          field.value = dateStr;
+          field.classList.add('filled');
+        }
+      });
+      return;
+    }
+
+    // ====== Обычные выпадающие списки ======
+    if(!dropdown || !lists[type]) return;
     const items = lists[type];
     dropdown.innerHTML = items.map(i => `<li>${i}</li>`).join('');
 
-    // открыть дропдаун на фокус
     field.addEventListener('focus', () => {
       closeAllDropdowns();
       dropdown.classList.add('active');
     });
 
-    // фильтрация для текстовых списков
     if(["city","documents","bodytype","status","franchise"].includes(type)) {
       field.addEventListener('input', () => {
         const val = field.value.toLowerCase();
@@ -765,7 +984,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // выбор значения
     dropdown.addEventListener('click', e => {
       if(e.target.tagName==='LI') {
         field.value = e.target.textContent;
@@ -783,7 +1001,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('.form__dropdown').forEach(d => d.classList.remove('active'));
   }
 
-  // подъем лейблов
+  // Подъем лейблов
   const allFields = document.querySelectorAll('.form__field, textarea');
   allFields.forEach(field => {
     const checkFilled = () => field.value.trim()!==""?field.classList.add('filled'):field.classList.remove('filled');
@@ -838,7 +1056,7 @@ document.addEventListener("DOMContentLoaded", () => {
           $.ajax({ type:'POST', url:$form.attr('action'), data:$form.serialize() })
            .always(()=> {
               setTimeout(()=> $('#loader').fadeOut(),800);
-              setTimeout(()=>{
+              setTimeout(()=> {
                 popupBg.classList.remove('active');
                 popup.classList.remove('active');
                 popupBg2.classList.add('active');
@@ -864,7 +1082,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
 document.addEventListener("DOMContentLoaded", () => {
   const inputs = document.querySelectorAll(".form__field");
 
@@ -886,13 +1103,22 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // Скролл по якорям
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('.go_to').forEach(link => {
+  document.querySelectorAll('.go_to, .go_to2').forEach(link => {
     link.addEventListener('click', event => {
       event.preventDefault();
       const targetSelector = link.getAttribute('href');
       const targetElement = document.querySelector(targetSelector);
+
       if (targetElement) {
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - 100;
+        // Базовый отступ для go_to — 100px
+        // Для go_to2 — дополнительно +200px
+        let offset = 100;
+        if (link.classList.contains('go_to2')) {
+          offset = 0; // 100 + 200
+        }
+
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+
         window.scrollTo({
           top: targetPosition,
           behavior: 'smooth'
@@ -993,170 +1219,317 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+// document.addEventListener('DOMContentLoaded', function () {
+//   ymaps.ready(initMaps);
+
+//   function initMaps() {
+//     const mapContainer = document.getElementById('map');
+//     if (!mapContainer) return;
+
+//     const parent = mapContainer.closest('#geo-contacts');
+//     const isGeoContacts = !!parent;
+
+//     let map;
+
+//     const mapOptions = {
+//       center: [55.773105, 37.736779],
+//       zoom: 10,
+//       suppressMapOpenBlock: true // убираем ссылки снизу
+//     };
+
+//     // --- функция открытия карточки терминала ---
+//     function openBranch(item, geoItemsContainer, details, detailsContent) {
+//       const id = item.dataset.id;
+//       const coords = item.dataset.coords.split(',').map(Number);
+//       map.setCenter(coords, 10, { duration: 500 });
+
+//       const content = document.querySelector(`#branch-content [data-id="${id}"]`);
+//       detailsContent.innerHTML = '';
+//       if (content) {
+//         const clone = content.cloneNode(true);
+//         detailsContent.appendChild(clone);
+
+//         // Отключаем прокрутку Swiper, но сохраняем классы
+//         const sliderContainers = detailsContent.querySelectorAll('.swiper-dynamic');
+//         sliderContainers.forEach(container => {
+//           container.style.overflow = 'visible';
+//           container.style.width = '100%';
+//         });
+
+//         const wrappers = detailsContent.querySelectorAll('.swiper-wrapper');
+//         wrappers.forEach(wrapper => {
+//           wrapper.style.transform = 'none';
+//           wrapper.style.width = '100%';
+//           wrapper.style.display = 'flex';
+//           wrapper.style.flexWrap = 'wrap'; // перенос на следующую строку при необходимости
+//         });
+
+//         const slides = detailsContent.querySelectorAll('.swiper-slide');
+//         slides.forEach(slide => {
+//           slide.style.flex = '0 0 auto';
+//           slide.style.width = 'auto';
+//         });
+
+//       } else {
+//         detailsContent.innerHTML = '<p>Информация недоступна</p>';
+//       }
+
+//       geoItemsContainer.classList.add('hidden');
+//       details.classList.add('active');
+//     }
+
+//     if (isGeoContacts) {
+//       // --- карта #geo-contacts ---
+//       const geoContacts = parent;
+//       const dropdown = geoContacts.querySelector('.geo__dropdown');
+//       const selected = dropdown.querySelector('.geo__dropdown-selected');
+//       const dropdownList = dropdown.querySelector('.geo__dropdown-list');
+//       const options = dropdownList.querySelectorAll('li');
+
+//       const items = geoContacts.querySelectorAll('.geo__item');
+//       const geoItemsContainer = geoContacts.querySelector('.geo__items');
+//       const details = geoContacts.querySelector('.geo__details');
+//       const detailsContent = geoContacts.querySelector('.geo__details-content');
+//       const backBtn = geoContacts.querySelector('.geo__back');
+
+//       map = new ymaps.Map("map", Object.assign({}, mapOptions, { zoom: 4 }));
+//       map.behaviors.disable('scrollZoom');
+
+//       // Кнопки масштабирования справа сверху
+//       map.controls.add(new ymaps.control.ZoomControl({
+//         size: 'small',
+//         options: { position: { top: 10, right: 10 } }
+//       }));
+
+//       // Кластерер
+//       const clusterer = new ymaps.Clusterer({
+//         clusterDisableClickZoom: false,
+//         clusterOpenBalloonOnClick: false
+//       });
+
+//       const geoObjects = Array.from(items).map(item => {
+//         const coords = item.dataset.coords.split(',').map(Number);
+//         const mark = new ymaps.Placemark(coords, {
+//           balloonContentBody: item.querySelector('.geo__title').textContent
+//         }, {
+//           iconLayout: 'default#image',
+//           iconImageHref: 'img/map.svg',
+//           iconImageSize: [70, 70],
+//           iconImageOffset: [-35, -35]
+//         });
+
+//         mark.events.add('click', () => {
+//           openBranch(item, geoItemsContainer, details, detailsContent);
+//         });
+
+//         return mark;
+//       });
+
+//       clusterer.add(geoObjects);
+//       map.geoObjects.add(clusterer);
+
+//       // Дропдаун
+//       selected.addEventListener('click', () => dropdown.classList.toggle('active'));
+//       options.forEach(option => {
+//         option.addEventListener('click', () => {
+//           const cityId = option.dataset.value;
+//           selected.textContent = option.textContent;
+//           dropdown.classList.remove('active');
+
+//           items.forEach(el => el.style.display = (cityId === 'all' || el.dataset.id === cityId) ? '' : 'none');
+
+//           const targetItem = Array.from(items).find(el => el.dataset.id === cityId);
+//           if (targetItem) {
+//             const coords = targetItem.dataset.coords.split(',').map(Number);
+//             map.setCenter(coords, 10, { duration: 500 });
+//           } else {
+//             map.setCenter([55.773105, 37.736779], 4, { duration: 500 });
+//           }
+//         });
+//       });
+
+//       // Клик по карточкам
+//       items.forEach(item => {
+//         item.addEventListener('click', () => {
+//           openBranch(item, geoItemsContainer, details, detailsContent);
+//         });
+//       });
+
+//       backBtn?.addEventListener('click', () => {
+//         details.classList.remove('active');
+//         geoItemsContainer.classList.remove('hidden');
+//         map.setCenter([55.773105, 37.736779], 4, { duration: 500 });
+//       });
+
+//     } else {
+//       // --- обычная карта #geo ---
+//       const items = document.querySelectorAll('#geo .geo__item');
+//       const details = document.querySelector('#geo .geo__details');
+//       const detailsContent = document.querySelector('#geo .geo__details-content');
+//       const geoItemsContainer = document.querySelector('#geo .geo__items');
+//       const backBtn = document.querySelector('#geo .geo__back');
+
+//       map = new ymaps.Map("map", mapOptions);
+//       map.behaviors.enable('scrollZoom');
+
+//       map.controls.add(new ymaps.control.ZoomControl({
+//         size: 'small',
+//         options: { position: { top: 10, right: 10 } }
+//       }));
+
+//       items.forEach(item => {
+//         item.addEventListener('click', () => {
+//           openBranch(item, geoItemsContainer, details, detailsContent);
+//         });
+//       });
+
+//       backBtn?.addEventListener('click', () => {
+//         details.classList.remove('active');
+//         geoItemsContainer.classList.remove('hidden');
+//         map.setCenter([55.773105, 37.736779], 10, { duration: 500 });
+//       });
+//     }
+//   }
+// });
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
-  // === НАСТРОЙКА Swiper (если есть) ===
-  const mainSwiper = new Swiper('.swiper-main', {
-    slidesPerView: 7,
-    slidesPerGroup: 7,
-    spaceBetween: 0,
-    navigation: {
-      nextEl: '.swiper-button-next-main',
-      prevEl: '.swiper-button-prev-main',
-    },
-    loop: false
-  });
+  ymaps.ready(initMaps);
 
-  // ==========================
-  // === ОБЩИЕ ПЕРЕМЕННЫЕ ===
-  // ==========================
-  const geoSections = document.querySelectorAll('.geo');
-  let myMap, clusterer;
+  function initMaps() {
+    const mapContainer = document.getElementById('map');
+    if (!mapContainer) return;
 
-  ymaps.ready(initMap);
+    const parent = mapContainer.closest('.geo');
+    const isGeoContacts = parent?.id === 'geo-contacts';
+    let map;
 
-  function initMap() {
-    myMap = new ymaps.Map("map", {
+    const mapOptions = {
       center: [55.773105, 37.736779],
       zoom: 4,
-      controls: []
-    });
+      suppressMapOpenBlock: true
+    };
 
-    const zoomControl = new ymaps.control.ZoomControl({
-      options: { size: 'small', position: { top: 10, right: 10 } }
-    });
-    const fullscreenControl = new ymaps.control.FullscreenControl({
-      options: { position: { top: 10, right: 60 } }
-    });
+    function openBranch(item, geoItemsContainer, details, detailsContent) {
+      const id = item.dataset.id;
+      const coords = item.dataset.coords.split(',').map(Number);
+      map.setCenter(coords, 10, { duration: 500 });
 
-    myMap.controls.add(zoomControl);
-    myMap.controls.add(fullscreenControl);
-    myMap.behaviors.disable('scrollZoom');
+      const content = document.querySelector(`#branch-content [data-id="${id}"]`);
+      detailsContent.innerHTML = '';
+      if (content) {
+        detailsContent.appendChild(content.cloneNode(true));
+      } else {
+        detailsContent.innerHTML = '<p>Информация недоступна</p>';
+      }
 
-    clusterer = new ymaps.Clusterer({
+      geoItemsContainer?.classList.add('hidden');
+      details?.classList.add('active');
+    }
+
+    // === Определяем элементы на странице ===
+    const geoItemsContainer = parent?.querySelector('.geo__items');
+    const items = parent?.querySelectorAll('.geo__item') || [];
+    const details = parent?.querySelector('.geo__details');
+    const detailsContent = parent?.querySelector('.geo__details-content');
+    const backBtn = parent?.querySelector('.geo__back');
+
+    const dropdown = parent?.querySelector('.geo__dropdown');
+    const selected = dropdown?.querySelector('.geo__dropdown-selected');
+    const dropdownList = dropdown?.querySelector('.geo__dropdown-list');
+    const options = dropdownList?.querySelectorAll('li') || [];
+
+    // === Создание карты ===
+    map = new ymaps.Map("map", mapOptions);
+    map.behaviors.disable('scrollZoom');
+    map.controls.add(new ymaps.control.ZoomControl({ size: 'small', options: { position: { top: 10, right: 10 } } }));
+
+    const clusterer = new ymaps.Clusterer({
       clusterDisableClickZoom: false,
       clusterOpenBalloonOnClick: false
     });
 
-    // все элементы карты
-    const allItems = document.querySelectorAll('.geo__item');
-    const geoObjects = Array.from(allItems).map(item => {
+    const geoObjects = Array.from(items).map(item => {
       const coords = item.dataset.coords.split(',').map(Number);
       const id = item.dataset.id;
-      const mark = new ymaps.Placemark(coords, {
-        balloonContentBody: item.querySelector('.geo__title').textContent
-      }, {
+
+      const mark = new ymaps.Placemark(coords, {}, {
         iconLayout: 'default#image',
         iconImageHref: 'img/map.svg',
         iconImageSize: [70, 70],
         iconImageOffset: [-35, -35]
       });
+
+      // Клик по маркеру
+      mark.events.add('click', () => {
+        openBranch(item, geoItemsContainer, details, detailsContent);
+      });
+
       mark.properties.set('cityId', id);
       return mark;
     });
 
     clusterer.add(geoObjects);
-    myMap.geoObjects.add(clusterer);
-  }
+    map.geoObjects.add(clusterer);
 
-  // ===============================
-  // === ВАРИАНТ 1: geo-contacts ===
-  // ===============================
-  const geoContacts = document.querySelector('.geo-contacts');
-  if (geoContacts) {
-    const items = geoContacts.querySelectorAll('.geo__item');
-    const geoItems = geoContacts.querySelector('.geo__items');
-    const details = geoContacts.querySelector('.geo__details');
-    const detailsContent = geoContacts.querySelector('.geo__details-content');
-    const backBtn = geoContacts.querySelector('.geo__back');
-    const citySelect = geoContacts.querySelector('#citySelect');
-
-    let allPlacemarks = [];
-
-    // ждём, пока карта загрузится
-    ymaps.ready(() => {
-      allPlacemarks = myMap.geoObjects.toArray()[0].getGeoObjects(); // достаем все точки из кластера
+    // === Клик по кластеру: открываем детали ===
+    clusterer.events.add('click', e => {
+      const cluster = e.get('target');
+      const geoObjectsInCluster = cluster.getGeoObjects();
+      if (geoObjectsInCluster.length > 0) {
+        const firstMark = geoObjectsInCluster[0];
+        const cityId = firstMark.properties.get('cityId');
+        const targetItem = Array.from(items).find(el => el.dataset.id === cityId);
+        if (targetItem) openBranch(targetItem, geoItemsContainer, details, detailsContent);
+      }
     });
 
-    if (citySelect) {
-      citySelect.addEventListener('change', function () {
-        const selectedCity = this.value;
+    // === Кастомный дропдаун ===
+    if (dropdown && selected && options.length) {
+      selected.addEventListener('click', () => dropdown.classList.toggle('active'));
 
-        if (selectedCity === 'all') {
-          myMap.setCenter([55.773105, 37.736779], 4, { duration: 500 });
-          items.forEach(el => (el.style.display = ''));
-          return;
-        }
+      options.forEach(option => {
+        option.addEventListener('click', () => {
+          const cityId = option.dataset.value;
+          selected.textContent = option.textContent;
+          dropdown.classList.remove('active');
 
-        const filteredItems = Array.from(items).filter(el => el.dataset.id === selectedCity);
-        const coords = filteredItems[0]?.dataset.coords.split(',').map(Number);
-        if (!coords) return;
+          options.forEach(o => o.classList.remove('active'));
+          option.classList.add('active');
 
-        myMap.setCenter(coords, 10, { duration: 500 });
+          items.forEach(el => el.style.display = (cityId === 'all' || el.dataset.id === cityId) ? '' : 'none');
 
-        // фильтруем отображение карточек
-        items.forEach(el => el.style.display = el.dataset.id === selectedCity ? '' : 'none');
+          const targetItem = Array.from(items).find(el => el.dataset.id === cityId);
+          if (targetItem) {
+            const coords = targetItem.dataset.coords.split(',').map(Number);
+            map.setCenter(coords, 10, { duration: 500 });
+          } else {
+            map.setCenter([55.773105, 37.736779], 4, { duration: 500 });
+          }
+        });
+      });
+
+      document.addEventListener('click', e => {
+        if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
       });
     }
 
-    // клики по филиалам
+    // === Клик по карточкам ===
     items.forEach(item => {
       item.addEventListener('click', () => {
-        const coords = item.dataset.coords.split(',').map(Number);
-        const id = item.dataset.id;
-        myMap.setCenter(coords, 10, { duration: 500 });
-
-        const content = document.querySelector(`#branch-content [data-id="${id}"]`);
-        detailsContent.innerHTML = content ? content.innerHTML : '<p>Информация недоступна</p>';
-        geoItems.classList.add('hidden');
-        details.classList.add('active');
+        openBranch(item, geoItemsContainer, details, detailsContent);
       });
     });
 
+    // === Кнопка "Назад" ===
     backBtn?.addEventListener('click', () => {
-      details.classList.remove('active');
-      geoItems.classList.remove('hidden');
-      myMap.setCenter([55.773105, 37.736779], 4, { duration: 500 });
+      details?.classList.remove('active');
+      geoItemsContainer?.classList.remove('hidden');
+      map.setCenter([55.773105, 37.736779], 4, { duration: 500 });
     });
   }
-
-  // ================================
-  // === ВАРИАНТ 2: обычные geo ====
-  // ================================
-  geoSections.forEach(section => {
-    if (section.classList.contains('geo-contacts')) return; // пропускаем "особый" блок
-
-    const items = section.querySelectorAll('.geo__item');
-    const geoItems = section.querySelector('.geo__items');
-    const details = section.querySelector('.geo__details');
-    const detailsContent = section.querySelector('.geo__details-content');
-    const backBtn = section.querySelector('.geo__back');
-
-    if (!items.length) return;
-
-    items.forEach(item => {
-      item.addEventListener('click', () => {
-        const coords = item.dataset.coords.split(',').map(Number);
-        const id = item.dataset.id;
-
-        myMap.setCenter(coords, 10, { duration: 500 });
-
-        const content = document.querySelector(`#branch-content [data-id="${id}"]`);
-        detailsContent.innerHTML = content ? content.innerHTML : '<p>Информация недоступна</p>';
-
-        geoItems.classList.add('hidden');
-        details.classList.add('active');
-      });
-    });
-
-    backBtn?.addEventListener('click', () => {
-      details.classList.remove('active');
-      geoItems.classList.remove('hidden');
-      myMap.setCenter([55.773105, 37.736779], 4, { duration: 500 });
-    });
-  });
 });
-
-
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -1249,12 +1622,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (!title || !list) return;
 
-        list.style.maxHeight = "0";
+        // Если элемент уже открыт, не сбрасываем maxHeight
+        if (!item.classList.contains("open")) {
+          list.style.maxHeight = "0";
+        }
         list.style.overflow = "hidden";
         list.style.transition = "max-height 0.3s ease";
-        item.classList.remove("open");
 
-        // Убираем возможные дубли слушателей
+        // Убираем старые слушатели
         title.onclick = () => {
           const isOpen = item.classList.contains("open");
           if (isOpen) {
@@ -1286,8 +1661,13 @@ document.addEventListener("DOMContentLoaded", function() {
   initFooterAccordion();
 
   // Переинициализация при изменении размера окна
-  window.addEventListener("resize", initFooterAccordion);
+  let resizeTimeout;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(initFooterAccordion, 100);
+  });
 });
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.querySelector('.menu-btn');

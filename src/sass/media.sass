@@ -597,6 +597,8 @@
         padding-bottom: 0
     .geo .geo__slider .swiper-slide, .geo .swiper4 .swiper-slide
         max-width: inherit
+        min-width: initial
+        width: 14.3% !important
     .geo .geo__details-content, .geo__back
         padding: 12px
     .geo
@@ -1000,6 +1002,9 @@
         margin-bottom: 15px
     .geo__filter:after
         right: 25px
+    .geo__dropdown 
+        width: 96.5%
+        margin-left: 12px
 @media screen and (max-width: 767px)
     .page .header__wrap .header__info
         margin-top: 300px
@@ -1557,7 +1562,7 @@
             margin-top: 31px
     .page .header6 .header__image
         right: 50%
-    #citySelect
+    .geo__dropdown
         width: 95%
 @media screen and (max-width: 576px)
     button:active, button:focus 
@@ -2035,9 +2040,31 @@
         max-width: inherit
     #citySelect
         width: 94%
+    .geo__item:last-child
+        padding-bottom: 12px
+    .geo__dropdown 
+        width: 94%
+    .geo__dropdown-selected
+        padding-top: 20px
+    .geo__block form button
+        padding: 0
+    .geo .geo__slider .swiper-slide, .geo .swiper4 .swiper-slide
+        width: 14.4% !important
+    .form .form__field:focus + .form__label, .form .form__field.filled + .form__label
+        top: 13px
+    .geo__block form input
+        background: transparent !important
+    .main-tar .local-tar__acc .local-tar__scroll_2 table
+        width: 1000px
+    .main-tar .local-tar__acc .local-tar__scroll table td:first-child
+        max-width: 98px
+    .main-tar .local-tar__acc .local-tar__scroll_2 tr td:nth-child(n+1)
+        border-left: none
+    .tabs__label 
+        top: 20px
 @media screen and (max-width: 390px)
-    #citySelect
-        width: 92.5%
+    .geo__dropdown 
+        width: 92.7%
     .log__map 
         top: 105px
         width: 800px
