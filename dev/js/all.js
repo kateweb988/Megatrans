@@ -1673,24 +1673,35 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.querySelector('.menu-btn');
   const menu = document.querySelector('.menu');
   const mainItems = document.querySelectorAll('.menu__main li');
-  // const firstMain = document.querySelector('.menu__main li:first-child'); 
-  // const secondMain = document.querySelector('.menu__main li:nth-child(2)'); 
+
   const list1 = document.querySelector('.menu__list_1');
   const list2 = document.querySelector('.menu__list_2');
   const menuArea = document.querySelector('.menu__area');
   const backBtn = document.querySelector('.menu__back');
-  const menuRight = document.querySelector('.menu__right'); // 🔹 правая часть меню
+  const menuRight = document.querySelector('.menu__right');
+
+  // Получение ширины скроллбара
+  function getScrollbarWidth() {
+    return window.innerWidth - document.documentElement.clientWidth;
+  }
 
   // Открытие/закрытие меню
   menuBtn.addEventListener('click', function () {
     menuBtn.classList.toggle('active');
     menu.classList.toggle('active');
-    document.body.classList.toggle('no-scroll', menu.classList.contains('active'));
-    // Сброс при закрытии
-    if (!menu.classList.contains('active')) {
+
+    if (menu.classList.contains('active')) {
+      // Блокировка скролла + компенсация смещения
+      const scrollBarWidth = getScrollbarWidth();
+      document.body.classList.add('no-scroll');
+      document.body.style.paddingRight = scrollBarWidth + 'px';
+    } else {
+      // Убираем блокировку и компенсацию
+      document.body.classList.remove('no-scroll');
+      document.body.style.paddingRight = '';
       resetActive();
       hideSubmenus();
-      menuRight.classList.remove('active'); // 🔹 сброс
+      menuRight.classList.remove('active');
     }
   });
 
@@ -1704,7 +1715,8 @@ document.addEventListener("DOMContentLoaded", () => {
     list1.classList.remove('visible');
     list2.classList.remove('visible');
     menuArea.classList.remove('submenu-open');
-    menuRight.classList.remove('active'); // 🔹 сброс
+    backBtn.classList.remove('visible');
+    menuRight.classList.remove('active');
   }
 
   // Проверка мобильного режима
@@ -1712,14 +1724,15 @@ document.addEventListener("DOMContentLoaded", () => {
     return window.innerWidth <= 1024;
   }
 
-  // Действие для "Назад"
+  // Назад
   backBtn.addEventListener('click', () => {
     hideSubmenus();
-    backBtn.classList.remove('visible');
-    menuRight.classList.remove('active'); // 🔹 при возврате убрать active
   });
 
-  // Для десктопа — наведение
+  // ДЛЯ ДЕСКТОПА – наведение
+  const firstMain = mainItems[0];
+  const secondMain = mainItems[1];
+
   firstMain.addEventListener('mouseenter', () => {
     if (!isMobile()) {
       resetActive();
@@ -1745,7 +1758,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Для мобильных — по клику
+  // ДЛЯ МОБИЛЬНЫХ – по клику
   firstMain.addEventListener('click', (e) => {
     if (isMobile()) {
       e.preventDefault();
@@ -1753,7 +1766,7 @@ document.addEventListener("DOMContentLoaded", () => {
       list2.classList.remove('visible');
       menuArea.classList.add('submenu-open');
       backBtn.classList.add('visible');
-      menuRight.classList.add('active'); // 🔹 добавляем класс
+      menuRight.classList.add('active');
     }
   });
 
@@ -1764,10 +1777,11 @@ document.addEventListener("DOMContentLoaded", () => {
       list1.classList.remove('visible');
       menuArea.classList.add('submenu-open');
       backBtn.classList.add('visible');
-      menuRight.classList.add('active'); // 🔹 добавляем класс
+      menuRight.classList.add('active');
     }
   });
 });
+
 // Замена <img class="svg"> на inline SVG
 document.addEventListener("DOMContentLoaded", () => {
   const svgImages = document.querySelectorAll('img.svg');
