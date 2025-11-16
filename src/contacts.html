@@ -255,151 +255,210 @@
 			<div class="container">
 				<div class="wrap">
 					<div class="geo__block geo__filter arrow-left">
+						<!-- Дропдаун с поиском -->
 						<div class="geo__dropdown">
 							<div class="geo__dropdown-selected">Все города</div>
 							<ul class="geo__dropdown-list">
+								<input type="text" class="geo__dropdown-search" placeholder="Поиск">
 								<li data-value="all">Все города</li>
 								<li data-value="ekb">Екатеринбург</li>
 								<li data-value="msk">Москва</li>
-								<li data-value="stv">Ставрополь</li>
-								<li data-value="anapa">Анапа</li>
-								<li data-value="vorkuta">Воркута</li>
-								<li data-value="vladivostok">Владивосток</li>
-								<li data-value="piter">Санкт-Петербург</li>
 							</ul>
 						</div>
+
+						<!-- Список терминалов (компактный вид) -->
 						<div class="geo__items">
-							<div class="geo__item" data-id="ekb" data-coords="56.810563,60.612746">
-								<p class="geo__title">Екатеринбург</p>
-								<div class="geo__info"> <img src="img/geo1.svg" alt=""> <p>Екатеринбург, ул. Самолетная, 36</p> </div>
-								<div class="geo__info"> <img src="img/geo2.svg" alt=""> <a href="tel:84999115304"> 8 (499) 911-5304 </a> </div>
+							<!-- Екатеринбург -->
+							<div class="geo__item" data-city="ekb" data-id="ekb-1" data-coords="56.810563,60.612746">
+								<p class="geo__title">Екатеринбург 1</p>
+								<div class="geo__info"><img src="img/geo1.svg" alt=""> <p>Екатеринбург, мкр Белая Дача, проезд, 3/2</p></div>
+								<div class="geo__info"><img src="img/geo2.svg" alt=""> <a href="tel:84999115304">8 (499) 911-5304</a></div>
 							</div>
 
-							<div class="geo__item" data-id="msk" data-coords="55.699808,37.732932">
-								<p class="geo__title">Москва</p>
-								<div class="geo__info"> <img src="img/geo1.svg" alt=""> <p>Москва, ул. Самолетная, 36</p> </div>
-								<div class="geo__info"> <img src="img/geo2.svg" alt=""> <a href="tel:84999115304"> 8 (499) 911-5304 </a> </div>
+							<div class="geo__item" data-city="ekb" data-id="ekb-2" data-coords="56.820000,60.620000">
+								<p class="geo__title">Екатеринбург 2</p>
+								<div class="geo__info"><img src="img/geo1.svg" alt=""> <p>Екатеринбург, ул. Вторая, 10</p></div>
+								<div class="geo__info"><img src="img/geo2.svg" alt=""> <a href="tel:84991115305">8 (499) 911-5305</a></div>
 							</div>
 
-							<div class="geo__item" data-id="stv" data-coords="45.043317,41.969113">
-								<p class="geo__title">Ставрополь</p>
-								<div class="geo__info"> <img src="img/geo3.svg" alt=""> <p>Доступна адресная доставкая</p> </div>
+							<!-- Москва -->
+							<div class="geo__item" data-city="msk" data-id="msk-1" data-coords="55.699808,37.732932">
+								<p class="geo__title">Москва 1</p>
+								<div class="geo__info"><img src="img/geo1.svg" alt=""> <p>Москва, ул. Белореченская, 14</p></div>
+								<div class="geo__info"><img src="img/geo2.svg" alt=""> <a href="tel:84991115304">8 (499) 911-5304</a></div>
 							</div>
-
-							<div class="geo__item" data-id="anapa" data-coords="44.886595,37.316853">
-								<p class="geo__title">Анапа</p>
-								<div class="geo__info"> <img src="img/geo3.svg" alt=""> <p>Доступна адресная доставкая</p> </div>
+							<div class="geo__item" data-city="msk" data-id="msk-2" data-coords="55.609808,37.732936">
+								<p class="geo__title">Москва 2</p>
+								<div class="geo__info"><img src="img/geo1.svg" alt=""> <p>Москва, ул. Белореченская</p></div>
+								<div class="geo__info"><img src="img/geo2.svg" alt=""> <a href="tel:84991115304">8 (499) 911-5304</a></div>
 							</div>
-
-							<div class="geo__item" data-id="vorkuta" data-coords="67.503349,64.040985">
-								<p class="geo__title">Воркута</p>
-								<div class="geo__info"> <img src="img/geo3.svg" alt=""> <p>Доступна адресная доставкая</p> </div>
-							</div>
-							<div class="geo__item" data-id="vladivostok" data-coords="43.115536,131.885485">
-								<p class="geo__title">Владивосток</p>
-								<div class="geo__info"> <img src="img/geo3.svg" alt=""> <p>Доступна адресная доставкая</p> </div>
-							</div>
-							<div class="geo__item" data-id="piter" data-coords="59.931058, 30.360909">
-								<p class="geo__title">Санкт-перербург</p>
-								<div class="geo__info"> <img src="img/geo3.svg" alt=""> <p>Доступна адресная доставкая</p> </div>
+							<div class="geo__item" data-city="msk" data-id="msk-3" data-coords="55.499800,37.732936">
+								<p class="geo__title">Москва 3</p>
+								<div class="geo__info"><img src="img/geo1.svg" alt=""> <p>Москва, ул. Белор</p></div>
+								<div class="geo__info"><img src="img/geo2.svg" alt=""> <a href="tel:84991115304">8 (499) 911-5304</a></div>
 							</div>
 						</div>
+
+						<!-- Детали терминала (появляются по клику) -->
 						<div class="geo__details">
 							<button class="geo__back">
-								<img src="img/back.svg" alt="" class="svg">
-								Вернуться к списку
+								<img src="img/back.svg" alt="" class="svg"> Вернуться к списку
 							</button>
 							<div class="geo__details-content"></div>
 						</div>
 					</div>
+
 					<div id="map"></div>
+
 					<div id="branch-content" style="display:none;">
-						 <div data-id="ekb">
-							<h3>Терминал в Екатеринбурге</h3>
+					<!-- Екатеринбург Терминал 1 -->
+						<div data-id="ekb-1">
+							<h3>Терминал 1 - Екатеринбург</h3>
 							<div class="geo__area">
-								<div class="geo__el q"><img src="img/map1.svg" alt=""><p>Екатеринбург, мкр Белая Дача, коммерческий проезд, 3/2</p></div>
-								<div class="geo__el q"><img src="img/map2.svg" alt=""><a href="tel:84999115304">8 (499) 911-5304</a></div>
-								<div class="geo__el q"><img src="img/map2.svg" alt=""><a href="mailto:ekb@megatrans-tk.ru">ekb@megatrans-tk.ru</a></div>
+							<div class="geo__el q"><img src="img/map1.svg" alt=""><p>Екатеринбург, мкр Белая Дача, коммерческий проезд, 3/2</p></div>
+							<div class="geo__el q"><img src="img/map2.svg" alt=""><a href="tel:84999115304">8 (499) 911-5304</a></div>
+							<div class="geo__el q"><img src="img/map2.svg" alt=""><a href="mailto:ekb@megatrans-tk.ru">ekb@megatrans-tk.ru</a></div>
 							</div>
 							<div class="geo__slider">
-								<div class="geo__top q">
-									<p>
-										Режим работы
-									</p>
-									<p>
-										Чт, 15:50
-									</p>
+							<div class="geo__top q"><p>Режим работы</p><p>Чт, 15:50</p></div>
+							<div class="swiper-dynamic">
+								<div class="swiper-wrapper">
+								<div class="swiper-slide"><p>Пн</p><small>1 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide"><p>Вт</p><small>2 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide"><p>Ср</p><small>3 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide present"><p>Чт</p><small>4 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide"><p>Пт</p><small>5 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide"><p>Сб</p><small>6 окт</small><div class="time"><span>10:00</span><span>16:00</span></div></div>
+								<div class="swiper-slide"><p>Вс</p><small>7 окт</small><div class="time"><span>-</span></div></div>
 								</div>
-								<div class="swiper-dynamic">
-									<div class="swiper-wrapper">
-										<!-- 14 дней -->
-										<div class="swiper-slide"><p>Пн</p><small>1 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
-										<div class="swiper-slide"><p>Вт</p><small>2 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
-										<div class="swiper-slide"><p>Ср</p><small>3 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
-										<div class="swiper-slide present"><p>Чт</p><small>4 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
-										<div class="swiper-slide"><p>Пт</p><small>5 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
-										<div class="swiper-slide"><p>Сб</p><small>6 окт</small><div class="time"><span>-</span></div></div>
-										<div class="swiper-slide"><p>Вс</p><small>7 окт</small><div class="time"><span>-</span></div></div>
-									</div>
-								</div>
+							</div>
 							</div>
 							<div class="geo__time">
 								<img src="img/time.svg" alt="">
 								<div>
-									<p>
-										1 ноября — с 09:00 до 18:00
-									</p>
-									<p>
-										3 ноября — с 10:00 до 14:00
-									</p>
-									<p>
-										4 ноября — выходной
-									</p>
+									<p>1 ноября — с 09:00 до 18:00</p>
+									<p>3 ноября — с 10:00 до 14:00</p>
+									<p>4 ноября — выходной</p>
 								</div>
 							</div>
 						</div>
-							<!-- Москва -->
-						<div data-id="msk">
-							<h3>Терминал в Москве</h3>
+
+						<!-- Екатеринбург Терминал 2 -->
+						<div data-id="ekb-2">
+							<h3>Терминал 2 - Екатеринбург</h3>
 							<div class="geo__area">
-							<div class="geo__el q"><img src="img/map1.svg" alt=""><p>Москва, ул. Белореченская, 14</p></div>
-							<div class="geo__el q"><img src="img/map2.svg" alt=""><a href="tel:84991115304">8 (499) 911-5304</a></div>
-							<div class="geo__el q"><img src="img/map2.svg" alt=""><a href="mailto:msk@megatrans-tk.ru">msk@megatrans-tk.ru</a></div>
+							<div class="geo__el q"><img src="img/map1.svg" alt=""><p>Екатеринбург, ул. Вторая, 10</p></div>
+							<div class="geo__el q"><img src="img/map2.svg" alt=""><a href="tel:84999115305">8 (499) 911-5305</a></div>
 							</div>
 							<div class="geo__slider">
-								<div class="geo__top q">
-									<p>
-										Режим работы
-									</p>
-									<p>
-										Чт, 15:50
-									</p>
+							<div class="geo__top q"><p>Режим работы</p><p>Чт, 16:00</p></div>
+							<div class="swiper-dynamic">
+								<div class="swiper-wrapper">
+								<div class="swiper-slide"><p>Пн</p><small>1 окт</small><div class="time"><span>10:00</span><span>19:00</span></div></div>
+								<div class="swiper-slide"><p>Вт</p><small>2 окт</small><div class="time"><span>10:00</span><span>19:00</span></div></div>
+								<div class="swiper-slide"><p>Ср</p><small>3 окт</small><div class="time"><span>10:00</span><span>19:00</span></div></div>
+								<div class="swiper-slide present"><p>Чт</p><small>4 окт</small><div class="time"><span>10:00</span><span>19:00</span></div></div>
+								<div class="swiper-slide"><p>Пт</p><small>5 окт</small><div class="time"><span>10:00</span><span>19:00</span></div></div>
+								<div class="swiper-slide"><p>Сб</p><small>6 окт</small><div class="time"><span>10:00</span><span>16:00</span></div></div>
+								<div class="swiper-slide"><p>Вс</p><small>7 окт</small><div class="time"><span>-</span></div></div>
 								</div>
-								<div class="swiper-dynamic">
-									<div class="swiper-wrapper">
-										<!-- 14 дней -->
-										<div class="swiper-slide"><p>Пн</p><small>1 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
-										<div class="swiper-slide"><p>Вт</p><small>2 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
-										<div class="swiper-slide"><p>Ср</p><small>3 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
-										<div class="swiper-slide present"><p>Чт</p><small>4 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
-										<div class="swiper-slide"><p>Пт</p><small>5 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
-										<div class="swiper-slide"><p>Сб</p><small>6 окт</small><div class="time"><span>-</span></div></div>
-										<div class="swiper-slide"><p>Вс</p><small>7 окт</small><div class="time"><span>-</span></div></div>
-									</div>
-								</div>
+							</div>
 							</div>
 							<div class="geo__time">
 								<img src="img/time.svg" alt="">
 								<div>
-									<p>
-										1 ноября — с 09:00 до 18:00
-									</p>
-									<p>
-										3 ноября — с 10:00 до 14:00
-									</p>
-									<p>
-										4 ноября — выходной
-									</p>
+									<p>1 ноября — с 09:00 до 18:00</p>
+									<p>3 ноября — с 10:00 до 14:00</p>
+									<p>4 ноября — выходной</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Москва Терминал 1 -->
+						<div data-id="msk-1">
+							<h3>Терминал 1 - Москва</h3>
+							<div class="geo__area">
+							<div class="geo__el q"><img src="img/map1.svg" alt=""><p>Москва, ул. Белореченская, 14</p></div>
+							<div class="geo__el q"><img src="img/map2.svg" alt=""><a href="tel:84991115304">8 (499) 911-5304</a></div>
+							</div>
+							<div class="geo__slider">
+							<div class="geo__top q"><p>Режим работы</p><p>Чт, 15:50</p></div>
+							<div class="swiper-dynamic">
+								<div class="swiper-wrapper">
+								<div class="swiper-slide"><p>Пн</p><small>1 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide"><p>Вт</p><small>2 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide"><p>Ср</p><small>3 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide present"><p>Чт</p><small>4 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide"><p>Пт</p><small>5 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide"><p>Сб</p><small>6 окт</small><div class="time"><span>10:00</span><span>16:00</span></div></div>
+								<div class="swiper-slide"><p>Вс</p><small>7 окт</small><div class="time"><span>-</span></div></div>
+								</div>
+							</div>
+							</div>
+							<div class="geo__time">
+								<img src="img/time.svg" alt="">
+								<div>
+									<p>1 ноября — с 09:00 до 18:00</p>
+									<p>3 ноября — с 10:00 до 14:00</p>
+									<p>4 ноября — выходной</p>
+								</div>
+							</div>
+						</div>
+						<div data-id="msk-2">
+							<h3>Терминал 2 - Москва</h3>
+							<div class="geo__area">
+							<div class="geo__el q"><img src="img/map1.svg" alt=""><p>Москва, ул. Белореченская, 14</p></div>
+							<div class="geo__el q"><img src="img/map2.svg" alt=""><a href="tel:84991115304">8 (499) 911-5304</a></div>
+							</div>
+							<div class="geo__slider">
+							<div class="geo__top q"><p>Режим работы</p><p>Чт, 15:50</p></div>
+							<div class="swiper-dynamic">
+								<div class="swiper-wrapper">
+								<div class="swiper-slide"><p>Пн</p><small>1 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide"><p>Вт</p><small>2 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide"><p>Ср</p><small>3 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide present"><p>Чт</p><small>4 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide"><p>Пт</p><small>5 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide"><p>Сб</p><small>6 окт</small><div class="time"><span>10:00</span><span>16:00</span></div></div>
+								<div class="swiper-slide"><p>Вс</p><small>7 окт</small><div class="time"><span>-</span></div></div>
+								</div>
+							</div>
+							</div>
+							<div class="geo__time">
+								<img src="img/time.svg" alt="">
+								<div>
+									<p>1 ноября — с 09:00 до 18:00</p>
+									<p>3 ноября — с 10:00 до 14:00</p>
+									<p>4 ноября — выходной</p>
+								</div>
+							</div>
+						</div>
+						<div data-id="msk-3">
+							<h3>Терминал 3 - Москва</h3>
+							<div class="geo__area">
+							<div class="geo__el q"><img src="img/map1.svg" alt=""><p>Москва, ул. Белореченская, 14</p></div>
+							<div class="geo__el q"><img src="img/map2.svg" alt=""><a href="tel:84991115304">8 (499) 911-5304</a></div>
+							</div>
+							<div class="geo__slider">
+							<div class="geo__top q"><p>Режим работы</p><p>Чт, 15:50</p></div>
+							<div class="swiper-dynamic">
+								<div class="swiper-wrapper">
+								<div class="swiper-slide"><p>Пн</p><small>1 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide"><p>Вт</p><small>2 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide"><p>Ср</p><small>3 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide present"><p>Чт</p><small>4 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide"><p>Пт</p><small>5 окт</small><div class="time"><span>09:00</span><span>18:00</span></div></div>
+								<div class="swiper-slide"><p>Сб</p><small>6 окт</small><div class="time"><span>10:00</span><span>16:00</span></div></div>
+								<div class="swiper-slide"><p>Вс</p><small>7 окт</small><div class="time"><span>-</span></div></div>
+								</div>
+							</div>
+							</div>
+							<div class="geo__time">
+								<img src="img/time.svg" alt="">
+								<div>
+									<p>1 ноября — с 09:00 до 18:00</p>
+									<p>3 ноября — с 10:00 до 14:00</p>
+									<p>4 ноября — выходной</p>
 								</div>
 							</div>
 						</div>

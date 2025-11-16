@@ -949,9 +949,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ====== КАЛЕНДАРЬ для date ======
     if (type === 'date') {
-      if (dropdown) dropdown.remove(); // убираем стандартный список
+      if (dropdown) dropdown.remove();
       flatpickr(field, {
-        dateFormat: "d.m.Y", // формат: 13.11.2025
+        dateFormat: "d.m.Y",
         minDate: "today",
         locale: "ru",
         disableMobile: true,
@@ -969,20 +969,44 @@ document.addEventListener("DOMContentLoaded", () => {
     // ====== Обычные выпадающие списки ======
     if(!dropdown || !lists[type]) return;
     const items = lists[type];
-    dropdown.innerHTML = items.map(i => `<li>${i}</li>`).join('');
+
+    let filterInput = null;
+
+    if(type === 'city') {
+      // создаём li элементы
+      dropdown.innerHTML = items.map(i => `<li>${i}</li>`).join('');
+
+      // создаём фильтрующий input
+      filterInput = document.createElement('input');
+      filterInput.type = 'text';
+      filterInput.placeholder = 'Фильтровать города';
+      filterInput.className = 'dropdown-filter';
+      dropdown.prepend(filterInput);
+
+      // фильтрация
+      filterInput.addEventListener('input', () => {
+        const val = filterInput.value.toLowerCase();
+        dropdown.querySelectorAll('li').forEach(li => {
+          li.style.display = li.textContent.toLowerCase().includes(val) ? '' : 'none';
+        });
+      });
+    } else {
+      // для остальных dropdown
+      dropdown.innerHTML = items.map(i => `<li>${i}</li>`).join('');
+      if(["documents","bodytype","status","franchise"].includes(type)) {
+        field.addEventListener('input', () => {
+          const val = field.value.toLowerCase();
+          dropdown.querySelectorAll('li').forEach(li => {
+            li.style.display = li.textContent.toLowerCase().includes(val) ? '' : 'none';
+          });
+        });
+      }
+    }
 
     field.addEventListener('focus', () => {
       closeAllDropdowns();
       dropdown.classList.add('active');
     });
-
-    if(["city","documents","bodytype","status","franchise"].includes(type)) {
-      field.addEventListener('input', () => {
-        const val = field.value.toLowerCase();
-        dropdown.innerHTML = items.filter(i => i.toLowerCase().includes(val))
-                                  .map(i => `<li>${i}</li>`).join('');
-      });
-    }
 
     dropdown.addEventListener('click', e => {
       if(e.target.tagName==='LI') {
@@ -1080,6 +1104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1226,18 +1251,12 @@ document.addEventListener('DOMContentLoaded', function () {
 //     const mapContainer = document.getElementById('map');
 //     if (!mapContainer) return;
 
-//     const parent = mapContainer.closest('#geo-contacts');
-//     const isGeoContacts = !!parent;
-
+//     const parent = mapContainer.closest('.geo');
+//     const isGeoContacts = parent?.id === 'geo-contacts';
 //     let map;
 
-//     const mapOptions = {
-//       center: [55.773105, 37.736779],
-//       zoom: 10,
-//       suppressMapOpenBlock: true // убираем ссылки снизу
-//     };
+//     const mapOptions = { center: [55.773105, 37.736779], zoom: 4, suppressMapOpenBlock: true };
 
-//     // --- функция открытия карточки терминала ---
 //     function openBranch(item, geoItemsContainer, details, detailsContent) {
 //       const id = item.dataset.id;
 //       const coords = item.dataset.coords.split(',').map(Number);
@@ -1245,90 +1264,62 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //       const content = document.querySelector(`#branch-content [data-id="${id}"]`);
 //       detailsContent.innerHTML = '';
-//       if (content) {
-//         const clone = content.cloneNode(true);
-//         detailsContent.appendChild(clone);
+//       if (content) detailsContent.appendChild(content.cloneNode(true));
+//       else detailsContent.innerHTML = '<p>Информация недоступна</p>';
 
-//         // Отключаем прокрутку Swiper, но сохраняем классы
-//         const sliderContainers = detailsContent.querySelectorAll('.swiper-dynamic');
-//         sliderContainers.forEach(container => {
-//           container.style.overflow = 'visible';
-//           container.style.width = '100%';
-//         });
-
-//         const wrappers = detailsContent.querySelectorAll('.swiper-wrapper');
-//         wrappers.forEach(wrapper => {
-//           wrapper.style.transform = 'none';
-//           wrapper.style.width = '100%';
-//           wrapper.style.display = 'flex';
-//           wrapper.style.flexWrap = 'wrap'; // перенос на следующую строку при необходимости
-//         });
-
-//         const slides = detailsContent.querySelectorAll('.swiper-slide');
-//         slides.forEach(slide => {
-//           slide.style.flex = '0 0 auto';
-//           slide.style.width = 'auto';
-//         });
-
-//       } else {
-//         detailsContent.innerHTML = '<p>Информация недоступна</p>';
-//       }
-
-//       geoItemsContainer.classList.add('hidden');
-//       details.classList.add('active');
+//       geoItemsContainer?.classList.add('hidden');
+//       details?.classList.add('active');
 //     }
 
-//     if (isGeoContacts) {
-//       // --- карта #geo-contacts ---
-//       const geoContacts = parent;
-//       const dropdown = geoContacts.querySelector('.geo__dropdown');
-//       const selected = dropdown.querySelector('.geo__dropdown-selected');
-//       const dropdownList = dropdown.querySelector('.geo__dropdown-list');
-//       const options = dropdownList.querySelectorAll('li');
+//     const geoItemsContainer = parent?.querySelector('.geo__items');
+//     const items = Array.from(parent?.querySelectorAll('.geo__item') || []);
+//     const details = parent?.querySelector('.geo__details');
+//     const detailsContent = parent?.querySelector('.geo__details-content');
+//     const backBtn = parent?.querySelector('.geo__back');
 
-//       const items = geoContacts.querySelectorAll('.geo__item');
-//       const geoItemsContainer = geoContacts.querySelector('.geo__items');
-//       const details = geoContacts.querySelector('.geo__details');
-//       const detailsContent = geoContacts.querySelector('.geo__details-content');
-//       const backBtn = geoContacts.querySelector('.geo__back');
+//     const dropdown = parent?.querySelector('.geo__dropdown');
+//     const selected = dropdown?.querySelector('.geo__dropdown-selected');
+//     const dropdownList = dropdown?.querySelector('.geo__dropdown-list');
 
-//       map = new ymaps.Map("map", Object.assign({}, mapOptions, { zoom: 4 }));
-//       map.behaviors.disable('scrollZoom');
+//     const options = dropdownList?.querySelectorAll('li') || [];
 
-//       // Кнопки масштабирования справа сверху
-//       map.controls.add(new ymaps.control.ZoomControl({
-//         size: 'small',
-//         options: { position: { top: 10, right: 10 } }
-//       }));
+//     // Карта
+//     map = new ymaps.Map("map", mapOptions);
+//     map.behaviors.disable('scrollZoom');
+//     map.controls.add(new ymaps.control.ZoomControl({ size: 'small', options: { position: { top: 10, right: 10 } } }));
 
-//       // Кластерер
-//       const clusterer = new ymaps.Clusterer({
-//         clusterDisableClickZoom: false,
-//         clusterOpenBalloonOnClick: false
+//     const clusterer = new ymaps.Clusterer({ clusterDisableClickZoom: false, clusterOpenBalloonOnClick: false });
+
+//     const geoObjects = items.map(item => {
+//       const coords = item.dataset.coords.split(',').map(Number);
+//       const mark = new ymaps.Placemark(coords, {}, {
+//         iconLayout: 'default#image',
+//         iconImageHref: 'img/map.svg',
+//         iconImageSize: [70, 70],
+//         iconImageOffset: [-35, -35]
 //       });
 
-//       const geoObjects = Array.from(items).map(item => {
-//         const coords = item.dataset.coords.split(',').map(Number);
-//         const mark = new ymaps.Placemark(coords, {
-//           balloonContentBody: item.querySelector('.geo__title').textContent
-//         }, {
-//           iconLayout: 'default#image',
-//           iconImageHref: 'img/map.svg',
-//           iconImageSize: [70, 70],
-//           iconImageOffset: [-35, -35]
-//         });
+//       mark.events.add('click', () => openBranch(item, geoItemsContainer, details, detailsContent));
+//       mark.properties.set('cityId', item.dataset.city || item.dataset.id);
+//       return mark;
+//     });
 
-//         mark.events.add('click', () => {
-//           openBranch(item, geoItemsContainer, details, detailsContent);
-//         });
+//     clusterer.add(geoObjects);
+//     map.geoObjects.add(clusterer);
 
-//         return mark;
-//       });
+//     // Клик по кластеру: открываем инфо **первой метки в кластере**
+//     clusterer.events.add('click', e => {
+//       const cluster = e.get('target');
+//       const firstMark = cluster.getGeoObjects()[0];
+//       if (!firstMark) return;
 
-//       clusterer.add(geoObjects);
-//       map.geoObjects.add(clusterer);
+//       const id = firstMark.properties.get('cityId');
+//       const targetItem = items.find(el => (el.dataset.city || el.dataset.id) === id);
+//       if (targetItem) openBranch(targetItem, geoItemsContainer, details, detailsContent);
+//     });
 
-//       // Дропдаун
+//     // Дропдаун
+//     if (dropdown && selected && options.length) {
 //       selected.addEventListener('click', () => dropdown.classList.toggle('active'));
 //       options.forEach(option => {
 //         option.addEventListener('click', () => {
@@ -1336,62 +1327,37 @@ document.addEventListener('DOMContentLoaded', function () {
 //           selected.textContent = option.textContent;
 //           dropdown.classList.remove('active');
 
-//           items.forEach(el => el.style.display = (cityId === 'all' || el.dataset.id === cityId) ? '' : 'none');
+//           options.forEach(o => o.classList.remove('active'));
+//           option.classList.add('active');
 
-//           const targetItem = Array.from(items).find(el => el.dataset.id === cityId);
-//           if (targetItem) {
-//             const coords = targetItem.dataset.coords.split(',').map(Number);
-//             map.setCenter(coords, 10, { duration: 500 });
-//           } else {
-//             map.setCenter([55.773105, 37.736779], 4, { duration: 500 });
-//           }
+//           items.forEach(el => {
+//             el.style.display = (cityId === 'all' || el.dataset.city === cityId) ? '' : 'none';
+//           });
+
+//           const targetItem = items.find(el => el.dataset.city === cityId);
+//           if (targetItem) map.setCenter(targetItem.dataset.coords.split(',').map(Number), 10, { duration: 500 });
+//           else map.setCenter([55.773105, 37.736779], 4, { duration: 500 });
 //         });
 //       });
 
-//       // Клик по карточкам
-//       items.forEach(item => {
-//         item.addEventListener('click', () => {
-//           openBranch(item, geoItemsContainer, details, detailsContent);
-//         });
-//       });
-
-//       backBtn?.addEventListener('click', () => {
-//         details.classList.remove('active');
-//         geoItemsContainer.classList.remove('hidden');
-//         map.setCenter([55.773105, 37.736779], 4, { duration: 500 });
-//       });
-
-//     } else {
-//       // --- обычная карта #geo ---
-//       const items = document.querySelectorAll('#geo .geo__item');
-//       const details = document.querySelector('#geo .geo__details');
-//       const detailsContent = document.querySelector('#geo .geo__details-content');
-//       const geoItemsContainer = document.querySelector('#geo .geo__items');
-//       const backBtn = document.querySelector('#geo .geo__back');
-
-//       map = new ymaps.Map("map", mapOptions);
-//       map.behaviors.enable('scrollZoom');
-
-//       map.controls.add(new ymaps.control.ZoomControl({
-//         size: 'small',
-//         options: { position: { top: 10, right: 10 } }
-//       }));
-
-//       items.forEach(item => {
-//         item.addEventListener('click', () => {
-//           openBranch(item, geoItemsContainer, details, detailsContent);
-//         });
-//       });
-
-//       backBtn?.addEventListener('click', () => {
-//         details.classList.remove('active');
-//         geoItemsContainer.classList.remove('hidden');
-//         map.setCenter([55.773105, 37.736779], 10, { duration: 500 });
+//       document.addEventListener('click', e => {
+//         if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
 //       });
 //     }
+
+//     // Клик по карточкам
+//     items.forEach(item => {
+//       item.addEventListener('click', () => openBranch(item, geoItemsContainer, details, detailsContent));
+//     });
+
+//     // Назад
+//     backBtn?.addEventListener('click', () => {
+//       details?.classList.remove('active');
+//       geoItemsContainer?.classList.remove('hidden');
+//       map.setCenter([55.773105, 37.736779], 4, { duration: 500 });
+//     });
 //   }
 // });
-
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -1405,32 +1371,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const isGeoContacts = parent?.id === 'geo-contacts';
     let map;
 
-    const mapOptions = {
-      center: [55.773105, 37.736779],
-      zoom: 4,
-      suppressMapOpenBlock: true
-    };
+    const mapOptions = { center: [55.773105, 37.736779], zoom: 4, suppressMapOpenBlock: true };
 
     function openBranch(item, geoItemsContainer, details, detailsContent) {
       const id = item.dataset.id;
       const coords = item.dataset.coords.split(',').map(Number);
-      map.setCenter(coords, 10, { duration: 500 });
+
+      // Зум больше для конкретного терминала
+      const zoomLevel = item.dataset.id ? 14 : 10;
+      map.setCenter(coords, zoomLevel, { duration: 500 });
 
       const content = document.querySelector(`#branch-content [data-id="${id}"]`);
       detailsContent.innerHTML = '';
-      if (content) {
-        detailsContent.appendChild(content.cloneNode(true));
-      } else {
-        detailsContent.innerHTML = '<p>Информация недоступна</p>';
-      }
+      if (content) detailsContent.appendChild(content.cloneNode(true));
+      else detailsContent.innerHTML = '<p>Информация недоступна</p>';
 
       geoItemsContainer?.classList.add('hidden');
       details?.classList.add('active');
     }
 
-    // === Определяем элементы на странице ===
     const geoItemsContainer = parent?.querySelector('.geo__items');
-    const items = parent?.querySelectorAll('.geo__item') || [];
+    const items = Array.from(parent?.querySelectorAll('.geo__item') || []);
     const details = parent?.querySelector('.geo__details');
     const detailsContent = parent?.querySelector('.geo__details-content');
     const backBtn = parent?.querySelector('.geo__back');
@@ -1440,20 +1401,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const dropdownList = dropdown?.querySelector('.geo__dropdown-list');
     const options = dropdownList?.querySelectorAll('li') || [];
 
-    // === Создание карты ===
+    // Создаем карту
     map = new ymaps.Map("map", mapOptions);
     map.behaviors.disable('scrollZoom');
     map.controls.add(new ymaps.control.ZoomControl({ size: 'small', options: { position: { top: 10, right: 10 } } }));
 
-    const clusterer = new ymaps.Clusterer({
-      clusterDisableClickZoom: false,
-      clusterOpenBalloonOnClick: false
-    });
+    const clusterer = new ymaps.Clusterer({ clusterDisableClickZoom: false, clusterOpenBalloonOnClick: false });
 
-    const geoObjects = Array.from(items).map(item => {
+    const geoObjects = items.map(item => {
       const coords = item.dataset.coords.split(',').map(Number);
-      const id = item.dataset.id;
-
       const mark = new ymaps.Placemark(coords, {}, {
         iconLayout: 'default#image',
         iconImageHref: 'img/map.svg',
@@ -1461,34 +1417,28 @@ document.addEventListener('DOMContentLoaded', function () {
         iconImageOffset: [-35, -35]
       });
 
-      // Клик по маркеру
-      mark.events.add('click', () => {
-        openBranch(item, geoItemsContainer, details, detailsContent);
-      });
-
-      mark.properties.set('cityId', id);
+      mark.events.add('click', () => openBranch(item, geoItemsContainer, details, detailsContent));
+      mark.properties.set('cityId', item.dataset.city || item.dataset.id);
       return mark;
     });
 
     clusterer.add(geoObjects);
     map.geoObjects.add(clusterer);
 
-    // === Клик по кластеру: открываем детали ===
+    // Клик по кластеру: открываем инфо первой метки
     clusterer.events.add('click', e => {
       const cluster = e.get('target');
-      const geoObjectsInCluster = cluster.getGeoObjects();
-      if (geoObjectsInCluster.length > 0) {
-        const firstMark = geoObjectsInCluster[0];
-        const cityId = firstMark.properties.get('cityId');
-        const targetItem = Array.from(items).find(el => el.dataset.id === cityId);
-        if (targetItem) openBranch(targetItem, geoItemsContainer, details, detailsContent);
-      }
+      const firstMark = cluster.getGeoObjects()[0];
+      if (!firstMark) return;
+
+      const id = firstMark.properties.get('cityId');
+      const targetItem = items.find(el => (el.dataset.city || el.dataset.id) === id);
+      if (targetItem) openBranch(targetItem, geoItemsContainer, details, detailsContent);
     });
 
-    // === Кастомный дропдаун ===
+    // Дропдаун
     if (dropdown && selected && options.length) {
       selected.addEventListener('click', () => dropdown.classList.toggle('active'));
-
       options.forEach(option => {
         option.addEventListener('click', () => {
           const cityId = option.dataset.value;
@@ -1498,15 +1448,13 @@ document.addEventListener('DOMContentLoaded', function () {
           options.forEach(o => o.classList.remove('active'));
           option.classList.add('active');
 
-          items.forEach(el => el.style.display = (cityId === 'all' || el.dataset.id === cityId) ? '' : 'none');
+          items.forEach(el => {
+            el.style.display = (cityId === 'all' || el.dataset.city === cityId) ? '' : 'none';
+          });
 
-          const targetItem = Array.from(items).find(el => el.dataset.id === cityId);
-          if (targetItem) {
-            const coords = targetItem.dataset.coords.split(',').map(Number);
-            map.setCenter(coords, 10, { duration: 500 });
-          } else {
-            map.setCenter([55.773105, 37.736779], 4, { duration: 500 });
-          }
+          const targetItem = items.find(el => el.dataset.city === cityId);
+          if (targetItem) map.setCenter(targetItem.dataset.coords.split(',').map(Number), 10, { duration: 500 });
+          else map.setCenter([55.773105, 37.736779], 4, { duration: 500 });
         });
       });
 
@@ -1515,14 +1463,12 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    // === Клик по карточкам ===
+    // Клик по карточкам
     items.forEach(item => {
-      item.addEventListener('click', () => {
-        openBranch(item, geoItemsContainer, details, detailsContent);
-      });
+      item.addEventListener('click', () => openBranch(item, geoItemsContainer, details, detailsContent));
     });
 
-    // === Кнопка "Назад" ===
+    // Назад
     backBtn?.addEventListener('click', () => {
       details?.classList.remove('active');
       geoItemsContainer?.classList.remove('hidden');
@@ -1530,7 +1476,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
-
 
 document.addEventListener('DOMContentLoaded', function () {
   const swiper1 = new Swiper('.swiper1', {
@@ -1680,37 +1625,37 @@ document.addEventListener("DOMContentLoaded", () => {
   const backBtn = document.querySelector('.menu__back');
   const menuRight = document.querySelector('.menu__right');
 
-  // Получение ширины скроллбара
+  const fixedEls = document.querySelectorAll('[data-fix]'); // ← фиксированные элементы
+
   function getScrollbarWidth() {
     return window.innerWidth - document.documentElement.clientWidth;
   }
 
-  // Открытие/закрытие меню
-  menuBtn.addEventListener('click', function () {
-    menuBtn.classList.toggle('active');
-    menu.classList.toggle('active');
+  function lockScroll() {
+    const scrollBarWidth = getScrollbarWidth();
 
-    if (menu.classList.contains('active')) {
-      // Блокировка скролла + компенсация смещения
-      const scrollBarWidth = getScrollbarWidth();
-      document.body.classList.add('no-scroll');
-      document.body.style.paddingRight = scrollBarWidth + 'px';
-    } else {
-      // Убираем блокировку и компенсацию
-      document.body.classList.remove('no-scroll');
-      document.body.style.paddingRight = '';
-      resetActive();
-      hideSubmenus();
-      menuRight.classList.remove('active');
-    }
-  });
+    document.body.classList.add('no-scroll');
+    document.body.style.paddingRight = scrollBarWidth + 'px';
 
-  // Сброс активных пунктов
+    // Добавляем компенсацию всем фиксированным элементам
+    fixedEls.forEach(el => {
+      el.style.paddingRight = scrollBarWidth + 'px';
+    });
+  }
+
+  function unlockScroll() {
+    document.body.classList.remove('no-scroll');
+    document.body.style.paddingRight = '';
+
+    fixedEls.forEach(el => {
+      el.style.paddingRight = '';
+    });
+  }
+
   function resetActive() {
     mainItems.forEach(item => item.classList.remove('active'));
   }
 
-  // Скрытие подменю
   function hideSubmenus() {
     list1.classList.remove('visible');
     list2.classList.remove('visible');
@@ -1719,17 +1664,26 @@ document.addEventListener("DOMContentLoaded", () => {
     menuRight.classList.remove('active');
   }
 
-  // Проверка мобильного режима
   function isMobile() {
     return window.innerWidth <= 1024;
   }
 
-  // Назад
-  backBtn.addEventListener('click', () => {
-    hideSubmenus();
+  menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('active');
+    menu.classList.toggle('active');
+
+    if (menu.classList.contains('active')) {
+      lockScroll();
+    } else {
+      unlockScroll();
+      resetActive();
+      hideSubmenus();
+      menuRight.classList.remove('active');
+    }
   });
 
-  // ДЛЯ ДЕСКТОПА – наведение
+  backBtn.addEventListener('click', hideSubmenus);
+
   const firstMain = mainItems[0];
   const secondMain = mainItems[1];
 
@@ -1758,7 +1712,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ДЛЯ МОБИЛЬНЫХ – по клику
   firstMain.addEventListener('click', (e) => {
     if (isMobile()) {
       e.preventDefault();
@@ -1781,6 +1734,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
 
 // Замена <img class="svg"> на inline SVG
 document.addEventListener("DOMContentLoaded", () => {

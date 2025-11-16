@@ -226,7 +226,7 @@ a:hover {
 }
 
 .body-wrap {
-  overflow: hidden;
+  overflow-x: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -400,7 +400,7 @@ html * {
   scrollbar-color: rgb(29, 50, 123) rgb(224, 224, 224);
 }
 
-.geo__items, .main .tabs__nav, .menu, .menu__flex, .papers__box, .popup-call__box, .box-modal, .arcticmodal-container_i, .arcticmodal-container_i2, .arcticmodal-overlay, .arcticmodal-container {
+.geo__items, .main .tabs__nav, .menu, .menu__flex, .papers__box, .popup-call__box, .box-modal, .arcticmodal-container_i, .arcticmodal-container_i2, .arcticmodal-overlay, .arcticmodal-container, .body-wrap {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
@@ -1082,7 +1082,7 @@ ul.info li {
 }
 
 body.no-scroll {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .menu {
@@ -1092,7 +1092,7 @@ body.no-scroll {
   margin-left: -672px;
   width: 100%;
   max-width: 1348px;
-  height: 91.5vh;
+  height: 92vh;
   background: white;
   transform: translateX(-300%);
   transition: transform 0.5s;
@@ -1152,7 +1152,7 @@ body.no-scroll {
   line-height: 17px;
 }
 .menu__right {
-  width: 50.5%;
+  width: 50.05%;
   border-left: 1px solid rgb(234, 234, 234);
   padding: 24px;
   display: flex;
@@ -1295,6 +1295,11 @@ body.no-scroll {
 }
 
 .nav {
+  background: white;
+  position: fixed;
+  z-index: 20;
+  width: 100%;
+  top: 0;
   padding: 16px 0;
   border-bottom: 1px solid rgb(234, 234, 234);
 }
@@ -1442,6 +1447,7 @@ body.no-scroll {
 
 .header {
   margin-bottom: 120px;
+  margin-top: 80.8px;
 }
 .header__wrap {
   display: flex;
@@ -2747,6 +2753,7 @@ input[type=search]::-webkit-search-results-decoration {
 
 .page.hidd {
   overflow: visible;
+  max-width: 100vw;
 }
 .page .nav {
   background: white;
@@ -2780,6 +2787,7 @@ input[type=search]::-webkit-search-results-decoration {
 }
 .page .header__info {
   position: relative;
+  overflow: hidden;
   z-index: 5;
   max-width: 380px;
   padding: 24px;
@@ -3577,10 +3585,6 @@ input[type=search]::-webkit-search-results-decoration {
 .page .header3 .header__content {
   padding-bottom: 160px;
 }
-.page .nav {
-  position: relative;
-  z-index: 10;
-}
 .page .menu {
   top: 69px;
 }
@@ -4127,7 +4131,7 @@ input[type=search]::-webkit-search-results-decoration {
 }
 
 .page .header6 .header__image {
-  height: 101.5%;
+  height: 100%;
 }
 
 .free6 .sub {
@@ -5023,6 +5027,9 @@ input[type=search]::-webkit-search-results-decoration {
 }
 .main-online .tabs__nav a {
   width: 49.6%;
+}
+.main-online .tabs__nav a .svg path.ukr {
+  fill: rgb(227, 6, 19) !important;
 }
 .main-online__wrap {
   position: relative;
@@ -7181,6 +7188,17 @@ input[type=search]::-webkit-search-results-decoration {
   box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.1);
   background: rgb(255, 255, 255);
 }
+.geo__dropdown-list:before {
+  z-index: 2;
+  content: "";
+  display: block;
+  position: absolute;
+  left: 16px;
+  top: 13px;
+  width: 20px;
+  height: 20px;
+  background: url(../img/search.svg) no-repeat center center;
+}
 
 .geo__dropdown.active .geo__dropdown-list {
   display: block;
@@ -7229,6 +7247,25 @@ input[type=search]::-webkit-search-results-decoration {
 
 .ymaps-2-1-79-controls__control_toolbar, .ymaps-2-1-79-gotoymaps, .ymaps-2-1-79-gototaxi, .ymaps-2-1-79-gototech {
   opacity: 0 !important;
+}
+
+.geo__dropdown-search {
+  padding-left: 48px;
+  width: 100%;
+  padding-bottom: 10px;
+  color: rgb(125, 125, 137);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  border: none !important;
+  padding-top: 15px;
+  outline: none !important;
+  position: relative;
+}
+
+.dropdown-filter {
+  padding-top: 2px !important;
+  border: none !important;
 }
 
 @media screen and (max-width: 1350px) {
@@ -10046,6 +10083,9 @@ input[type=search]::-webkit-search-results-decoration {
   }
   .tabs__label {
     top: 20px;
+  }
+  .header {
+    margin-top: 72.8px;
   }
 }
 @media screen and (max-width: 390px) {
