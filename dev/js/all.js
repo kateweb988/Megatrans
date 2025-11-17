@@ -666,203 +666,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
-// document.addEventListener("DOMContentLoaded", () => {
-//   // --- popup1 ---
-//   const popupBg = document.querySelector('.popup__bg');
-//   const popup = document.querySelector('.popup');
-//   const openPopupButtons = document.querySelectorAll('section a.btn, .nav__call, .footer__call, .item__el');
-//   const closePopupButton = document.querySelector('.close-popup');
-
-//   openPopupButtons.forEach(button => {
-//     button.addEventListener('click', e => {
-//       e.preventDefault();
-//       popupBg.classList.add('active');
-//       popup.classList.add('active');
-//     });
-//   });
-
-//   if (closePopupButton) {
-//     closePopupButton.addEventListener('click', () => {
-//       popupBg.classList.remove('active');
-//       popup.classList.remove('active');
-//     });
-//   }
-
-//   document.addEventListener('click', e => {
-//     if (e.target === popupBg) {
-//       popupBg.classList.remove('active');
-//       popup.classList.remove('active');
-//     }
-//   });
-
-//   document.addEventListener('keydown', e => {
-//     if (e.key === 'Escape') {
-//       popupBg.classList.remove('active');
-//       popup.classList.remove('active');
-//     }
-//   });
-
-//   // --- popup2 ---
-//   const popupBg2 = document.querySelector('.popup__bg2');
-//   const popup2 = document.querySelector('.popup2');
-//   const closePopupButton2 = document.querySelectorAll('.popup__bg2 .close-popup');
-
-//   closePopupButton2.forEach(btn => {
-//     btn.addEventListener('click', () => {
-//       popupBg2.classList.remove('active');
-//       popup2.classList.remove('active');
-//     });
-//   });
-
-//   document.addEventListener('click', e => {
-//     if (e.target === popupBg2) {
-//       popupBg2.classList.remove('active');
-//       popup2.classList.remove('active');
-//     }
-//   });
-
-//   document.addEventListener('keydown', e => {
-//     if (e.key === 'Escape') {
-//       popupBg2.classList.remove('active');
-//       popup2.classList.remove('active');
-//     }
-//   });
-
-//   // ====== Дропдауны всех типов + подъем лейблов ======
-//   const lists = {
-//     city: ["Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург","Казань","Нижний Новгород","Самара","Ростов-на-Дону","Уфа","Красноярск","Владивосток","Пермь"],
-//     time: Array.from({ length: 24 * 2 }, (_, i) => { const h = Math.floor(i/2); const m = i%2===0?"00":"30"; return `${String(h).padStart(2,"0")}:${m}`; }),
-//     date: Array.from({ length: 7 }, (_, i) => { const d = new Date(); d.setDate(d.getDate()+i); return d.toLocaleDateString("ru-RU",{day:"2-digit",month:"2-digit",year:"numeric"}); }),
-//     documents: ["Паспорт","Заграничный паспорт","Водительское удостоверение","Свидетельство о рождении","ИНН","СНИЛС","Удостоверение личности моряка","Военный билет"],
-//     bodytype: ["Фургон","Тент","Рефрижератор","Открытая платформа","Контейнеровоз","Автовоз","Цистерна","Самосвал","Бортовой"],
-//     status: ["Создан","Ожидает отправки","В пути","На терминале","Доставлен","Отменён"],
-//     franchise: ["Микро (до 50 м²)","Мини (до 100 м²)","Стандарт (100–300 м²)","Флагман (более 300 м²)","Онлайн формат","Партнёрский пункт выдачи","Корнер в торговом центре"]
-//   };
-
-//   const allGroups = document.querySelectorAll('.form__group');
-
-//   allGroups.forEach(group => {
-//     const type = group.dataset.type;
-//     const field = group.querySelector('input');
-//     const dropdown = group.querySelector('.form__dropdown');
-//     if(!type || !field || !dropdown || !lists[type]) return;
-    
-//     const items = lists[type];
-//     dropdown.innerHTML = items.map(i => `<li>${i}</li>`).join('');
-
-//     // открыть дропдаун на фокус
-//     field.addEventListener('focus', () => {
-//       closeAllDropdowns();
-//       dropdown.classList.add('active');
-//     });
-
-//     // фильтрация для текстовых списков
-//     if(["city","documents","bodytype","status","franchise"].includes(type)) {
-//       field.addEventListener('input', () => {
-//         const val = field.value.toLowerCase();
-//         dropdown.innerHTML = items.filter(i => i.toLowerCase().includes(val))
-//                                   .map(i => `<li>${i}</li>`).join('');
-//       });
-//     }
-
-//     // выбор значения
-//     dropdown.addEventListener('click', e => {
-//       if(e.target.tagName==='LI') {
-//         field.value = e.target.textContent;
-//         dropdown.classList.remove('active');
-//         field.classList.add('filled');
-//       }
-//     });
-//   });
-
-//   document.addEventListener('click', e => {
-//     if(!e.target.closest('.form__group')) closeAllDropdowns();
-//   });
-
-//   function closeAllDropdowns() {
-//     document.querySelectorAll('.form__dropdown').forEach(d => d.classList.remove('active'));
-//   }
-
-//   // подъем лейблов
-//   const allFields = document.querySelectorAll('.form__field, textarea');
-//   allFields.forEach(field => {
-//     const checkFilled = () => field.value.trim()!==""?field.classList.add('filled'):field.classList.remove('filled');
-//     field.addEventListener('input', checkFilled);
-//     checkFilled();
-//   });
-
-//   // --- Валидация и AJAX ---
-//   $(document).ready(function () {
-//     $('[data-submit]').on('click', function(e){ e.preventDefault(); $(this).parents('form').submit(); });
-
-//     $.validator.addMethod("regex", function(value, element, regexp){
-//       var re = new RegExp(regexp);
-//       return this.optional(element) || re.test(value);
-//     }, "Некорректный формат");
-
-//     function valEl(el) {
-//       el.find('.form__field').removeClass('error-input valid');
-//       el.find('label.error').remove();
-
-//       el.validate({
-//         errorPlacement: function(){},
-//         highlight: function(element){ $(element).addClass('error-input'); },
-//         unhighlight: function(element){ $(element).removeClass('error-input').addClass('valid'); },
-//         focusInvalid: false,
-//         rules:{
-//           name:{required:true},
-//           tel:{required:true,regex:'^([\\+]+)*[0-9\\x20\\x28\\x29\\-]{5,20}$'},
-//           local1:{required:true},
-//           text:{required:true},
-//           checkk:{required:true},
-//           check2:{required:true},
-//           check:{required:true}
-//         },
-//         messages:{
-//           name:{required:'Заполните поле'},
-//           tel:{required:'Заполните поле', regex:'Неверный формат телефона'},
-//           local1:{required:'Укажите город'},
-//           text:{required:'Введите сообщение'},
-//           checkk:{required:'Выберите вариант (до 10 м3 / более 10 м3)'},
-//           check2:{required:'Подтвердите согласие на обработку персональных данных'},
-//           check:{required:'Подтвердите согласие на обработку персональных данных'}
-//         },
-//         submitHandler:function(form){
-//           const $form=$(form);
-//           const radioChecked = $form.find('input[name="checkk"]:checked').length>0;
-//           const consent1 = $form.find('input[name="check2"]').is(':checked');
-//           const consent2 = $form.find('input[name="check"]').is(':checked');
-//           if(!radioChecked || !consent1 || !consent2){ alert('Пожалуйста, заполните все обязательные поля и отметьте согласия.'); return false; }
-
-//           $('#loader').fadeIn();
-//           $.ajax({ type:'POST', url:$form.attr('action'), data:$form.serialize() })
-//            .always(()=> {
-//               setTimeout(()=> $('#loader').fadeOut(),800);
-//               setTimeout(()=>{
-//                 popupBg.classList.remove('active');
-//                 popup.classList.remove('active');
-//                 popupBg2.classList.add('active');
-//                 popup2.classList.add('active');
-//                 $form.trigger('reset');
-//                 $form.find('.error-input').removeClass('error-input');
-//                 allFields.forEach(f=>f.classList.remove('filled'));
-//               },1100);
-//            });
-//           return false;
-//         }
-//       });
-//     }
-
-//     $('.js-form').each(function(){ valEl($(this)); });
-
-//     // smooth scroll
-//     $('[data-scroll]').on('click', function(event){
-//       event.preventDefault();
-//       $('html, body').animate({ scrollTop: $($.attr(this,'data-scroll')).offset().top }, 2000);
-//     });
-//   });
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
   // --- popup1 ---
   const popupBg = document.querySelector('.popup__bg');
@@ -928,11 +731,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // ====== Дропдауны всех типов + подъем лейблов ======
   const lists = {
     city: ["Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург","Казань","Нижний Новгород","Самара","Ростов-на-Дону","Уфа","Красноярск","Владивосток","Пермь"],
-    time: Array.from({ length: 24 * 2 }, (_, i) => { 
-      const h = Math.floor(i/2); 
-      const m = i%2===0?"00":"30"; 
-      return `${String(h).padStart(2,"0")}:${m}`; 
-    }),
+    time: Array.from({ length: 24 * 2 }, (_, i) => { const h = Math.floor(i/2); const m = i%2===0?"00":"30"; return `${String(h).padStart(2,"0")}:${m}`; }),
+    date: Array.from({ length: 7 }, (_, i) => { const d = new Date(); d.setDate(d.getDate()+i); return d.toLocaleDateString("ru-RU",{day:"2-digit",month:"2-digit",year:"numeric"}); }),
     documents: ["Паспорт","Заграничный паспорт","Водительское удостоверение","Свидетельство о рождении","ИНН","СНИЛС","Удостоверение личности моряка","Военный билет"],
     bodytype: ["Фургон","Тент","Рефрижератор","Открытая платформа","Контейнеровоз","Автовоз","Цистерна","Самосвал","Бортовой"],
     status: ["Создан","Ожидает отправки","В пути","На терминале","Доставлен","Отменён"],
@@ -945,69 +745,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const type = group.dataset.type;
     const field = group.querySelector('input');
     const dropdown = group.querySelector('.form__dropdown');
-    if(!type || !field) return;
+    if(!type || !field || !dropdown || !lists[type]) return;
 
-    // ====== КАЛЕНДАРЬ для date ======
-    if (type === 'date') {
-      if (dropdown) dropdown.remove();
-      flatpickr(field, {
-        dateFormat: "d.m.Y",
-        minDate: "today",
-        locale: "ru",
-        disableMobile: true,
-        onReady: function(selectedDates, dateStr, instance) {
-          instance.calendarContainer.classList.add('flatpickr-theme');
-        },
-        onChange: function(selectedDates, dateStr) {
-          field.value = dateStr;
-          field.classList.add('filled');
-        }
-      });
-      return;
-    }
-
-    // ====== Обычные выпадающие списки ======
-    if(!dropdown || !lists[type]) return;
     const items = lists[type];
+    dropdown.innerHTML = items.map(i => `<li>${i}</li>`).join('');
 
-    let filterInput = null;
-
-    if(type === 'city') {
-      // создаём li элементы
-      dropdown.innerHTML = items.map(i => `<li>${i}</li>`).join('');
-
-      // создаём фильтрующий input
-      filterInput = document.createElement('input');
-      filterInput.type = 'text';
-      filterInput.placeholder = 'Фильтровать города';
-      filterInput.className = 'dropdown-filter';
-      dropdown.prepend(filterInput);
-
-      // фильтрация
-      filterInput.addEventListener('input', () => {
-        const val = filterInput.value.toLowerCase();
-        dropdown.querySelectorAll('li').forEach(li => {
-          li.style.display = li.textContent.toLowerCase().includes(val) ? '' : 'none';
-        });
-      });
-    } else {
-      // для остальных dropdown
-      dropdown.innerHTML = items.map(i => `<li>${i}</li>`).join('');
-      if(["documents","bodytype","status","franchise"].includes(type)) {
-        field.addEventListener('input', () => {
-          const val = field.value.toLowerCase();
-          dropdown.querySelectorAll('li').forEach(li => {
-            li.style.display = li.textContent.toLowerCase().includes(val) ? '' : 'none';
-          });
-        });
-      }
-    }
-
+    // открыть дропдаун на фокус
     field.addEventListener('focus', () => {
       closeAllDropdowns();
       dropdown.classList.add('active');
     });
 
+    // фильтрация для текстовых списков
+    if(["city","documents","bodytype","status","franchise"].includes(type)) {
+      field.addEventListener('input', () => {
+        const val = field.value.toLowerCase();
+        dropdown.innerHTML = items.filter(i => i.toLowerCase().includes(val))
+                                  .map(i => `<li>${i}</li>`).join('');
+        field.classList.toggle('filled', field.value.trim() !== '');
+      });
+    }
+
+    // выбор значения
     dropdown.addEventListener('click', e => {
       if(e.target.tagName==='LI') {
         field.value = e.target.textContent;
@@ -1017,15 +776,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  document.addEventListener('click', e => {
-    if(!e.target.closest('.form__group')) closeAllDropdowns();
-  });
-
   function closeAllDropdowns() {
     document.querySelectorAll('.form__dropdown').forEach(d => d.classList.remove('active'));
   }
 
-  // Подъем лейблов
+  document.addEventListener('click', e => {
+    if(!e.target.closest('.form__group')) closeAllDropdowns();
+  });
+
+  // подъем лейблов
   const allFields = document.querySelectorAll('.form__field, textarea');
   allFields.forEach(field => {
     const checkFilled = () => field.value.trim()!==""?field.classList.add('filled'):field.classList.remove('filled');
@@ -1080,7 +839,7 @@ document.addEventListener("DOMContentLoaded", () => {
           $.ajax({ type:'POST', url:$form.attr('action'), data:$form.serialize() })
            .always(()=> {
               setTimeout(()=> $('#loader').fadeOut(),800);
-              setTimeout(()=> {
+              setTimeout(()=>{
                 popupBg.classList.remove('active');
                 popup.classList.remove('active');
                 popupBg2.classList.add('active');
@@ -1103,7 +862,304 @@ document.addEventListener("DOMContentLoaded", () => {
       $('html, body').animate({ scrollTop: $($.attr(this,'data-scroll')).offset().top }, 2000);
     });
   });
+
+  // --- GEO-City autocomplete для geo-contacts с "Все города" и интерактивным лейблом ---
+  const geoCityInput = document.getElementById('geoCity');
+  const geoDropdown = document.getElementById('dropdown-geoCity');
+  const geoItems = document.querySelectorAll('.geo__items .geo__item');
+
+  const cities = ["Все города","Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург","Казань","Нижний Новгород","Самара","Ростов-на-Дону","Уфа","Красноярск","Владивосток","Пермь"];
+
+  // заполняем список
+  geoDropdown.innerHTML = cities.map(c => `<li>${c}</li>`).join('');
+
+  // показать дропдаун при фокусе
+  geoCityInput.addEventListener('focus', () => {
+    geoDropdown.classList.add('active');
+    geoCityInput.classList.add('filled'); // поднимаем лейбл
+  });
+
+  // фильтрация
+  geoCityInput.addEventListener('input', () => {
+    const val = geoCityInput.value.toLowerCase();
+    geoDropdown.innerHTML = cities
+      .filter(c => c.toLowerCase().includes(val))
+      .map(c => `<li>${c}</li>`).join('');
+    geoCityInput.classList.toggle('filled', geoCityInput.value.trim() !== '');
+  });
+
+  // выбор города
+  geoDropdown.addEventListener('click', e => {
+    if(e.target.tagName === 'LI') {
+      geoCityInput.value = e.target.textContent;
+      geoDropdown.classList.remove('active');
+      geoCityInput.classList.add('filled');
+
+      // фильтруем терминалы
+      if(e.target.textContent === "Все города") {
+        geoItems.forEach(item => item.style.display = '');
+      } else {
+        geoItems.forEach(item => {
+          item.style.display = item.dataset.city === e.target.textContent ? '' : 'none';
+        });
+      }
+    }
+  });
+
+  // закрытие при клике вне
+  document.addEventListener('click', e => {
+    if(!e.target.closest('.form__group')) geoDropdown.classList.remove('active');
+  });
 });
+
+
+
+
+
+
+
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   // --- popup1 ---
+//   const popupBg = document.querySelector('.popup__bg');
+//   const popup = document.querySelector('.popup');
+//   const openPopupButtons = document.querySelectorAll('section a.btn, .nav__call, .footer__call, .item__el');
+//   const closePopupButton = document.querySelector('.close-popup');
+
+//   openPopupButtons.forEach(button => {
+//     button.addEventListener('click', e => {
+//       e.preventDefault();
+//       popupBg.classList.add('active');
+//       popup.classList.add('active');
+//     });
+//   });
+
+//   if (closePopupButton) {
+//     closePopupButton.addEventListener('click', () => {
+//       popupBg.classList.remove('active');
+//       popup.classList.remove('active');
+//     });
+//   }
+
+//   document.addEventListener('click', e => {
+//     if (e.target === popupBg) {
+//       popupBg.classList.remove('active');
+//       popup.classList.remove('active');
+//     }
+//   });
+
+//   document.addEventListener('keydown', e => {
+//     if (e.key === 'Escape') {
+//       popupBg.classList.remove('active');
+//       popup.classList.remove('active');
+//     }
+//   });
+
+//   // --- popup2 ---
+//   const popupBg2 = document.querySelector('.popup__bg2');
+//   const popup2 = document.querySelector('.popup2');
+//   const closePopupButton2 = document.querySelectorAll('.popup__bg2 .close-popup');
+
+//   closePopupButton2.forEach(btn => {
+//     btn.addEventListener('click', () => {
+//       popupBg2.classList.remove('active');
+//       popup2.classList.remove('active');
+//     });
+//   });
+
+//   document.addEventListener('click', e => {
+//     if (e.target === popupBg2) {
+//       popupBg2.classList.remove('active');
+//       popup2.classList.remove('active');
+//     }
+//   });
+
+//   document.addEventListener('keydown', e => {
+//     if (e.key === 'Escape') {
+//       popupBg2.classList.remove('active');
+//       popup2.classList.remove('active');
+//     }
+//   });
+
+//   // ====== Дропдауны всех типов + подъем лейблов ======
+//   const lists = {
+//     city: ["Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург","Казань","Нижний Новгород","Самара","Ростов-на-Дону","Уфа","Красноярск","Владивосток","Пермь"],
+//     time: Array.from({ length: 24 * 2 }, (_, i) => { 
+//       const h = Math.floor(i/2); 
+//       const m = i%2===0?"00":"30"; 
+//       return `${String(h).padStart(2,"0")}:${m}`; 
+//     }),
+//     documents: ["Паспорт","Заграничный паспорт","Водительское удостоверение","Свидетельство о рождении","ИНН","СНИЛС","Удостоверение личности моряка","Военный билет"],
+//     bodytype: ["Фургон","Тент","Рефрижератор","Открытая платформа","Контейнеровоз","Автовоз","Цистерна","Самосвал","Бортовой"],
+//     status: ["Создан","Ожидает отправки","В пути","На терминале","Доставлен","Отменён"],
+//     franchise: ["Микро (до 50 м²)","Мини (до 100 м²)","Стандарт (100–300 м²)","Флагман (более 300 м²)","Онлайн формат","Партнёрский пункт выдачи","Корнер в торговом центре"]
+//   };
+
+//   const allGroups = document.querySelectorAll('.form__group');
+
+//   allGroups.forEach(group => {
+//     const type = group.dataset.type;
+//     const field = group.querySelector('input');
+//     const dropdown = group.querySelector('.form__dropdown');
+//     if(!type || !field) return;
+
+//     // ====== КАЛЕНДАРЬ для date ======
+//     if (type === 'date') {
+//       if (dropdown) dropdown.remove();
+//       flatpickr(field, {
+//         dateFormat: "d.m.Y",
+//         minDate: "today",
+//         locale: "ru",
+//         disableMobile: true,
+//         onReady: function(selectedDates, dateStr, instance) {
+//           instance.calendarContainer.classList.add('flatpickr-theme');
+//         },
+//         onChange: function(selectedDates, dateStr) {
+//           field.value = dateStr;
+//           field.classList.add('filled');
+//         }
+//       });
+//       return;
+//     }
+
+//     // ====== Обычные выпадающие списки ======
+//     if(!dropdown || !lists[type]) return;
+//     const items = lists[type];
+
+//     let filterInput = null;
+
+//     if(type === 'city') {
+//       // создаём li элементы
+//       dropdown.innerHTML = items.map(i => `<li>${i}</li>`).join('');
+
+//       // создаём фильтрующий input
+//       filterInput = document.createElement('input');
+//       filterInput.type = 'text';
+//       filterInput.placeholder = 'Фильтровать города';
+//       filterInput.className = 'dropdown-filter';
+//       dropdown.prepend(filterInput);
+
+//       // фильтрация
+//       filterInput.addEventListener('input', () => {
+//         const val = filterInput.value.toLowerCase();
+//         dropdown.querySelectorAll('li').forEach(li => {
+//           li.style.display = li.textContent.toLowerCase().includes(val) ? '' : 'none';
+//         });
+//       });
+//     } else {
+//       // для остальных dropdown
+//       dropdown.innerHTML = items.map(i => `<li>${i}</li>`).join('');
+//       if(["documents","bodytype","status","franchise"].includes(type)) {
+//         field.addEventListener('input', () => {
+//           const val = field.value.toLowerCase();
+//           dropdown.querySelectorAll('li').forEach(li => {
+//             li.style.display = li.textContent.toLowerCase().includes(val) ? '' : 'none';
+//           });
+//         });
+//       }
+//     }
+
+//     field.addEventListener('focus', () => {
+//       closeAllDropdowns();
+//       dropdown.classList.add('active');
+//     });
+
+//     dropdown.addEventListener('click', e => {
+//       if(e.target.tagName==='LI') {
+//         field.value = e.target.textContent;
+//         dropdown.classList.remove('active');
+//         field.classList.add('filled');
+//       }
+//     });
+//   });
+
+//   document.addEventListener('click', e => {
+//     if(!e.target.closest('.form__group')) closeAllDropdowns();
+//   });
+
+//   function closeAllDropdowns() {
+//     document.querySelectorAll('.form__dropdown').forEach(d => d.classList.remove('active'));
+//   }
+
+//   // Подъем лейблов
+//   const allFields = document.querySelectorAll('.form__field, textarea');
+//   allFields.forEach(field => {
+//     const checkFilled = () => field.value.trim()!==""?field.classList.add('filled'):field.classList.remove('filled');
+//     field.addEventListener('input', checkFilled);
+//     checkFilled();
+//   });
+
+//   // --- Валидация и AJAX ---
+//   $(document).ready(function () {
+//     $('[data-submit]').on('click', function(e){ e.preventDefault(); $(this).parents('form').submit(); });
+
+//     $.validator.addMethod("regex", function(value, element, regexp){
+//       var re = new RegExp(regexp);
+//       return this.optional(element) || re.test(value);
+//     }, "Некорректный формат");
+
+//     function valEl(el) {
+//       el.find('.form__field').removeClass('error-input valid');
+//       el.find('label.error').remove();
+
+//       el.validate({
+//         errorPlacement: function(){},
+//         highlight: function(element){ $(element).addClass('error-input'); },
+//         unhighlight: function(element){ $(element).removeClass('error-input').addClass('valid'); },
+//         focusInvalid: false,
+//         rules:{
+//           name:{required:true},
+//           tel:{required:true,regex:'^([\\+]+)*[0-9\\x20\\x28\\x29\\-]{5,20}$'},
+//           local1:{required:true},
+//           text:{required:true},
+//           checkk:{required:true},
+//           check2:{required:true},
+//           check:{required:true}
+//         },
+//         messages:{
+//           name:{required:'Заполните поле'},
+//           tel:{required:'Заполните поле', regex:'Неверный формат телефона'},
+//           local1:{required:'Укажите город'},
+//           text:{required:'Введите сообщение'},
+//           checkk:{required:'Выберите вариант (до 10 м3 / более 10 м3)'},
+//           check2:{required:'Подтвердите согласие на обработку персональных данных'},
+//           check:{required:'Подтвердите согласие на обработку персональных данных'}
+//         },
+//         submitHandler:function(form){
+//           const $form=$(form);
+//           const radioChecked = $form.find('input[name="checkk"]:checked').length>0;
+//           const consent1 = $form.find('input[name="check2"]').is(':checked');
+//           const consent2 = $form.find('input[name="check"]').is(':checked');
+//           if(!radioChecked || !consent1 || !consent2){ alert('Пожалуйста, заполните все обязательные поля и отметьте согласия.'); return false; }
+
+//           $('#loader').fadeIn();
+//           $.ajax({ type:'POST', url:$form.attr('action'), data:$form.serialize() })
+//            .always(()=> {
+//               setTimeout(()=> $('#loader').fadeOut(),800);
+//               setTimeout(()=> {
+//                 popupBg.classList.remove('active');
+//                 popup.classList.remove('active');
+//                 popupBg2.classList.add('active');
+//                 popup2.classList.add('active');
+//                 $form.trigger('reset');
+//                 $form.find('.error-input').removeClass('error-input');
+//                 allFields.forEach(f=>f.classList.remove('filled'));
+//               },1100);
+//            });
+//           return false;
+//         }
+//       });
+//     }
+
+//     $('.js-form').each(function(){ valEl($(this)); });
+
+//     // smooth scroll
+//     $('[data-scroll]').on('click', function(event){
+//       event.preventDefault();
+//       $('html, body').animate({ scrollTop: $($.attr(this,'data-scroll')).offset().top }, 2000);
+//     });
+//   });
+// });
 
 
 

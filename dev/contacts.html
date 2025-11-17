@@ -255,44 +255,39 @@
 			<div class="container">
 				<div class="wrap">
 					<div class="geo__block geo__filter arrow-left">
-						<!-- Дропдаун с поиском -->
-						<div class="geo__dropdown">
-							<div class="geo__dropdown-selected">Все города</div>
-							<ul class="geo__dropdown-list">
-								<input type="text" class="geo__dropdown-search" placeholder="Поиск">
-								<li data-value="all">Все города</li>
-								<li data-value="ekb">Екатеринбург</li>
-								<li data-value="msk">Москва</li>
-							</ul>
+						<div class="form__group" data-type="city">
+							<input type="text" id="geoCity" class="form__field" placeholder=" " autocomplete="off">
+							<label for="geoCity" class="form__label">Город</label>
+							<ul class="form__dropdown" id="dropdown-geoCity"></ul>
 						</div>
 
 						<!-- Список терминалов (компактный вид) -->
 						<div class="geo__items">
 							<!-- Екатеринбург -->
-							<div class="geo__item" data-city="ekb" data-id="ekb-1" data-coords="56.810563,60.612746">
+							<div class="geo__item" data-city="Екатеринбург" data-id="ekb-1" data-coords="56.810563,60.612746">
 								<p class="geo__title">Екатеринбург 1</p>
 								<div class="geo__info"><img src="img/geo1.svg" alt=""> <p>Екатеринбург, мкр Белая Дача, проезд, 3/2</p></div>
 								<div class="geo__info"><img src="img/geo2.svg" alt=""> <a href="tel:84999115304">8 (499) 911-5304</a></div>
 							</div>
 
-							<div class="geo__item" data-city="ekb" data-id="ekb-2" data-coords="56.820000,60.620000">
+							<div class="geo__item" data-city="Екатеринбург" data-id="ekb-2" data-coords="56.820000,60.620000">
 								<p class="geo__title">Екатеринбург 2</p>
 								<div class="geo__info"><img src="img/geo1.svg" alt=""> <p>Екатеринбург, ул. Вторая, 10</p></div>
 								<div class="geo__info"><img src="img/geo2.svg" alt=""> <a href="tel:84991115305">8 (499) 911-5305</a></div>
 							</div>
 
 							<!-- Москва -->
-							<div class="geo__item" data-city="msk" data-id="msk-1" data-coords="55.699808,37.732932">
+							<div class="geo__item" data-city="Москва" data-id="msk-1" data-coords="55.699808,37.732932">
 								<p class="geo__title">Москва 1</p>
 								<div class="geo__info"><img src="img/geo1.svg" alt=""> <p>Москва, ул. Белореченская, 14</p></div>
 								<div class="geo__info"><img src="img/geo2.svg" alt=""> <a href="tel:84991115304">8 (499) 911-5304</a></div>
 							</div>
-							<div class="geo__item" data-city="msk" data-id="msk-2" data-coords="55.609808,37.732936">
+							<div class="geo__item" data-city="Москва" data-id="msk-2" data-coords="55.609808,37.732936">
 								<p class="geo__title">Москва 2</p>
 								<div class="geo__info"><img src="img/geo1.svg" alt=""> <p>Москва, ул. Белореченская</p></div>
 								<div class="geo__info"><img src="img/geo2.svg" alt=""> <a href="tel:84991115304">8 (499) 911-5304</a></div>
 							</div>
-							<div class="geo__item" data-city="msk" data-id="msk-3" data-coords="55.499800,37.732936">
+							<div class="geo__item" data-city="Москва" data-id="msk-3" data-coords="55.499800,37.732936">
 								<p class="geo__title">Москва 3</p>
 								<div class="geo__info"><img src="img/geo1.svg" alt=""> <p>Москва, ул. Белор</p></div>
 								<div class="geo__info"><img src="img/geo2.svg" alt=""> <a href="tel:84991115304">8 (499) 911-5304</a></div>

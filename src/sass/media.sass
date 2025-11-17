@@ -594,7 +594,7 @@
         top: 13px
     .geo__item:last-child
         margin-bottom: 0
-        padding-bottom: 0
+        // padding-bottom: 0
     .geo .geo__slider .swiper-slide, .geo .swiper4 .swiper-slide
         max-width: inherit
         min-width: initial
@@ -1005,6 +1005,11 @@
     .geo__dropdown 
         width: 96.5%
         margin-left: 12px
+    #geo-contacts
+        .form__group[data-type=city] 
+            width: 96.5%
+            margin-left: 12px
+            box-sizing: border-box
 @media screen and (max-width: 767px)
     .page .header__wrap .header__info
         margin-top: 300px
@@ -1564,6 +1569,8 @@
         right: 50%
     .geo__dropdown
         width: 95%
+    #geo-contacts .form__group[data-type=city]
+        width: 95%
 @media screen and (max-width: 576px)
     button:active, button:focus 
         outline: none
@@ -2042,7 +2049,7 @@
         width: 94%
     .geo__item:last-child
         padding-bottom: 12px
-    .geo__dropdown 
+    .geo__dropdown, #geo-contacts .form__group[data-type=city]
         width: 94%
     .geo__dropdown-selected
         padding-top: 20px
@@ -2064,8 +2071,15 @@
         top: 20px
     .header 
         margin-top: 72.8px
+    .geo__info p
+        width: 100%
+        max-width: 200px
+    .geo-contacts .geo__block
+        padding-top: 12px
+    // .geo__item:last-child
+    //     border-bottom: 1px solid rgb(234, 234, 234)
 @media screen and (max-width: 390px)
-    .geo__dropdown 
+    .geo__dropdown, #geo-contacts .form__group[data-type=city]
         width: 92.7%
     .log__map 
         top: 105px
