@@ -1787,7 +1787,7 @@ body.no-scroll {
 
 /* Позиционирование обертки для правильного absolute */
 .geo-contacts .form__group[data-type=city] {
-  width: 88.8%;
+  width: 88.6%;
   position: relative;
   margin-bottom: 8px;
   margin-left: 24px;
@@ -2538,6 +2538,7 @@ label.error {
 }
 .geo .geo__slider .swiper-wrapper, .geo .swiper4 .swiper-wrapper {
   flex-wrap: nowrap !important;
+  display: flex;
 }
 .geo .geo__slider .swiper-slide, .geo .swiper4 .swiper-slide {
   min-width: 52px;
@@ -7366,6 +7367,10 @@ body.no-scroll section, body.no-scroll footer, body.no-scroll main {
   overflow: visible;
 }
 
+.local-tar .local__form .form__group {
+  margin-bottom: 0;
+}
+
 @media screen and (max-width: 1350px) {
   .container {
     max-width: 1200px !important;
@@ -8749,6 +8754,9 @@ body.no-scroll section, body.no-scroll footer, body.no-scroll main {
     width: 96.5%;
     margin-left: 12px;
     box-sizing: border-box;
+  }
+  .local-tar .local__form .form__group {
+    margin-bottom: 8px;
   }
 }
 @media screen and (max-width: 767px) {
