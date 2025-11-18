@@ -2436,7 +2436,7 @@ label.error {
   color: rgb(227, 6, 19);
 }
 .geo__items {
-  max-height: 544px;
+  max-height: 550px;
   overflow-y: auto;
 }
 .geo .geo__details {
