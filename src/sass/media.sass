@@ -2076,11 +2076,29 @@
     .geo__info p
         width: 100%
         max-width: 200px
-    .geo-contacts .geo__block
-        padding-top: 12px
-    // .geo__item:last-child
-    //     border-bottom: 1px solid rgb(234, 234, 234)
+    .geo .geo__block
+        padding-top: 422px
+    .geo .wrap
+        display: flex
+        position: relative
+        flex-direction: column
+    .geo .wrap #map
+        position: absolute
+        top: 11px
+        width: 93.9%
+        left: 12px
+        z-index: 3
+        margin-top: 0
+    .geo .geo__details
+        position: relative
+    #geo .wrap #map
+        top: 146px
+    #geo 
+        .geo__details
+            top: -42px
 @media screen and (max-width: 390px)
+    .geo .wrap #map
+        width: 93%
     .geo__dropdown, #geo-contacts .form__group[data-type=city]
         width: 92.7%
     .log__map 

@@ -396,12 +396,15 @@ html * {
   scrollbar-color: blue rgb(227, 6, 19);
 }
 
-.form__dropdown, .geo__dropdown-list {
+.form__dropdown, .geo__dropdown-list, .geo__items {
   scrollbar-width: thin;
   scrollbar-color: rgb(29, 50, 123) rgb(224, 224, 224);
 }
+.form__dropdown::-webkit-scrollbar-button, .geo__dropdown-list::-webkit-scrollbar-button, .geo__items::-webkit-scrollbar-button {
+  display: none;
+}
 
-.geo__items, .main .tabs__nav, .menu, .menu__flex, .papers__box, .popup-call__box, .box-modal, .arcticmodal-container_i, .arcticmodal-container_i2, .arcticmodal-overlay, .arcticmodal-container, .body-wrap {
+.main .tabs__nav, .menu, .menu__flex, .papers__box, .popup-call__box, .box-modal, .arcticmodal-container_i, .arcticmodal-container_i2, .arcticmodal-overlay, .arcticmodal-container, .body-wrap {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
@@ -1745,7 +1748,7 @@ body.no-scroll {
 
 #dropdown-geoCity {
   position: absolute;
-  top: 56px;
+  top: 65px;
   left: 0;
   width: 100%;
   max-height: 220px;
@@ -10204,11 +10207,36 @@ body.no-scroll section, body.no-scroll footer, body.no-scroll main {
     width: 100%;
     max-width: 200px;
   }
-  .geo-contacts .geo__block {
-    padding-top: 12px;
+  .geo .geo__block {
+    padding-top: 422px;
+  }
+  .geo .wrap {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+  }
+  .geo .wrap #map {
+    position: absolute;
+    top: 11px;
+    width: 93.9%;
+    left: 12px;
+    z-index: 3;
+    margin-top: 0;
+  }
+  .geo .geo__details {
+    position: relative;
+  }
+  #geo .wrap #map {
+    top: 146px;
+  }
+  #geo .geo__details {
+    top: -42px;
   }
 }
 @media screen and (max-width: 390px) {
+  .geo .wrap #map {
+    width: 93%;
+  }
   .geo__dropdown, #geo-contacts .form__group[data-type=city] {
     width: 92.7%;
   }

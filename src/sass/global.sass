@@ -140,10 +140,12 @@ div
 html * 
    scrollbar-width: thin
    scrollbar-color: blue $red
-.form__dropdown, .geo__dropdown-list
+.form__dropdown, .geo__dropdown-list, .geo__items
    scrollbar-width: thin
    scrollbar-color: rgba(29, 50, 123, 1) rgba(224, 224, 224, 1)
-.geo__items, .main .tabs__nav, .menu, .menu__flex,  .papers__box, .popup-call__box, .box-modal, .arcticmodal-container_i, .arcticmodal-container_i2, .arcticmodal-overlay, .arcticmodal-container, .body-wrap
+   &::-webkit-scrollbar-button 
+      display: none
+.main .tabs__nav, .menu, .menu__flex,  .papers__box, .popup-call__box, .box-modal, .arcticmodal-container_i, .arcticmodal-container_i2, .arcticmodal-overlay, .arcticmodal-container, .body-wrap
    scrollbar-width: thin
    scrollbar-color: transparent transparent
 .local-tar__scroll
