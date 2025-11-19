@@ -398,7 +398,7 @@ html * {
 
 .form__dropdown, .geo__dropdown-list, .geo__items {
   scrollbar-width: thin;
-  scrollbar-color: rgb(29, 50, 123) rgb(224, 224, 224);
+  scrollbar-color: rgb(29, 50, 123) transparent;
 }
 .form__dropdown::-webkit-scrollbar-button, .geo__dropdown-list::-webkit-scrollbar-button, .geo__items::-webkit-scrollbar-button {
   display: none;
@@ -411,7 +411,7 @@ html * {
 
 .local-tar__scroll {
   scrollbar-width: thin;
-  scrollbar-color: rgb(29, 50, 123) rgb(189, 189, 210);
+  scrollbar-color: rgb(29, 50, 123) transparent;
 }
 
 *::-webkit-scrollbar,
@@ -422,7 +422,7 @@ html *::-webkit-scrollbar {
 
 *::-webkit-scrollbar-track,
 html *::-webkit-scrollbar-track {
-  background: #E7E7E7;
+  background: transparent;
   border-radius: 3px;
 }
 
