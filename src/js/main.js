@@ -975,7 +975,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ====== Дропдауны всех типов + подъем лейблов ======
+  // ====== Дропдауны ======
   const lists = {
     city: ["Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург","Казань","Нижний Новгород","Самара","Ростов-на-Дону","Уфа","Красноярск","Владивосток","Пермь"],
     time: Array.from({ length: 24 * 2 }, (_, i) => { const h = Math.floor(i/2); const m = i%2===0?"00":"30"; return `${String(h).padStart(2,"0")}:${m}`; }),
@@ -992,6 +992,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const type = group.dataset.type;
     const field = group.querySelector('input');
     const dropdown = group.querySelector('.form__dropdown');
+
+    // дата теперь БЕЗ dropdown (удаляем)
+    if (type === "date" && dropdown) {
+      dropdown.remove();
+      return; // пропускаем стандартный dropdown-код
+    }
+
     if(!type || !field || !dropdown || !lists[type]) return;
 
     const items = lists[type];
@@ -1007,21 +1014,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const val = field.value.toLowerCase();
         const filtered = items.filter(i => i.toLowerCase().includes(val));
         dropdown.innerHTML = (filtered.length ? filtered : ['<li class="no-results">Ничего не найдено</li>']).map(i => typeof i === 'string' && i.startsWith('<li') ? i : `<li>${i}</li>`).join('');
-        dropdown.classList.add('active'); // всегда показываем список при вводе
+        dropdown.classList.add('active');
         field.classList.toggle('filled', field.value.trim() !== '');
       });
 
-      // на случай ввода через IME
-      field.addEventListener('compositionend', () => {
-        const event = new Event('input', { bubbles: true });
-        field.dispatchEvent(event);
-      });
-
-      // и на keyup — чтобы отработать удаление через клавиши
-      field.addEventListener('keyup', () => {
-        const event = new Event('input', { bubbles: true });
-        field.dispatchEvent(event);
-      });
+      field.addEventListener('compositionend', () => field.dispatchEvent(new Event('input',{bubbles:true})));
+      field.addEventListener('keyup', () => field.dispatchEvent(new Event('input',{bubbles:true})));
     }
 
     dropdown.addEventListener('click', e => {
@@ -1037,8 +1035,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('.form__dropdown').forEach(d => d.classList.remove('active'));
   }
 
-  // Обработчик клика по документу: закрываем dropdown'ы только если клик был вне .form__group
-  // И если сейчас фокус не внутри .form__group (это защищает от гонок focus/input->click)
   document.addEventListener('click', e => {
     const clickedInsideGroup = !!e.target.closest('.form__group');
     const activeIsInGroup = !!(document.activeElement && document.activeElement.closest && document.activeElement.closest('.form__group'));
@@ -1131,46 +1127,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const cities = ["Все города","Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург","Казань","Нижний Новгород","Самара","Ростов-на-Дону","Уфа","Красноярск","Владивосток","Пермь"];
 
-  // заполняем список
   if (geoDropdown) {
     geoDropdown.innerHTML = cities.map(c => `<li>${c}</li>`).join('');
   }
 
-  // показать дропдаун при фокусе
   if (geoCityInput) {
     geoCityInput.addEventListener('focus', () => {
-      if (geoDropdown) {
-        geoDropdown.classList.add('active');
-      }
-      geoCityInput.classList.add('filled'); // поднимаем лейбл
+      if (geoDropdown) geoDropdown.classList.add('active');
+      geoCityInput.classList.add('filled');
     });
 
-    // ✔ Исправлено: продолжаем показывать dropdown даже если поле очищено
     geoCityInput.addEventListener('input', () => {
       if (!geoDropdown) return;
       const val = geoCityInput.value.toLowerCase();
-
-      geoDropdown.classList.add('active'); // ← ФИКС: всегда открываем
+      geoDropdown.classList.add('active');
 
       const filtered = cities.filter(c => c.toLowerCase().includes(val));
-      if (filtered.length) {
-        geoDropdown.innerHTML = filtered.map(c => `<li>${c}</li>`).join('');
-      } else {
-        geoDropdown.innerHTML = `<li class="no-results">Ничего не найдено</li>`;
-      }
+      geoDropdown.innerHTML = filtered.length
+        ? filtered.map(c => `<li>${c}</li>`).join('')
+        : `<li class="no-results">Ничего не найдено</li>`;
 
       geoCityInput.classList.toggle('filled', geoCityInput.value.trim() !== '');
     });
 
-    // compositionend и keyup — чтобы учесть IME и удаление выделением
-    geoCityInput.addEventListener('compositionend', () => {
-      geoCityInput.dispatchEvent(new Event('input', { bubbles: true }));
-    });
-    geoCityInput.addEventListener('keyup', () => {
-      geoCityInput.dispatchEvent(new Event('input', { bubbles: true }));
-    });
+    geoCityInput.addEventListener('compositionend', () => geoCityInput.dispatchEvent(new Event('input',{bubbles:true})));
+    geoCityInput.addEventListener('keyup', () => geoCityInput.dispatchEvent(new Event('input',{bubbles:true})));
 
-    // выбор города
     if (geoDropdown) {
       geoDropdown.addEventListener('click', e => {
         if(e.target.tagName === 'LI') {
@@ -1179,7 +1161,6 @@ document.addEventListener("DOMContentLoaded", () => {
           geoDropdown.classList.remove('active');
           geoCityInput.classList.add('filled');
 
-          // фильтруем терминалы
           if(e.target.textContent === "Все города") {
             geoItems.forEach(item => item.style.display = '');
           } else {
@@ -1191,7 +1172,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // закрытие при клике вне — но НЕ закрываем если сейчас фокус внутри .form__group
     document.addEventListener('click', e => {
       const clickedInsideGroup = !!e.target.closest('.form__group');
       const activeIsInGroup = !!(document.activeElement && document.activeElement.closest && document.activeElement.closest('.form__group'));
@@ -1200,7 +1180,34 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // ====== Flatpickr для data-type="date" ======
+  const dateGroups = document.querySelectorAll('.form__group[data-type="date"]');
+
+  dateGroups.forEach(group => {
+    const field = group.querySelector('input');
+    if (!field) return;
+
+    flatpickr(field, {
+      locale: 'ru',
+      dateFormat: 'd.m.Y',
+      disableMobile: false,
+      onOpen() {
+        field.classList.add('filled');
+      },
+      onChange(_, dateStr) {
+        field.value = dateStr;
+        field.classList.add('filled');
+      }
+    });
+
+    if (field.value.trim() !== "") {
+      field.classList.add("filled");
+    }
+  });
+
 });
+
 
 
 
